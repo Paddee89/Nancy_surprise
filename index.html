@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Advent Calendar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --bg: #0b1724;
+      --card-bg: #152235;
+      --accent: #e63946;
+      --accent-soft: #f1faee;
+      --gold: #f4c95d;
+      --locked: #4a5568;
+      --text: #f9fafb;
+      --secondary-text: #cbd5f5;
+      --shadow: 0 18px 35px rgba(0, 0, 0, 0.35);
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 24px 16px 40px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+
+      background:
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.15)),
+        url("bg.jpg") center/cover no-repeat;
+
+      color: var(--text);
+      display: flex;
+      min-height: 100vh;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    @media (min-width: 900px) {
+      body {
+        padding: 32px 24px;
+        align-items: center;
+      }
+    }
+
+    .calendar-wrapper {
+      max-width: 2000px;
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .calendar-header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 600px) {
+      .calendar-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+    }
+
+    .calendar-title {
+      font-size: clamp(1.6rem, 2.2vw + 1rem, 2.2rem);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .calendar-title span.emoji {
+      font-size: 1.8rem;
+    }
+
+    .calendar-subtitle {
+      font-size: 0.9rem;
+      color: var(--secondary-text);
+      max-width: 480px;
+    }
+
+    .today-indicator {
+      font-size: 0.9rem;
+      color: var(--gold);
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 600px) {
+      .today-indicator {
+        margin-top: 4px;
+      }
+    }
+
+    .today-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 10px rgba(250, 204, 21, 0.75);
+    }
+
+    /* ------- GRID LAYOUT -------- */
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(8, minmax(80px, 1fr));
+      grid-auto-rows: clamp(80px, 9vw, 130px);
+      grid-auto-flow: dense;
+      gap: clamp(8px, 1vw, 16px);
+    }
+
+    @media (max-width: 1200px) {
+      .calendar-grid {
+        grid-template-columns: repeat(6, minmax(80px, 1fr));
+      }
+    }
+
+    @media (max-width: 900px) {
+      .calendar-grid {
+        grid-template-columns: repeat(5, minmax(70px, 1fr));
+        grid-auto-rows: clamp(80px, 11vw, 120px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .calendar-grid {
+        grid-template-columns: repeat(4, minmax(70px, 1fr));
+        grid-auto-rows: clamp(90px, 18vw, 130px);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .calendar-grid {
+        grid-template-columns: repeat(3, minmax(80px, 1fr));
+        grid-auto-rows: 110px;
+      }
+    }
+
+    .door--size-s {
+      grid-column: span 1;
+      grid-row: span 1;
+    }
+
+    .door--size-wide {
+      grid-column: span 2;
+      grid-row: span 1;
+    }
+
+    .door--size-tall {
+      grid-column: span 1;
+      grid-row: span 2;
+    }
+
+    .door--size-big {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    @media (max-width: 520px) {
+      .door--size-s,
+      .door--size-wide,
+      .door--size-tall,
+      .door--size-big {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+    }
+
+    .door {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: var(--radius);
+      background-size: 100% 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: transparent;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.65);
+      padding: 10px;
+      cursor: default;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        border-color 0.18s ease,
+        background 0.18s ease,
+        filter 0.18s ease;
+    }
+
+    @media (max-width: 520px) {
+      .door {
+        padding: 8px;
+      }
+    }
+
+    .door * {
+      position: relative;
+      z-index: 3;
+    }
+
+    /* Grey-out past doors */
+    .door.past {
+      filter: grayscale(0.4) brightness(0.9);
+    }
+
+    .door.past::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.45);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .door.past .door-status {
+      background: rgba(31, 41, 55, 0.9);
+      border-color: rgba(148, 163, 184, 0.7);
+    }
+
+    .door::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(251, 191, 36, 0.28),
+        rgba(248, 250, 252, 0.02)
+      );
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.18s ease;
+    }
+
+    .door.available {
+      cursor: pointer;
+    }
+
+    .door.available:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 16px 35px rgba(15, 23, 42, 0.9);
+      border-color: rgba(248, 250, 252, 0.6);
+    }
+
+    .door.available:hover::before {
+      opacity: 1;
+    }
+
+    .door.locked {
+      border-style: dashed;
+      border-color: rgba(148, 163, 184, 0.5);
+      background: radial-gradient(circle at 20% 0, #111827, #020617);
+    }
+
+    .door-number {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--accent-soft);
+      align-self: flex-start;
+      padding: 4px 14px;
+      border-radius: 12px;
+      background: linear-gradient(
+        120deg,
+        rgba(248, 250, 252, 0.12),
+        rgba(248, 250, 252, 0.02)
+      );
+      backdrop-filter: blur(6px);
+    }
+
+    @media (max-width: 520px) {
+      .door-number {
+        font-size: 1.1rem;
+        padding: 3px 8px;
+      }
+    }
+
+    .door-label {
+      font-size: 3rem;
+      font-weight: 900;
+      color: black;
+      text-transform: none;
+      letter-spacing: 0.02em;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      -webkit-text-stroke: 2px #f4c95d;
+      text-stroke: 2px #f4c95d;
+      text-shadow:
+        0 0 8px rgba(244, 201, 93, 0.9),
+        0 0 15px rgba(244, 201, 93, 0.6),
+        0 0 22px rgba(244, 201, 93, 0.4);
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    @media (max-width: 520px) {
+      .door-label {
+        font-size: 1.8rem;
+      }
+    }
+
+    .door-footer {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.7rem;
+      color: var(--secondary-text);
+      opacity: 0.9;
+      gap: 4px;
+    }
+
+    @media (max-width: 520px) {
+      .door-footer {
+        font-size: 0.65rem;
+      }
+    }
+
+    .door-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.6);
+    }
+
+    .door-status span.icon {
+      font-size: 0.9rem;
+    }
+
+    .door.locked .door-status {
+      border-color: rgba(156, 163, 175, 0.6);
+    }
+
+    .door.available .door-status {
+      border-color: rgba(248, 250, 252, 0.7);
+      background: rgba(22, 163, 74, 0.08);
+    }
+
+    .door-tag {
+      padding: 3px 6px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.12);
+      border: 1px solid rgba(191, 219, 254, 0.4);
+      white-space: nowrap;
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.72);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    .modal-backdrop.visible {
+      display: flex;
+    }
+
+    .modal {
+      width: min(1280px, 100vw - 32px);
+      max-height: min(1280px, 90vh);
+      background: radial-gradient(circle at top, #1f2937, #020617);
+      padding: 24px 26px 20px;
+      border-radius: 20px;
+      border: 1px solid rgba(191, 219, 254, 0.5);
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.75);
+      position: relative;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+
+    .modal-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .modal-title span.badge {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 4px 7px;
+      border-radius: 999px;
+      background: rgba(22, 163, 74, 0.08);
+      border: 1px solid rgba(22, 163, 74, 0.4);
+      color: #bbf7d0;
+    }
+
+    .modal-close {
+      border: none;
+      background: transparent;
+      color: var(--secondary-text);
+      font-size: 1.4rem;
+      cursor: pointer;
+      padding: 0;
+      line-height: 1;
+      transition: transform 0.1s ease, color 0.1s ease;
+    }
+
+    .modal-close:hover {
+      transform: scale(1.1);
+      color: #e5e7eb;
+    }
+
+    .modal-body {
+      font-size: 0.95rem;
+      color: var(--secondary-text);
+      line-height: 1.5;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .modal-body a {
+      color: #93c5fd;
+      text-decoration: none;
+    }
+
+    .modal-body a:hover {
+      text-decoration: underline;
+    }
+
+    .modal-footer {
+      margin-top: 6px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--secondary-text);
+      opacity: 0.9;
+    }
+
+    @media (max-width: 520px) {
+      .modal-footer {
+        flex-direction: column;
+        gap: 6px;
+      }
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    .pill span.icon {
+      font-size: 0.9rem;
+    }
+
+    .sparkles {
+      pointer-events: none;
+      position: absolute;
+      inset: 0;
+      mix-blend-mode: screen;
+      background-image: radial-gradient(
+          circle at 10% 20%,
+          rgba(255, 255, 255, 0.35) 0,
+          transparent 40%
+        ),
+        radial-gradient(
+          circle at 80% 10%,
+          rgba(255, 255, 255, 0.28) 0,
+          transparent 42%
+        ),
+        radial-gradient(
+          circle at 30% 80%,
+          rgba(255, 255, 255, 0.25) 0,
+          transparent 40%
+        );
+      background-size: 380px 380px;
+      animation: drift 35s linear infinite alternate;
+      opacity: 0.4;
+    }
+
+    @keyframes drift {
+      from {
+        transform: translate3d(-10px, 10px, 0);
+      }
+      to {
+        transform: translate3d(10px, -10px, 0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Password Gate -->
+  <div id="passwordGate" style="
+    position: fixed;
+    inset: 0;
+    background: rgba(15,23,42,0.96);
+    backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    color: #f9fafb;
+    z-index: 9999;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    transition: opacity 0.3s ease;
+  ">
+    <h2 style="margin:0; font-size:1.5rem;">Hi Nancy 💌</h2>
+    <p style="margin:0 0 8px 0; font-size:0.95rem; opacity:0.9;">
+      Enter your secret code for your surprise =).
+    </p>
+    <input id="passInput" type="password" placeholder="Password" style="
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid #cbd5f5;
+      font-size: 1rem;
+      text-align: center;
+      min-width: 220px;
+      background: rgba(15,23,42,0.9);
+      color: #f9fafb;
+    ">
+    <button id="passBtn" style="
+      padding: 10px 24px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg,#f4c95d,#fbbf24);
+      color: #111827;
+      font-weight: 700;
+      font-size: 0.95rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    ">
+      Unlock
+    </button>
+    <div id="passError" style="color:#f97373; font-size:0.9rem; min-height:1.2em;"></div>
+  </div>
+
+  <div class="calendar-wrapper">
+    <div class="sparkles" aria-hidden="true"></div>
+
+    <header class="calendar-header">
+      <div>
+        <div class="calendar-title">
+          <span class="emoji">🎄</span>
+          <span>Nancy's first Advent Calendar</span>
+        </div>
+        <div class="calendar-subtitle">
+          Come back each day to open a new door and reveal today’s surprise.
+        </div>
+      </div>
+      <div class="today-indicator" id="todayIndicator">
+        <span class="today-dot"></span>
+        <span id="todayText">Today: —</span>
+      </div>
+    </header>
+
+    <main class="calendar-grid" id="calendarGrid"></main>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalTitle">
+          <span id="modalEmoji">🎁</span>
+          <span id="modalTitleText">Day X</span>
+          <span class="badge" id="modalBadge">Unlocked</span>
+        </h2>
+        <button class="modal-close" id="modalClose" aria-label="Close">
+          &times;
+        </button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+      <div class="modal-footer">
+        <div class="pill">
+          <span class="icon">📅</span>
+          <span id="modalDayLabel">Door X</span>
+        </div>
+        <div class="pill">
+          <span class="icon">✨</span>
+          <span>Come back tomorrow for more</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // --- PASSWORD GATE ---
+    const CORRECT_PASSWORD = "011224";
+
+    const passwordGate = document.getElementById("passwordGate");
+    const passInput = document.getElementById("passInput");
+    const passBtn = document.getElementById("passBtn");
+    const passError = document.getElementById("passError");
+
+    function checkPassword() {
+      const entered = passInput.value.trim();
+      if (entered === CORRECT_PASSWORD) {
+        passError.textContent = "";
+        passwordGate.style.opacity = "0";
+        passwordGate.style.pointerEvents = "none";
+        setTimeout(() => {
+          passwordGate.style.display = "none";
+        }, 300);
+      } else {
+        passError.textContent = "Wrong password 🌨️";
+        passInput.value = "";
+        passInput.focus();
+      }
+    }
+
+    passBtn.addEventListener("click", checkPassword);
+    passInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") checkPassword();
+    });
+
+    // Focus input on load
+    passInput.focus();
+
+    // --- CONFIG: content for each day ---
+    const doorContent = {
+      1: {
+        title: "Day 1 – Hi, Nancy 💌",
+        emoji: "🎁",
+        html: `
+          <div style="text-align:center; margin-bottom: 12px;">
+            <img src="inside-1.gif" alt="Cute welcome gif"
+                 style="max-width:100%; border-radius:14px; display:block; margin:0 auto 8px;">
+          </div>
+          <p>Welcome to your very first Advent calendar, Nancy. ✨</p>
+          <p>This little world was made just for you. Every day there’s something soft, silly, comforting or romantic waiting here.</p>
+          <p>Today’s tiny task: smile for 5 seconds and imagine I’m right there, smiling back. 😊</p>
+        `,
+      },
+
+      2: {
+        title: "Day 2 – A tiny wandering adventure",
+        emoji: "🗺️",
+        html: `
+          <p>Today’s surprise is a whimsical little website where you can wander through a dreamy world.</p>
+          <p>It’s slow, gentle and a bit magical – perfect for when your brain needs a soft place to rest.</p>
+          <p style="margin-top:10px;">
+            <a href="LINK_WHIMSICAL_WORLD_1" target="_blank" rel="noopener noreferrer">
+              🌿 Open your tiny adventure
+            </a>
+          </p>
+          <p style="margin-top:10px;">Take a short walk there and pretend we’re exploring it together. 💚</p>
+        `,
+      },
+
+      3: {
+        title: "Day 3 – A song just for your evening",
+        emoji: "🎧",
+        html: `
+          <div style="text-align:center; margin-bottom: 10px;">
+            <img src="inside-3.gif" alt="Music gif"
+                 style="max-width:80%; border-radius:12px; display:block; margin:0 auto;">
+          </div>
+          <p>Tonight’s task: put on a cozy song and let the world blur out for a moment.</p>
+          <p style="margin-top:8px;">
+            <a href="SONG_LINK_1" target="_blank" rel="noopener noreferrer">
+              🎵 Play today’s song
+            </a>
+          </p>
+          <p style="margin-top:10px;">Close your eyes for one verse and imagine I’m holding your hand. 🤍</p>
+        `,
+      },
+
+      4: {
+        title: "Day 4 – Little gratitude ritual",
+        emoji: "💌",
+        html: `
+          <p>Think of one person who made your year better (it can be tiny things!).</p>
+          <p>Send them a quick message: one sentence saying “thank you” and why.</p>
+          <p style="margin-top:10px;">And if you want: send me a screenshot, so I can see your kindness in action. 🥹</p>
+        `,
+      },
+
+      5: {
+        title: "Day 5 – Tiny photo gallery",
+        emoji: "📸",
+        html: `
+          <div style="text-align:center; margin-bottom: 12px;">
+            <img src="photo-5.jpg" alt="Cozy memory photo"
+                 style="max-width:100%; border-radius:14px; display:block; margin:0 auto 8px;">
+          </div>
+          <p>Pick one photo you love (from your camera roll, or a memory that makes you warm inside).</p>
+          <p>Look at it for 10 seconds and try to remember every tiny detail around that moment.</p>
+          <p style="margin-top:10px;">If you send it to me, I’ll tell you what I love about it too. 💛</p>
+        `,
+      },
+
+      6: {
+        title: "Day 6 – A tiny love letter",
+        emoji: "💖",
+        html: `
+          <div style="text-align:center; margin-bottom: 12px;">
+            <img src="inside-6.gif" alt="Heart gif"
+                 style="max-width:90%; border-radius:14px; display:block; margin:0 auto 8px;">
+          </div>
+          <p>Dear Nancy,</p>
+          <p>You are doing so much, carrying so many things at once – and still you’re kind, funny, and soft.</p>
+          <p>Today I want you to know: you are allowed to be tired, to rest, to not be “perfect”. You’re already more than enough.</p>
+          <p style="margin-top:10px;">Three wishes for you today: a calm moment, a genuine laugh, and at least one good hug (virtual counts). 🤍</p>
+        `,
+      },
+
+      7: {
+        title: "Day 7 – Let one worry drift away",
+        emoji: "🌌",
+        html: `
+          <p>Today’s surprise is a tiny, gentle website where you type something that’s bothering you… and watch it float away.</p>
+          <p style="margin-top:10px;">
+            <a href="LINK_WHIMSICAL_WORLD_2" target="_blank" rel="noopener noreferrer">
+              ✨ Open your little worry ritual
+            </a>
+          </p>
+          <p style="margin-top:10px;">You don’t have to fix everything. You’re allowed to just… let one thing go for now. 🤍</p>
+        `,
+      },
+
+      8: {
+        title: "Day 8 – Animal therapy break",
+        emoji: "🐾",
+        html: `
+          <div style="text-align:center; margin-bottom: 12px;">
+            <img src="photo-8.jpg" alt="Cute animal photo"
+                 style="max-width:100%; border-radius:14px; display:block; margin:0 auto 8px;">
+          </div>
+          <p>Today is for soft fur and silly faces.</p>
+          <p>Look at a cute animal picture (this one, or one of your dogs 🐶), and imagine you’re squishing their little face.</p>
+          <p style="margin-top:10px;">Bonus points if you actually go cuddle a dog today. Or send me a dog photo. Or both. 😌</p>
+        `,
+      },
+
+      9: {
+        title: "Day 9 – Our tiny memories quiz",
+        emoji: "🧩",
+        html: `
+          <p>Think of three nice moments we’ve shared this year – big or tiny.</p>
+          <ol style="margin-top:8px; padding-left:18px;">
+            <li>One moment that felt funny.</li>
+            <li>One moment that felt safe.</li>
+            <li>One moment that felt a bit magical.</li>
+          </ol>
+          <p style="margin-top:10px;">Send me one of them. I want to see which one your brain picked first. 💭💫</p>
+        `,
+      },
+
+      10: {
+        title: "Day 10 – Dance-in-your-room song",
+        emoji: "💃",
+        html: `
+          <p>Today’s job: one (1) silly dance in your room, bathroom, kitchen – anywhere.</p>
+          <p style="margin-top:8px;">
+            <a href="SONG_LINK_2" target="_blank" rel="noopener noreferrer">
+              🎶 Play your dance song
+            </a>
+          </p>
+          <p style="margin-top:10px;">You don’t have to be good. Just wiggle. Imagine I’m laughing and dancing badly with you. 🥲🕺</p>
+        `,
+      },
+
+      11: {
+        title: "Day 11 – Kindness in stealth mode",
+        emoji: "🕊️",
+        html: `
+          <p>Do one secret tiny kind thing today. No one else has to know:</p>
+          <ul style="margin-top:8px; padding-left:18px;">
+            <li>Send a nice anonymous message.</li>
+            <li>Leave a compliment somewhere.</li>
+            <li>Help someone with something small.</li>
+          </ul>
+          <p style="margin-top:10px;">Tell me later what you did (if you want), so I can be proud of you. 🫶</p>
+        `,
+      },
+
+      12: {
+        title: "Day 12 – 60 seconds of breathing",
+        emoji: "🌙",
+        html: `
+          <div style="text-align:center; margin-bottom: 10px;">
+            <img src="inside-12.gif" alt="Calm breathing animation"
+                 style="max-width:80%; border-radius:12px; display:block; margin:0 auto;">
+          </div>
+          <p>Put your phone down for one minute.</p>
+          <p>Inhale for 4 seconds, hold for 4, exhale for 6. Do that 5 times.</p>
+          <p style="margin-top:10px;">That’s it. You did something kind for your nervous system today. I’m proud. 🤍</p>
+        `,
+      },
+
+      13: {
+        title: "Day 13 – Cute gif of the day",
+        emoji: "✨",
+        html: `
+          <div style="text-align:center; margin-bottom: 12px;">
+            <img src="inside-13.gif" alt="Cute comforting gif"
+                 style="max-width:100%; border-radius:14px; display:block; margin:0 auto 8px;">
+          </div>
+          <p>This gif is your reminder that you’re allowed to be soft, emotional, chaotic, and still deeply lovable.</p>
+          <p style="margin-top:10px;">Spend 10 seconds just watching it. No scrolling, no doing. Just this. 💫</p>
+        `,
+      },
+
+      14: {
+        title: "Day 14 – A tiny interactive dream world",
+        emoji: "🌈",
+        html: `
+          <p>Today’s surprise is another whimsical little website: colours, shapes, quiet movement.</p>
+          <p>It doesn’t ask anything from you – you just explore.</p>
+          <p style="margin-top:10px;">
+            <a href="LINK_WHIMSICAL_WORLD_3" target="_blank" rel="noopener noreferrer">
+              🌌 Open your dream world
+            </a>
+          </p>
+          <p style="margin-top:10px;">Stay there for a couple of minutes and imagine we’re wandering through it side by side. 👫</p>
+        `,
+      },
+
+      15: {
+        title: "Day 15 – Build your own cozy soundscape",
+        emoji: "🎼",
+        html: `
+          <p>Today you get to build the soundtrack of your perfect cozy evening.</p>
+          <p>Rain? Coffee shop? Fire crackling? Waves? Mix whatever you want.</p>
+          <p style="margin-top:10px;">
+            <a href="LINK_SOUNDSCAPE_SITE" target="_blank" rel="noopener noreferrer">
+              🎧 Open your sound mixer
+            </a>
+          </p>
+          <p style="margin-top:10px;">Put it on while you study, relax or scroll – and know that I wish you this softness every day. 🤍</p>
+        `,
+      },
+
+      16: {
+        title: "Day 16 – Open when you’re overwhelmed",
+        emoji: "🤍",
+        html: `
+          <p>If today feels heavy, this door is for you.</p>
+          <p>You don’t have to be strong all the time. You don’t have to handle everything alone. You’re not “too much”, you’re just deeply human.</p>
+          <p style="margin-top:10px;">Text me one word that describes how you are right now. Just one. You don’t have to explain more than that if you don’t want to. I’ll still care. 🌧️➡️🌤️</p>
+        `,
+      },
+
+      17: {
+        title: "Day 17 – A minute of pure quiet",
+        emoji: "🌌",
+        html: `
+          <p>Today’s surprise is a tiny corner of the internet designed to give you a break.</p>
+          <p>It gently guides you, invites you to breathe, and lets you disappear from the noise for a moment.</p>
+          <p style="margin-top:10px;">
+            <a href="LINK_CALM_INTERACTIVE" target="_blank" rel="noopener noreferrer">
+              🌙 Enter your quiet place
+            </a>
+          </p>
+          <p style="margin-top:10px;">Use headphones if you can. Pretend the world doesn’t exist for a few minutes. You’re allowed to. 🤍</p>
+        `,
+      },
+
+      18: {
+        title: "Day 18 – Snapshot of your year",
+        emoji: "🖼️",
+        html: `
+          <div style="text-align:center; margin-bottom: 12px;">
+            <img src="photo-18.jpg" alt="Year memory photo"
+                 style="max-width:100%; border-radius:14px; display:block; margin:0 auto 8px;">
+          </div>
+          <p>Find a photo from this year that you’re proud of – not because you look “perfect”, but because of what it represents.</p>
+          <p style="margin-top:10px;">Send it to me and tell me one sentence about why it matters. I want to celebrate it with you. 🎉</p>
+        `,
+      },
+
+      19: {
+        title: "Day 19 – A tiny love coupon",
+        emoji: "🎟️",
+        html: `
+          <p>This door is a little “Nancy coupon”.</p>
+          <p>You can redeem it for one of the following, whenever you want:</p>
+          <ul style="margin-top:8px; padding-left:18px;">
+            <li>One long, no-judgment vent session.</li>
+            <li>One “tell me something nice about myself” request.</li>
+            <li>One silly meme spam session to cheer you up.</li>
+          </ul>
+          <p style="margin-top:10px;">Just text: “I’m using my Day 19 coupon.” I’ll know what to do. 🫶</p>
+        `,
+      },
+
+      20: {
+        title: "Day 20 – A slow song for late night",
+        emoji: "🌙",
+        html: `
+          <p>Tonight’s gift is a soft, slow song. The kind you listen to with the lights low and everything a bit blurry.</p>
+          <p style="margin-top:8px;">
+            <a href="SONG_LINK_3" target="_blank" rel="noopener noreferrer">
+              🎵 Play your late-night song
+            </a>
+          </p>
+          <p style="margin-top:10px;">Listen all the way through once, without doing anything else. Just you, the song, and the thought that someone out there is thinking of you. 💫</p>
+        `,
+      },
+
+      21: {
+        title: "Day 21 – Tiny future dreaming",
+        emoji: "🌠",
+        html: `
+          <p>Write down three small things you’d like future-you to experience next year.</p>
+          <ul style="margin-top:8px; padding-left:18px;">
+            <li>One place you’d like to go (even if it’s just a café).</li>
+            <li>One thing you’d like to learn or try.</li>
+            <li>One way you’d like to feel more often.</li>
+          </ul>
+          <p style="margin-top:10px;">You can share them with me if you want. I’d love to know what you’re secretly hoping for. 🌟</p>
+        `,
+      },
+
+      22: {
+        title: "Day 22 – Cozy internet corner",
+        emoji: "🛋️",
+        html: `
+          <p>Today’s surprise is a soft, cozy little website – nothing dramatic, just a corner of the internet that feels like a blanket.</p>
+          <p style="margin-top:10px;">
+            <a href="LINK_COZY_SITE" target="_blank" rel="noopener noreferrer">
+              🧣 Visit your cozy corner
+            </a>
+          </p>
+          <p style="margin-top:10px;">Stay for a bit. You deserve spaces that feel safe and gentle. 🤍</p>
+        `,
+      },
+
+      23: {
+        title: "Day 23 – Almost there",
+        emoji: "🎄",
+        html: `
+          <div style="text-align:center; margin-bottom: 12px;">
+            <img src="inside-23.gif" alt="Festive gif"
+                 style="max-width:100%; border-radius:14px; display:block; margin:0 auto 8px;">
+          </div>
+          <p>You’re almost at the last door. Take a second to be proud of yourself for making it through this month so far.</p>
+          <p>Pick one thing you did this December that you’re proud of – even if it feels small.</p>
+          <p style="margin-top:10px;">Text it to me so I can be proud of you too. 🎁</p>
+        `,
+      },
+
+      24: {
+        title: "Day 24 – Final door, big hug",
+        emoji: "🌟",
+        html: `
+          <div style="text-align:center; margin-bottom: 12px;">
+            <img src="photo-24.jpg" alt="Warm festive photo"
+                 style="max-width:100%; border-radius:14px; display:block; margin:0 auto 8px;">
+          </div>
+          <p>You made it to the final door. 🎉</p>
+          <p>Thank you for letting this little calendar be part of your December. I hope it made at least a few days softer, kinder, and a bit more magical.</p>
+          <p style="margin-top:10px;">Your final task: wrap yourself in a blanket, take a deep breath, and know that you are so, so loved – exactly as you are. 🤍</p>
+        `,
+      },
+    };
+
+    // --- Build calendar dynamically ---
+    const grid = document.getElementById("calendarGrid");
+    const modalBackdrop = document.getElementById("modalBackdrop");
+    const modalClose = document.getElementById("modalClose");
+    const modalTitleText = document.getElementById("modalTitleText");
+    const modalEmoji = document.getElementById("modalEmoji");
+    const modalBody = document.getElementById("modalBody");
+    const modalDayLabel = document.getElementById("modalDayLabel");
+    const modalBadge = document.getElementById("modalBadge");
+    const todayText = document.getElementById("todayText");
+
+    const today = new Date();
+    const currentDay = today.getDate();
+    const currentMonth = today.getMonth() + 1; // 1–12
+
+    const isAdventMonth = (currentMonth === 12);
+
+    todayText.textContent = `Today: ${today.toLocaleDateString(undefined, {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    })}`;
+
+    const totalDoors = 24;
+    const days = Array.from({ length: totalDoors }, (_, i) => i + 1);
+
+    // Shuffle doors
+    for (let i = days.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [days[i], days[j]] = [days[j], days[i]];
+    }
+
+    const specialDays = new Set([1, 6, 24]);
+
+    function randomSizeClass() {
+      const options = ["door--size-s", "door--size-wide", "door--size-tall"];
+      const idx = Math.floor(Math.random() * options.length);
+      return options[idx];
+    }
+
+    for (const day of days) {
+      const door = document.createElement("button");
+      door.className = "door";
+      door.setAttribute("type", "button");
+      door.dataset.day = String(day);
+
+      // background image for the door tile
+      door.style.backgroundImage = `url("door-${day}.jpg")`;
+
+      const isPast = isAdventMonth && day < currentDay;
+      const isToday = isAdventMonth && day === currentDay;
+      const available = isAdventMonth && day <= currentDay;
+
+      door.classList.add(available ? "available" : "locked");
+      if (isPast) door.classList.add("past");
+
+      if (specialDays.has(day)) {
+        door.classList.add("door--size-big");
+      } else {
+        door.classList.add(randomSizeClass());
+      }
+
+      let statusIcon = "🔒";
+      let statusText = "Locked";
+      let tagText = "Soon";
+
+      if (available) {
+        statusIcon = "🔓";
+        if (isPast) {
+          statusText = "Opened";
+          tagText = "Earlier";
+        } else if (isToday) {
+          statusText = "Today";
+          tagText = "Open me";
+        }
+      }
+
+      door.innerHTML = `
+        <div class="door-number">${day}</div>
+        <div class="door-label">Day ${day}</div>
+        <div class="door-footer">
+          <div class="door-status">
+            <span class="icon">${statusIcon}</span>
+            <span>${statusText}</span>
+          </div>
+          <div class="door-tag">${tagText}</div>
+        </div>
+      `;
+
+      if (available) {
+        door.addEventListener("click", () => openDoor(day));
+      }
+
+      grid.appendChild(door);
+    }
+
+    function openDoor(day) {
+      const content = doorContent[day] || {
+        title: `Day ${day}`,
+        emoji: "🎁",
+        html: "<p>No content defined yet. Add something fun here!</p>",
+      };
+
+      modalTitleText.textContent = content.title;
+      modalEmoji.textContent = content.emoji;
+      modalBody.innerHTML = content.html;
+      modalDayLabel.textContent = `Door ${day}`;
+      modalBadge.textContent =
+        day < currentDay ? "Previously opened" : "Today’s door";
+
+      modalBackdrop.classList.add("visible");
+    }
+
+    function closeModal() {
+      modalBackdrop.classList.remove("visible");
+    }
+
+    modalClose.addEventListener("click", closeModal);
+    modalBackdrop.addEventListener("click", (e) => {
+      if (e.target === modalBackdrop) closeModal();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeModal();
+    });
+  </script>
+</body>
+</html>
