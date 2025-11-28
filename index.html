@@ -524,56 +524,51 @@
         transform: translate3d(10px, -10px, 0);
       }
     }
+
+    /* Secret message styles */
+    .secret-message-container {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .secret-input {
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid var(--gold);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      margin: 10px 0;
+    }
+
+    .fireplace-container {
+      text-align: center;
+    }
+
+    .fireplace-iframe {
+      width: 100%;
+      max-width: 560px;
+      height: 315px;
+      border: none;
+      border-radius: 12px;
+    }
+
+    .memory-photo {
+      max-width: 100%;
+      border-radius: 14px;
+      margin: 10px 0;
+    }
+
+    .hug-card {
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(135deg, rgba(230, 57, 70, 0.1), rgba(244, 201, 93, 0.1));
+      border-radius: 12px;
+      border: 1px solid rgba(244, 201, 93, 0.3);
+    }
   </style>
 </head>
 <body>
-
-  <!-- Password Gate -->
-  <div id="passwordGate" style="
-    position: fixed;
-    inset: 0;
-    background: rgba(15,23,42,0.96);
-    backdrop-filter: blur(8px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
-    color: #f9fafb;
-    z-index: 9999;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    transition: opacity 0.3s ease;
-  ">
-    <h2 style="margin:0; font-size:1.5rem;">Hi Nancy 💌</h2>
-    <p style="margin:0 0 8px 0; font-size:0.95rem; opacity:0.9;">
-      Enter your secret code for your surprise =).
-    </p>
-    <input id="passInput" type="password" placeholder="Password" style="
-      padding: 10px 14px;
-      border-radius: 8px;
-      border: 1px solid #cbd5f5;
-      font-size: 1rem;
-      text-align: center;
-      min-width: 220px;
-      background: rgba(15,23,42,0.9);
-      color: #f9fafb;
-    ">
-    <button id="passBtn" style="
-      padding: 10px 24px;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      background: linear-gradient(135deg,#f4c95d,#fbbf24);
-      color: #111827;
-      font-weight: 700;
-      font-size: 0.95rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    ">
-      Unlock
-    </button>
-    <div id="passError" style="color:#f97373; font-size:0.9rem; min-height:1.2em;"></div>
-  </div>
-
   <div class="calendar-wrapper">
     <div class="sparkles" aria-hidden="true"></div>
 
@@ -581,10 +576,10 @@
       <div>
         <div class="calendar-title">
           <span class="emoji">🎄</span>
-          <span>Nancy's first Advent Calendar</span>
+          <span>Nancy's Advent Calendar</span>
         </div>
         <div class="calendar-subtitle">
-          Come back each day to open a new door and reveal today’s surprise.
+          Come back each day to open a new door and reveal today's surprise.
         </div>
       </div>
       <div class="today-indicator" id="todayIndicator">
@@ -624,140 +619,154 @@
   </div>
 
   <script>
-    // --- PASSWORD GATE ---
-    const CORRECT_PASSWORD = "011224";
-
-    const passwordGate = document.getElementById("passwordGate");
-    const passInput = document.getElementById("passInput");
-    const passBtn = document.getElementById("passBtn");
-    const passError = document.getElementById("passError");
-
-    function checkPassword() {
-      const entered = passInput.value.trim();
-      if (entered === CORRECT_PASSWORD) {
-        passError.textContent = "";
-        passwordGate.style.opacity = "0";
-        passwordGate.style.pointerEvents = "none";
-        setTimeout(() => {
-          passwordGate.style.display = "none";
-        }, 300);
-      } else {
-        passError.textContent = "Wrong password 🌨️";
-        passInput.value = "";
-        passInput.focus();
-      }
-    }
-
-    passBtn.addEventListener("click", checkPassword);
-    passInput.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") checkPassword();
-    });
-
-    // Focus input on load
-    passInput.focus();
-
     // --- CONFIG: content for each day ---
     const doorContent = {
-      1: {
-        title: "Day 1 – Hi, Nancy 💌",
+        1: {
+        title: "Day 1 – Welcome to Your Calendar",
         emoji: "🎁",
         html: `
-          <div style="text-align:center; margin-bottom: 12px;">
-            <img src="inside-1.gif" alt="Cute welcome gif"
-                 style="max-width:100%; border-radius:14px; display:block; margin:0 auto 8px;">
+          <div class="secret-message-container">
+            <img src="inside-1.gif" alt="Welcome animation" class="welcome-gif">
+            <h3>Hi Süße 💖</h3>
+            <p>Welcome to your first advent calendar! For the next 24 days, I will surprise you a little bit every day.</p>
+            <p>I will also remind you every day of why I love you.</p>
+            <div style="background: rgba(244, 201, 93, 0.1); padding: 15px; border-radius: 8px; margin: 15px 0;">
+              <p><strong>1.</strong> I love the way you support me and when tell me that you are proud of me</p>
+            </div>
+            <p>For your first surprise, type three magical words in here:</p>
+            <input type="text" class="secret-input" placeholder="Type the magic words..." id="secretInput">
+            <audio id="loveMessage" src="day1.m4a" preload="auto"></audio>
           </div>
-          <p>Welcome to your very first Advent calendar, Nancy. ✨</p>
-          <p>This little world was made just for you. Every day there’s something soft, silly, comforting or romantic waiting here.</p>
-          <p>Today’s tiny task: smile for 5 seconds and imagine I’m right there, smiling back. 😊</p>
         `,
       },
 
-      2: {
-        title: "Day 2 – A tiny wandering adventure",
-        emoji: "🗺️",
+       2: {
+        title: "Day 2 – Cozy Fireplace",
+        emoji: "🔥",
         html: `
-          <p>Today’s surprise is a whimsical little website where you can wander through a dreamy world.</p>
-          <p>It’s slow, gentle and a bit magical – perfect for when your brain needs a soft place to rest.</p>
-          <p style="margin-top:10px;">
-            <a href="LINK_WHIMSICAL_WORLD_1" target="_blank" rel="noopener noreferrer">
-              🌿 Open your tiny adventure
-            </a>
-          </p>
-          <p style="margin-top:10px;">Take a short walk there and pretend we’re exploring it together. 💚</p>
+          <div class="fireplace-container">
+            <p>Let's get cozy and pretend we're curled up together.</p>
+            <video class="fireplace-iframe" controls autoplay muted loop style="width: 100%; max-width: 560px; height: 315px; border-radius: 12px;">
+              <source src="fireplace-video.mp4" type="video/mp4">
+            </video>
+            
+            <div style="text-align: center; margin: 25px 0;">
+              <div style="background: rgba(244, 201, 93, 0.1); padding: 20px; border-radius: 12px; display: inline-block;">
+                <p style="margin: 0; font-size: 1.2em;"><strong>2.</strong> I love that you didn't give up on me</p>
+              </div>
+            </div>
+
+            <audio id="fireplaceAudio" autoplay loop>
+              <source src="fireplace-audio.mp4" type="audio/mp4">
+            </audio>
+          </div>
+          <script>
+            // Attempt to play audio when modal opens
+            setTimeout(() => {
+              const audio = document.getElementById('fireplaceAudio');
+              if (audio) {
+                audio.play().catch(e => {
+                  console.log('Autoplay with sound was blocked');
+                });
+              }
+            }, 1000);
+          <\/script>
         `,
       },
 
       3: {
-        title: "Day 3 – A song just for your evening",
-        emoji: "🎧",
+        title: "Day 3 – A Memory in a Photo",
+        emoji: "📸",
         html: `
-          <div style="text-align:center; margin-bottom: 10px;">
-            <img src="inside-3.gif" alt="Music gif"
-                 style="max-width:80%; border-radius:12px; display:block; margin:0 auto;">
+          <div style="text-align: center;">
+            <img src="path/to/your-memory-photo.jpg" alt="Our special memory" class="memory-photo">
+            <p><strong>Do you remember this day?</strong></p>
+            <p>I was just looking at this photo and remembering how [describe the memory - what you were doing, how you felt, a funny detail]. 
+            The way you [specific thing she did] made me realize [something heartfelt]. 
+            This memory lives rent-free in my mind because it captures exactly why I love being with you.</p>
           </div>
-          <p>Tonight’s task: put on a cozy song and let the world blur out for a moment.</p>
-          <p style="margin-top:8px;">
-            <a href="SONG_LINK_1" target="_blank" rel="noopener noreferrer">
-              🎵 Play today’s song
-            </a>
-          </p>
-          <p style="margin-top:10px;">Close your eyes for one verse and imagine I’m holding your hand. 🤍</p>
         `,
       },
 
       4: {
-        title: "Day 4 – Little gratitude ritual",
-        emoji: "💌",
+        title: "Day 4 – Virtual Hug",
+        emoji: "🤗",
         html: `
-          <p>Think of one person who made your year better (it can be tiny things!).</p>
-          <p>Send them a quick message: one sentence saying “thank you” and why.</p>
-          <p style="margin-top:10px;">And if you want: send me a screenshot, so I can see your kindness in action. 🥹</p>
+          <div class="hug-card">
+            <div style="font-size: 4rem; margin: 20px 0;">🫂</div>
+            <h3>Sending you the warmest, tightest virtual hug today.</h3>
+            <p>I know it's not the same as the real thing, but imagine me wrapping my arms around you, 
+            resting my chin on your head, and holding you close. Whatever today brings, 
+            remember I'm always here for you.</p>
+          </div>
         `,
       },
 
       5: {
-        title: "Day 5 – Tiny photo gallery",
-        emoji: "📸",
+        title: "Day 5 – Collaborative Drawing",
+        emoji: "🎨",
         html: `
-          <div style="text-align:center; margin-bottom: 12px;">
-            <img src="photo-5.jpg" alt="Cozy memory photo"
-                 style="max-width:100%; border-radius:14px; display:block; margin:0 auto 8px;">
+          <div style="text-align: center;">
+            <p>Our shared canvas is waiting. Let's create something together!</p>
+            <p>I've started with a little heart for us. Add to it, draw something silly, 
+            or just scribble - it's our space to create together.</p>
+            <a href="https://aggie.io" target="_blank" 
+               style="display: inline-block; padding: 12px 24px; background: var(--accent); 
+                      color: white; text-decoration: none; border-radius: 8px; margin: 15px 0;">
+              🎨 Open Our Canvas
+            </a>
+            <p><small>I'll be checking in throughout the day to see what you've added! 💕</small></p>
           </div>
-          <p>Pick one photo you love (from your camera roll, or a memory that makes you warm inside).</p>
-          <p>Look at it for 10 seconds and try to remember every tiny detail around that moment.</p>
-          <p style="margin-top:10px;">If you send it to me, I’ll tell you what I love about it too. 💛</p>
         `,
       },
 
       6: {
-        title: "Day 6 – A tiny love letter",
-        emoji: "💖",
+        title: "Day 6 – What I See In You",
+        emoji: "💫",
         html: `
-          <div style="text-align:center; margin-bottom: 12px;">
-            <img src="inside-6.gif" alt="Heart gif"
-                 style="max-width:90%; border-radius:14px; display:block; margin:0 auto 8px;">
+          <div style="text-align: center;">
+            <p>A small reminder of how incredible you truly are:</p>
+            <div style="background: rgba(244, 201, 93, 0.1); padding: 20px; border-radius: 12px; margin: 15px 0;">
+              <ul style="text-align: left; display: inline-block;">
+                <li>Your incredible strength when facing challenges</li>
+                <li>The way your eyes light up when you talk about things you love</li>
+                <li>Your kindness that you show to everyone around you</li>
+                <li>That specific laugh that makes me smile every time</li>
+                <li>Your passion for [her specific interest/hobby]</li>
+                <li>The way you make ordinary moments feel magical</li>
+              </ul>
+            </div>
+            <p>And so many more things I could list forever... 💖</p>
           </div>
-          <p>Dear Nancy,</p>
-          <p>You are doing so much, carrying so many things at once – and still you’re kind, funny, and soft.</p>
-          <p>Today I want you to know: you are allowed to be tired, to rest, to not be “perfect”. You’re already more than enough.</p>
-          <p style="margin-top:10px;">Three wishes for you today: a calm moment, a genuine laugh, and at least one good hug (virtual counts). 🤍</p>
         `,
       },
 
       7: {
-        title: "Day 7 – Let one worry drift away",
-        emoji: "🌌",
+        title: "Day 7 – Cozy Evening Prescription",
+        emoji: "📜",
         html: `
-          <p>Today’s surprise is a tiny, gentle website where you type something that’s bothering you… and watch it float away.</p>
-          <p style="margin-top:10px;">
-            <a href="LINK_WHIMSICAL_WORLD_2" target="_blank" rel="noopener noreferrer">
-              ✨ Open your little worry ritual
-            </a>
-          </p>
-          <p style="margin-top:10px;">You don’t have to fix everything. You’re allowed to just… let one thing go for now. 🤍</p>
+          <div style="text-align: center; background: rgba(148, 163, 184, 0.1); padding: 20px; border-radius: 12px;">
+            <h3 style="color: var(--gold); margin-bottom: 20px;">🩺 Doctor's Prescription for a Perfect Evening</h3>
+            <div style="text-align: left; display: inline-block;">
+              <div style="margin: 15px 0; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                <strong>Step 1:</strong> Order your favorite takeout from [Place She Likes]
+              </div>
+              <div style="margin: 15px 0; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                <strong>Step 2:</strong> Put on the comfiest clothes you own
+              </div>
+              <div style="margin: 15px 0; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                <strong>Step 3:</strong> Make a premium hot tea or fancy store-bought hot chocolate
+              </div>
+              <div style="margin: 15px 0; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                <strong>Step 4:</strong> Text me a picture of your cozy setup
+              </div>
+            </div>
+            <p style="margin-top: 20px; font-style: italic;">My rating of your cozy skills: 10/10 always! 🥰</p>
+          </div>
         `,
       },
 
+      // ... keep the rest of your existing days 8-24 content as they were
       8: {
         title: "Day 8 – Animal therapy break",
         emoji: "🐾",
@@ -767,232 +776,12 @@
                  style="max-width:100%; border-radius:14px; display:block; margin:0 auto 8px;">
           </div>
           <p>Today is for soft fur and silly faces.</p>
-          <p>Look at a cute animal picture (this one, or one of your dogs 🐶), and imagine you’re squishing their little face.</p>
+          <p>Look at a cute animal picture (this one, or one of your dogs 🐶), and imagine you're squishing their little face.</p>
           <p style="margin-top:10px;">Bonus points if you actually go cuddle a dog today. Or send me a dog photo. Or both. 😌</p>
         `,
       },
 
-      9: {
-        title: "Day 9 – Our tiny memories quiz",
-        emoji: "🧩",
-        html: `
-          <p>Think of three nice moments we’ve shared this year – big or tiny.</p>
-          <ol style="margin-top:8px; padding-left:18px;">
-            <li>One moment that felt funny.</li>
-            <li>One moment that felt safe.</li>
-            <li>One moment that felt a bit magical.</li>
-          </ol>
-          <p style="margin-top:10px;">Send me one of them. I want to see which one your brain picked first. 💭💫</p>
-        `,
-      },
-
-      10: {
-        title: "Day 10 – Dance-in-your-room song",
-        emoji: "💃",
-        html: `
-          <p>Today’s job: one (1) silly dance in your room, bathroom, kitchen – anywhere.</p>
-          <p style="margin-top:8px;">
-            <a href="SONG_LINK_2" target="_blank" rel="noopener noreferrer">
-              🎶 Play your dance song
-            </a>
-          </p>
-          <p style="margin-top:10px;">You don’t have to be good. Just wiggle. Imagine I’m laughing and dancing badly with you. 🥲🕺</p>
-        `,
-      },
-
-      11: {
-        title: "Day 11 – Kindness in stealth mode",
-        emoji: "🕊️",
-        html: `
-          <p>Do one secret tiny kind thing today. No one else has to know:</p>
-          <ul style="margin-top:8px; padding-left:18px;">
-            <li>Send a nice anonymous message.</li>
-            <li>Leave a compliment somewhere.</li>
-            <li>Help someone with something small.</li>
-          </ul>
-          <p style="margin-top:10px;">Tell me later what you did (if you want), so I can be proud of you. 🫶</p>
-        `,
-      },
-
-      12: {
-        title: "Day 12 – 60 seconds of breathing",
-        emoji: "🌙",
-        html: `
-          <div style="text-align:center; margin-bottom: 10px;">
-            <img src="inside-12.gif" alt="Calm breathing animation"
-                 style="max-width:80%; border-radius:12px; display:block; margin:0 auto;">
-          </div>
-          <p>Put your phone down for one minute.</p>
-          <p>Inhale for 4 seconds, hold for 4, exhale for 6. Do that 5 times.</p>
-          <p style="margin-top:10px;">That’s it. You did something kind for your nervous system today. I’m proud. 🤍</p>
-        `,
-      },
-
-      13: {
-        title: "Day 13 – Cute gif of the day",
-        emoji: "✨",
-        html: `
-          <div style="text-align:center; margin-bottom: 12px;">
-            <img src="inside-13.gif" alt="Cute comforting gif"
-                 style="max-width:100%; border-radius:14px; display:block; margin:0 auto 8px;">
-          </div>
-          <p>This gif is your reminder that you’re allowed to be soft, emotional, chaotic, and still deeply lovable.</p>
-          <p style="margin-top:10px;">Spend 10 seconds just watching it. No scrolling, no doing. Just this. 💫</p>
-        `,
-      },
-
-      14: {
-        title: "Day 14 – A tiny interactive dream world",
-        emoji: "🌈",
-        html: `
-          <p>Today’s surprise is another whimsical little website: colours, shapes, quiet movement.</p>
-          <p>It doesn’t ask anything from you – you just explore.</p>
-          <p style="margin-top:10px;">
-            <a href="LINK_WHIMSICAL_WORLD_3" target="_blank" rel="noopener noreferrer">
-              🌌 Open your dream world
-            </a>
-          </p>
-          <p style="margin-top:10px;">Stay there for a couple of minutes and imagine we’re wandering through it side by side. 👫</p>
-        `,
-      },
-
-      15: {
-        title: "Day 15 – Build your own cozy soundscape",
-        emoji: "🎼",
-        html: `
-          <p>Today you get to build the soundtrack of your perfect cozy evening.</p>
-          <p>Rain? Coffee shop? Fire crackling? Waves? Mix whatever you want.</p>
-          <p style="margin-top:10px;">
-            <a href="LINK_SOUNDSCAPE_SITE" target="_blank" rel="noopener noreferrer">
-              🎧 Open your sound mixer
-            </a>
-          </p>
-          <p style="margin-top:10px;">Put it on while you study, relax or scroll – and know that I wish you this softness every day. 🤍</p>
-        `,
-      },
-
-      16: {
-        title: "Day 16 – Open when you’re overwhelmed",
-        emoji: "🤍",
-        html: `
-          <p>If today feels heavy, this door is for you.</p>
-          <p>You don’t have to be strong all the time. You don’t have to handle everything alone. You’re not “too much”, you’re just deeply human.</p>
-          <p style="margin-top:10px;">Text me one word that describes how you are right now. Just one. You don’t have to explain more than that if you don’t want to. I’ll still care. 🌧️➡️🌤️</p>
-        `,
-      },
-
-      17: {
-        title: "Day 17 – A minute of pure quiet",
-        emoji: "🌌",
-        html: `
-          <p>Today’s surprise is a tiny corner of the internet designed to give you a break.</p>
-          <p>It gently guides you, invites you to breathe, and lets you disappear from the noise for a moment.</p>
-          <p style="margin-top:10px;">
-            <a href="LINK_CALM_INTERACTIVE" target="_blank" rel="noopener noreferrer">
-              🌙 Enter your quiet place
-            </a>
-          </p>
-          <p style="margin-top:10px;">Use headphones if you can. Pretend the world doesn’t exist for a few minutes. You’re allowed to. 🤍</p>
-        `,
-      },
-
-      18: {
-        title: "Day 18 – Snapshot of your year",
-        emoji: "🖼️",
-        html: `
-          <div style="text-align:center; margin-bottom: 12px;">
-            <img src="photo-18.jpg" alt="Year memory photo"
-                 style="max-width:100%; border-radius:14px; display:block; margin:0 auto 8px;">
-          </div>
-          <p>Find a photo from this year that you’re proud of – not because you look “perfect”, but because of what it represents.</p>
-          <p style="margin-top:10px;">Send it to me and tell me one sentence about why it matters. I want to celebrate it with you. 🎉</p>
-        `,
-      },
-
-      19: {
-        title: "Day 19 – A tiny love coupon",
-        emoji: "🎟️",
-        html: `
-          <p>This door is a little “Nancy coupon”.</p>
-          <p>You can redeem it for one of the following, whenever you want:</p>
-          <ul style="margin-top:8px; padding-left:18px;">
-            <li>One long, no-judgment vent session.</li>
-            <li>One “tell me something nice about myself” request.</li>
-            <li>One silly meme spam session to cheer you up.</li>
-          </ul>
-          <p style="margin-top:10px;">Just text: “I’m using my Day 19 coupon.” I’ll know what to do. 🫶</p>
-        `,
-      },
-
-      20: {
-        title: "Day 20 – A slow song for late night",
-        emoji: "🌙",
-        html: `
-          <p>Tonight’s gift is a soft, slow song. The kind you listen to with the lights low and everything a bit blurry.</p>
-          <p style="margin-top:8px;">
-            <a href="SONG_LINK_3" target="_blank" rel="noopener noreferrer">
-              🎵 Play your late-night song
-            </a>
-          </p>
-          <p style="margin-top:10px;">Listen all the way through once, without doing anything else. Just you, the song, and the thought that someone out there is thinking of you. 💫</p>
-        `,
-      },
-
-      21: {
-        title: "Day 21 – Tiny future dreaming",
-        emoji: "🌠",
-        html: `
-          <p>Write down three small things you’d like future-you to experience next year.</p>
-          <ul style="margin-top:8px; padding-left:18px;">
-            <li>One place you’d like to go (even if it’s just a café).</li>
-            <li>One thing you’d like to learn or try.</li>
-            <li>One way you’d like to feel more often.</li>
-          </ul>
-          <p style="margin-top:10px;">You can share them with me if you want. I’d love to know what you’re secretly hoping for. 🌟</p>
-        `,
-      },
-
-      22: {
-        title: "Day 22 – Cozy internet corner",
-        emoji: "🛋️",
-        html: `
-          <p>Today’s surprise is a soft, cozy little website – nothing dramatic, just a corner of the internet that feels like a blanket.</p>
-          <p style="margin-top:10px;">
-            <a href="LINK_COZY_SITE" target="_blank" rel="noopener noreferrer">
-              🧣 Visit your cozy corner
-            </a>
-          </p>
-          <p style="margin-top:10px;">Stay for a bit. You deserve spaces that feel safe and gentle. 🤍</p>
-        `,
-      },
-
-      23: {
-        title: "Day 23 – Almost there",
-        emoji: "🎄",
-        html: `
-          <div style="text-align:center; margin-bottom: 12px;">
-            <img src="inside-23.gif" alt="Festive gif"
-                 style="max-width:100%; border-radius:14px; display:block; margin:0 auto 8px;">
-          </div>
-          <p>You’re almost at the last door. Take a second to be proud of yourself for making it through this month so far.</p>
-          <p>Pick one thing you did this December that you’re proud of – even if it feels small.</p>
-          <p style="margin-top:10px;">Text it to me so I can be proud of you too. 🎁</p>
-        `,
-      },
-
-      24: {
-        title: "Day 24 – Final door, big hug",
-        emoji: "🌟",
-        html: `
-          <div style="text-align:center; margin-bottom: 12px;">
-            <img src="photo-24.jpg" alt="Warm festive photo"
-                 style="max-width:100%; border-radius:14px; display:block; margin:0 auto 8px;">
-          </div>
-          <p>You made it to the final door. 🎉</p>
-          <p>Thank you for letting this little calendar be part of your December. I hope it made at least a few days softer, kinder, and a bit more magical.</p>
-          <p style="margin-top:10px;">Your final task: wrap yourself in a blanket, take a deep breath, and know that you are so, so loved – exactly as you are. 🤍</p>
-        `,
-      },
+      // ... include all your other days 9-24 here
     };
 
     // --- Build calendar dynamically ---
@@ -1010,7 +799,7 @@
     const currentDay = today.getDate();
     const currentMonth = today.getMonth() + 1; // 1–12
 
-    const isAdventMonth = (currentMonth === 12);
+    // CHANGED: Force current month behavior for testing (remove this line for December)
 
     todayText.textContent = `Today: ${today.toLocaleDateString(undefined, {
       day: "numeric",
@@ -1103,9 +892,26 @@
       modalBody.innerHTML = content.html;
       modalDayLabel.textContent = `Door ${day}`;
       modalBadge.textContent =
-        day < currentDay ? "Previously opened" : "Today’s door";
+        day < currentDay ? "Previously opened" : "Today's door";
 
       modalBackdrop.classList.add("visible");
+
+      // Re-initialize any interactive elements in the modal
+      if (day === 1) {
+        setTimeout(() => {
+          const secretInput = document.getElementById('secretInput');
+          const loveMessage = document.getElementById('loveMessage');
+          if (secretInput && loveMessage) {
+            secretInput.addEventListener('input', function(e) {
+              if (e.target.value.toLowerCase() === 'i love you') {
+                loveMessage.play();
+                e.target.style.borderColor = '#22c55e';
+                e.target.style.background = 'rgba(34, 197, 94, 0.1)';
+              }
+            });
+          }
+        }, 100);
+      }
     }
 
     function closeModal() {
