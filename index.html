@@ -679,12 +679,16 @@
         emoji: "📸",
         html: `
           <div style="text-align: center;">
-            <img src="path/to/your-memory-photo.jpg" alt="Our special memory" class="memory-photo">
+            <img src="day-3-memory.jpg" alt="Our special memory" class="memory-photo">
             <p><strong>Do you remember this day?</strong></p>
-            <p>I was just looking at this photo and remembering how [describe the memory - what you were doing, how you felt, a funny detail]. 
-            The way you [specific thing she did] made me realize [something heartfelt]. 
-            This memory lives rent-free in my mind because it captures exactly why I love being with you.</p>
+            <p>I was just looking at this photo and remembering our first night. 
+            The way we were together made me realize that I want to be with you forever.</p> 
           </div>
+  <div style="text-align: center; margin: 25px 0;">
+              <div style="background: rgba(244, 201, 93, 0.1); padding: 20px; border-radius: 12px; display: inline-block;">
+                <p style="margin: 0; font-size: 1.2em;"><strong>3.</strong> I love your eyes</p>
+              </div>
+            <p>This memory lives rent-free in my mind because it captures exactly why I love being with you.</p>
         `,
       },
 
@@ -692,80 +696,188 @@
         title: "Day 4 – Virtual Hug",
         emoji: "🤗",
         html: `
-          <div class="hug-card">
-            <div style="font-size: 4rem; margin: 20px 0;">🫂</div>
-            <h3>Sending you the warmest, tightest virtual hug today.</h3>
-            <p>I know it's not the same as the real thing, but imagine me wrapping my arms around you, 
-            resting my chin on your head, and holding you close. Whatever today brings, 
-            remember I'm always here for you.</p>
+          <div style="text-align: center; padding: 20px;">
+            <div id="hugEmoji" style="font-size: 5rem; margin: 30px 0; transition: all 0.5s ease;">🫂</div>
+            
+            <h2 style="color: var(--gold); margin-bottom: 25px; font-size: 1.8em;">A Warm Virtual Hug Just For You</h2>
+            
+            <div style="background: rgba(244, 201, 93, 0.1); padding: 25px; border-radius: 15px; margin: 25px 0; border: 2px solid rgba(244, 201, 93, 0.3);">
+              <p style="margin: 0; font-size: 1.3em; line-height: 1.6;">
+                <strong>4.</strong> I love how safe I feel when I'm with you
+              </p>
+            </div>
+            
+            <div style="background: rgba(230, 57, 70, 0.1); padding: 20px; border-radius: 12px; margin: 20px 0;">
+              <p style="margin: 0; font-size: 1.1em; line-height: 1.5;">
+                This is your virtual hug! Scroll up again after clicking the button 💖
+              </p>
+            </div>
+            
+            <button onclick="
+              const hugEmoji = document.getElementById('hugEmoji');
+              const message = document.getElementById('hugMessage');
+              const button = this;
+              
+              hugEmoji.classList.add('hug-active');
+              button.style.transform = 'scale(0.9)';
+              button.innerHTML = '🤗 HUGGING YOU...';
+              button.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+              
+              setTimeout(() => {
+                button.style.transform = 'scale(1.1)';
+                button.innerHTML = '🤗 HUG SENT!';
+                message.style.display = 'block';
+                message.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }, 600);
+            " style="padding: 18px 35px; background: linear-gradient(135deg, var(--accent), var(--gold)); 
+                      color: white; border: none; border-radius: 50px; font-size: 1.3em; cursor: pointer; 
+                      margin: 25px 0; transition: all 0.3s ease; font-weight: bold;">
+              🤗 CLICK FOR A BIG HUG
+            </button>
+            
+            <div id="hugMessage" style="display: none; background: rgba(34, 197, 94, 0.1); padding: 20px; 
+                     border-radius: 12px; margin: 20px 0; border: 2px solid rgba(34, 197, 94, 0.3);">
+              <p style="margin: 0; color: #22c55e; font-weight: bold; font-size: 1.2em;">
+                💝 HUG INITIATED! Feel my arms wrapping around you? I'm holding you extra tight!
+              </p>
+            </div>
           </div>
+          
+          <style>
+            @keyframes bigPulse {
+              0% { 
+                transform: scale(1); 
+                filter: drop-shadow(0 0 10px rgba(244, 201, 93, 0.5));
+              }
+              50% { 
+                transform: scale(1.3); 
+                filter: drop-shadow(0 0 25px rgba(244, 201, 93, 0.8));
+              }
+              100% { 
+                transform: scale(1); 
+                filter: drop-shadow(0 0 10px rgba(244, 201, 93, 0.5));
+              }
+            }
+            
+            .hug-active {
+              font-size: 8rem !important;
+              animation: bigPulse 1.5s ease-in-out infinite !important;
+            }
+          </style>
         `,
       },
 
       5: {
-        title: "Day 5 – Collaborative Drawing",
-        emoji: "🎨",
+        title: "Day 5 – Our Shared Diary",
+        emoji: "📖",
         html: `
-          <div style="text-align: center;">
-            <p>Our shared canvas is waiting. Let's create something together!</p>
-            <p>I've started with a little heart for us. Add to it, draw something silly, 
-            or just scribble - it's our space to create together.</p>
-            <a href="https://aggie.io" target="_blank" 
-               style="display: inline-block; padding: 12px 24px; background: var(--accent); 
-                      color: white; text-decoration: none; border-radius: 8px; margin: 15px 0;">
-              🎨 Open Our Canvas
+          <div style="text-align: center; padding: 20px;">
+            <div style="font-size: 4rem; margin: 20px 0;">💝</div>
+            
+            <h2 style="color: var(--gold); margin-bottom: 20px;">Let's Write Our Story Together</h2>
+            
+            <div style="background: rgba(244, 201, 93, 0.1); padding: 25px; border-radius: 15px; margin: 25px 0; border: 2px solid rgba(244, 201, 93, 0.3);">
+              <p style="margin: 0; font-size: 1.3em; line-height: 1.6;">
+                <strong>5.</strong> I love our daily calls
+              </p>
+            </div>
+            
+            <div style="background: rgba(148, 163, 184, 0.1); padding: 20px; border-radius: 12px; margin: 20px 0;">
+              <p style="margin: 0; font-size: 1.1em; line-height: 1.5;">
+                I've started our shared diary with a message for you. 
+                Add your thoughts, write back to me, or just share what's on your mind - I'll see it instantly! ✨
+              </p>
+            </div>
+            
+            <a href="https://etherpad.wikimedia.org/p/NancyAdvent2024" target="_blank" 
+               style="display: inline-block; padding: 15px 30px; background: linear-gradient(135deg, var(--accent), #059669); 
+                      color: white; text-decoration: none; border-radius: 50px; margin: 20px 0; font-size: 1.2em; 
+                      font-weight: bold; transition: transform 0.3s ease;">
+              📖 OPEN OUR SHARED DIARY
             </a>
-            <p><small>I'll be checking in throughout the day to see what you've added! 💕</small></p>
           </div>
         `,
       },
 
       6: {
-        title: "Day 6 – What I See In You",
-        emoji: "💫",
+        title: "Day 6 – For My Strong Girl",
+        emoji: "💪",
         html: `
-          <div style="text-align: center;">
-            <p>A small reminder of how incredible you truly are:</p>
-            <div style="background: rgba(244, 201, 93, 0.1); padding: 20px; border-radius: 12px; margin: 15px 0;">
-              <ul style="text-align: left; display: inline-block;">
-                <li>Your incredible strength when facing challenges</li>
-                <li>The way your eyes light up when you talk about things you love</li>
-                <li>Your kindness that you show to everyone around you</li>
-                <li>That specific laugh that makes me smile every time</li>
-                <li>Your passion for [her specific interest/hobby]</li>
-                <li>The way you make ordinary moments feel magical</li>
-              </ul>
+          <div style="text-align: center; padding: 20px;">
+            <div id="day6Content">
+              <div style="font-size: 4rem; margin: 20px 0;">💪</div>
+              
+              <h2 style="color: var(--gold); margin-bottom: 25px;">Your Strength Inspires Me</h2>
+              
+              <div style="background: rgba(244, 201, 93, 0.1); padding: 25px; border-radius: 15px; margin: 25px 0; border: 2px solid rgba(244, 201, 93, 0.3);">
+                <p style="margin: 0; font-size: 1.3em; line-height: 1.6;">
+                  <strong>6.</strong> I love your strength and resilience
+                </p>
+              </div>
+              
+              <div style="background: rgba(148, 163, 184, 0.1); padding: 20px; border-radius: 12px; margin: 20px 0;">
+                <p style="margin: 0; font-size: 1.1em; line-height: 1.5;">
+                  You amaze me every day with how strong you are.
+                </p>
+              </div>
+              
+              <button onclick="document.getElementById('day6Content').innerHTML = '&lt;img src=&quot;day-6-gif.webp&quot; style=&quot;width: 100%; max-width: 500px; border-radius: 15px; margin: 20px 0;&quot; alt=&quot;Special animation&quot;&gt;&lt;div style=&quot;background: rgba(34, 197, 94, 0.1); padding: 20px; border-radius: 12px; margin: 20px 0; border: 2px solid rgba(34, 197, 94, 0.3);&quot;&gt;&lt;p style=&quot;margin: 0; color: #22c55e; font-weight: bold; font-size: 1.2em;&quot;&gt;💖 Your strength is your superpower!&lt;/p&gt;&lt;/div&gt;'" 
+                    style="padding: 18px 35px; background: linear-gradient(135deg, var(--accent), #dc2626); 
+                    color: white; border: none; border-radius: 50px; font-size: 1.3em; cursor: pointer; 
+                    margin: 25px 0; font-weight: bold;">
+                🎁 Lets enjoy some snow together =)
+              </button>
             </div>
-            <p>And so many more things I could list forever... 💖</p>
           </div>
         `,
       },
 
       7: {
-        title: "Day 7 – Cozy Evening Prescription",
-        emoji: "📜",
+        title: "Day 7 – Password Adventure",
+        emoji: "🎮",
         html: `
-          <div style="text-align: center; background: rgba(148, 163, 184, 0.1); padding: 20px; border-radius: 12px;">
-            <h3 style="color: var(--gold); margin-bottom: 20px;">🩺 Doctor's Prescription for a Perfect Evening</h3>
-            <div style="text-align: left; display: inline-block;">
-              <div style="margin: 15px 0; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px;">
-                <strong>Step 1:</strong> Order your favorite takeout from [Place She Likes]
-              </div>
-              <div style="margin: 15px 0; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px;">
-                <strong>Step 2:</strong> Put on the comfiest clothes you own
-              </div>
-              <div style="margin: 15px 0; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px;">
-                <strong>Step 3:</strong> Make a premium hot tea or fancy store-bought hot chocolate
-              </div>
-              <div style="margin: 15px 0; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px;">
-                <strong>Step 4:</strong> Text me a picture of your cozy setup
-              </div>
+          <div style="text-align: center; padding: 20px;">
+            <div style="font-size: 4rem; margin: 20px 0;">🔐</div>
+            
+            <h2 style="color: var(--gold); margin-bottom: 25px;">Let's Play a Game Together!</h2>
+            
+            <div style="background: rgba(244, 201, 93, 0.1); padding: 25px; border-radius: 15px; margin: 25px 0; border: 2px solid rgba(244, 201, 93, 0.3);">
+              <p style="margin: 0; font-size: 1.3em; line-height: 1.6;">
+                <strong>7.</strong> I love how smart you are
+              </p>
             </div>
-            <p style="margin-top: 20px; font-style: italic;">My rating of your cozy skills: 10/10 always! 🥰</p>
+            
+            <div style="background: rgba(148, 163, 184, 0.1); padding: 20px; border-radius: 12px; margin: 20px 0;">
+              <p style="margin: 0; font-size: 1.1em; line-height: 1.5;">
+                I found this hilarious and challenging password gameu! 
+                See how far you can get - I made it to rule 20! 😅
+              </p>
+            </div>
+            
+            <a href="https://neal.fun/password-game/" target="_blank" 
+               style="display: inline-block; padding: 18px 35px; background: linear-gradient(135deg, #8b5cf6, #a855f7); 
+                      color: white; text-decoration: none; border-radius: 50px; margin: 25px 0; font-size: 1.3em; 
+                      font-weight: bold; transition: transform 0.3s ease;">
+              🎮 PLAY PASSWORD GAME
+            </a>
+            
+            <div style="margin: 25px 0; padding: 15px; background: rgba(139, 92, 246, 0.1); border-radius: 10px;">
+              <p style="margin: 0; color: var(--secondary-text);">
+                <strong>Pro tip from someone who's been there:</strong><br>
+                • The rules get crazier as you go!<br>
+                • Don't get too attached to your password 😂<br>
+                • Text me when you get stuck on a rule!
+              </p>
+            </div>
+            
+            <div style="margin-top: 30px; padding: 15px; background: rgba(244, 201, 93, 0.05); border-radius: 10px;">
+              <p style="margin: 0; font-style: italic; color: var(--secondary-text);">
+                "The only password I'll never forget is the one to your heart" 💖
+              </p>
+            </div>
           </div>
         `,
       },
-
       // ... keep the rest of your existing days 8-24 content as they were
       8: {
         title: "Day 8 – Animal therapy break",
@@ -928,3 +1040,4 @@
   </script>
 </body>
 </html>
+
