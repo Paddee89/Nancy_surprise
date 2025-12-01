@@ -944,6 +944,7 @@
     const currentMonth = today.getMonth() + 1; // 1–12
 
     // CHANGED: Force current month behavior for testing (remove this line for December)
+    const isAdventMonth = (currentMonth === today.getMonth() + 1);
 
     todayText.textContent = `Today: ${today.toLocaleDateString(undefined, {
       day: "numeric",
