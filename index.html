@@ -879,20 +879,52 @@
         `,
       },
       // ... keep the rest of your existing days 8-24 content as they were
+
       8: {
-        title: "Day 8 – Animal therapy break",
-        emoji: "🐾",
+        title: "Day 8 – Our Journey", 
+        emoji: "🛤️",
         html: `
-          <div style="text-align:center; margin-bottom: 12px;">
-            <img src="photo-8.jpg" alt="Cute animal photo"
-                 style="max-width:100%; border-radius:14px; display:block; margin:0 auto 8px;">
+          <div style="text-align: center; padding: 20px;">
+            <div style="font-size: 4rem; margin: 20px 0;">💫</div>
+            
+            <h2 style="color: var(--gold); margin-bottom: 25px;">Our Beautiful Journey Together</h2>
+            
+            <div style="background: rgba(244, 201, 93, 0.1); padding: 25px; border-radius: 15px; margin: 25px 0; border: 2px solid rgba(244, 201, 93, 0.3);">
+              <p style="margin: 0; font-size: 1.3em; line-height: 1.6;">
+                <strong>8.</strong> I love every step of our journey together
+              </p>
+            </div>
+            
+            <div style="background: rgba(148, 163, 184, 0.1); padding: 20px; border-radius: 12px; margin: 20px 0;">
+              <p style="margin: 0; font-size: 1.1em; line-height: 1.5;">
+                Click each chapter to reveal our story. Every button unlocks a piece of our beautiful journey. 💖
+              </p>
+            </div>
+            
+            <!-- Chapter Buttons using the working pattern -->
+            <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 30px 0;">
+              <button onclick="this.style.background='#22c55e'; this.style.borderColor='#22c55e'; document.getElementById('chapterDisplay').innerHTML='<div style=text-align:center;><div style=font-size:3rem;margin-bottom:15px;>💌</div><img src=boo-app.jpg style=width:100%;max-width:400px;border-radius:12px;margin-bottom:20px;><h3 style=color:var(--gold);margin-bottom:15px;>The Beginning - December 2024</h3><p style=color:var(--text);font-size:1.1em;line-height:1.6;margin:0;>When we reconnected on December 1st after losing contact, something felt different. Our conversations went from friendly to something deeper, and I found myself looking forward to every message.</p></div>';" style="padding: 12px 18px; background: rgba(139, 92, 246, 0.2); color: white; border: 2px solid #8b5cf6; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 0.9em;">💌 The Beginning</button>
+
+              <button onclick="this.style.background='#22c55e'; this.style.borderColor='#22c55e'; document.getElementById('chapterDisplay').innerHTML='<div style=text-align:center;><div style=font-size:3rem;margin-bottom:15px;>💔</div><img src=struggle.jpg style=width:100%;max-width:400px;border-radius:12px;margin-bottom:20px;><h3 style=color:var(--gold);margin-bottom:15px;>The Struggle - January 2025</h3><p style=color:var(--text);font-size:1.1em;line-height:1.6;margin:0;>When you pulled away because it was too painful, I understood but my heart ached. Those quiet weeks made me realize how much space you occupied in my thoughts.</p></div>';" style="padding: 12px 18px; background: rgba(234, 88, 12, 0.2); color: white; border: 2px solid #ea580c; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 0.9em;">💔 The Struggle</button>
+
+              <button onclick="this.style.background='#22c55e'; this.style.borderColor='#22c55e'; document.getElementById('chapterDisplay').innerHTML='<div style=text-align:center;><div style=font-size:3rem;margin-bottom:15px;>✈️</div><img src=basel.jpg style=width:100%;max-width:400px;border-radius:12px;margin-bottom:20px;><h3 style=color:var(--gold);margin-bottom:15px;>Basel - March 2025</h3><p style=color:var(--text);font-size:1.1em;line-height:1.6;margin:0;>You flying from Costa Rica to Switzerland took incredible courage. The moment we met in person, any pretense of just friends vanished.</p></div>';" style="padding: 12px 18px; background: rgba(59, 130, 246, 0.2); color: white; border: 2px solid #3b82f6; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 0.9em;">✈️ Basel</button>
+
+              <button onclick="this.style.background='#22c55e'; this.style.borderColor='#22c55e'; document.getElementById('chapterDisplay').innerHTML='<div style=text-align:center;><div style=font-size:3rem;margin-bottom:15px;>💝</div><img src=decision.jpg style=width:100%;max-width:400px;border-radius:12px;margin-bottom:20px;><h3 style=color:var(--gold);margin-bottom:15px;>The Decision - April 2025</h3><p style=color:var(--text);font-size:1.1em;line-height:1.6;margin:0;>Admitting we wanted a future together was both terrifying and liberating. You gave me the courage to choose happiness.</p></div>';" style="padding: 12px 18px; background: rgba(34, 197, 94, 0.2); color: white; border: 2px solid #22c55e; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 0.9em;">💝 Decision</button>
+
+              <button onclick="this.style.background='#22c55e'; this.style.borderColor='#22c55e'; document.getElementById('chapterDisplay').innerHTML='<div style=text-align:center;><div style=font-size:3rem;margin-bottom:15px;>🏔️</div><img src=day-3-memory.jpg style=width:100%;max-width:400px;border-radius:12px;margin-bottom:20px;><h3 style=color:var(--gold);margin-bottom:15px;>Our Trip - October 2025</h3><p style=color:var(--text);font-size:1.1em;line-height:1.6;margin:0;>Switzerland, Austria, Prague - and finally, us. Our first kiss felt like coming home after a long journey.</p></div>';" style="padding: 12px 18px; background: rgba(219, 39, 119, 0.2); color: white; border: 2px solid #db2777; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 0.9em;">🏔️ Our Trip</button>
+
+              <button onclick="this.style.background='#22c55e'; this.style.borderColor='#22c55e'; document.getElementById('chapterDisplay').innerHTML='<div style=text-align:center;><div style=font-size:3rem;margin-bottom:15px;>🏡</div><img src=new-home.jpg style=width:100%;max-width:400px;border-radius:12px;margin-bottom:20px;><h3 style=color:var(--gold);margin-bottom:15px;>New Beginning - November 2025</h3><p style=color:var(--text);font-size:1.1em;line-height:1.6;margin:0;>Moving out and finally being able to talk freely... This is just the first chapter of our adventure.</p></div>';" style="padding: 12px 18px; background: rgba(245, 158, 11, 0.2); color: white; border: 2px solid #f59e0b; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 0.9em;">🏡 New Start</button>
+            </div>
+            
+            <!-- Display Area -->
+            <div id="chapterDisplay" style="min-height: 200px; background: rgba(30, 41, 59, 0.3); border-radius: 15px; margin: 20px 0; padding: 25px;">
+              <p style="color: var(--secondary-text); font-style: italic; text-align: center; margin: 0;">
+                Click a chapter above to reveal our story...
+              </p>
+            </div>
           </div>
-          <p>Today is for soft fur and silly faces.</p>
-          <p>Look at a cute animal picture (this one, or one of your dogs 🐶), and imagine you're squishing their little face.</p>
-          <p style="margin-top:10px;">Bonus points if you actually go cuddle a dog today. Or send me a dog photo. Or both. 😌</p>
         `,
       },
-
       // ... include all your other days 9-24 here
     };
 
@@ -1040,4 +1072,3 @@
   </script>
 </body>
 </html>
-
