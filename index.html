@@ -926,6 +926,377 @@
         `,
       },
       // ... include all your other days 9-24 here
+
+             9: {
+        title: "Day 9 – Virtual Mistletoe",
+        emoji: "💋",
+        html: `
+          <div style="text-align: center; padding: 20px;">
+            <!-- BIG MISTLETOE EMOJI ADDED AT THE TOP -->
+            <div style="font-size: 8rem; margin: 0 0 10px 0; line-height: 1;">🪻</div>
+            
+            <!-- Mistletoe emoji at the top -->
+            <div style="font-size: 5rem; margin: 20px 0;">🌿</div>
+            
+            <h2 style="color: var(--gold); margin-bottom: 25px;">Virtual Mistletoe Just For Us</h2>
+            
+            <div style="background: rgba(244, 201, 93, 0.1); padding: 25px; border-radius: 15px; margin: 25px 0; border: 2px solid rgba(244, 201, 93, 0.3);">
+              <p style="margin: 0; font-size: 1.3em; line-height: 1.6;">
+                <strong>9.</strong> I love your kisses
+              </p>
+            </div>
+            
+            <div style="background: rgba(148, 163, 184, 0.1); padding: 20px; border-radius: 12px; margin: 20px 0;">
+              <p style="margin: 0; font-size: 1.1em; line-height: 1.5;">
+                You know what they say about standing under the mistletoe...
+              </p>
+            </div>
+            
+            <button onclick="
+              const button = this;
+              const kissContainer = document.getElementById('kissContainer');
+              const message = document.getElementById('kissMessage');
+              
+              // Show the kiss container at the bottom
+              kissContainer.style.display = 'block';
+              
+              // Button animation
+              button.style.transform = 'scale(0.9)';
+              button.innerHTML = '💋 REVEALING...';
+              button.style.background = 'linear-gradient(135deg, #db2777, #ec4899)';
+              
+              setTimeout(() => {
+                button.style.transform = 'scale(1.1)';
+                button.innerHTML = '💋 REVEALED!';
+                message.style.display = 'block';
+                
+                // Scroll to show the kiss container at the bottom
+                kissContainer.scrollIntoView({ behavior: 'smooth', block: 'end' });
+                
+                // Add floating hearts
+                for(let i = 0; i < 15; i++) {
+                  setTimeout(() => {
+                    createFloatingHeart();
+                  }, i * 100);
+                }
+              }, 600);
+            " style="padding: 18px 35px; background: linear-gradient(135deg, #16a34a, #22c55e); 
+                      color: white; border: none; border-radius: 50px; font-size: 1.3em; cursor: pointer; 
+                      margin: 25px 0; transition: all 0.3s ease; font-weight: bold;">
+              💋 See what's happening under the mistletoe
+            </button>
+            
+            <div id="kissMessage" style="display: none; background: rgba(219, 39, 119, 0.1); padding: 20px; 
+                     border-radius: 12px; margin: 20px 0; border: 2px solid rgba(219, 39, 119, 0.3);">
+              <p style="margin: 0; color: #db2777; font-weight: bold; font-size: 1.2em;">
+                💖 Mwuah! A virtual kiss sent your way! I wish I could give you a real one...
+              </p>
+            </div>
+            
+            <div id="heartsContainer" style="position: relative; height: 100px; margin: 20px 0;"></div>
+            
+            <!-- Kiss container that appears at the bottom when clicked -->
+            <div id="kissContainer" style="display: none; margin-top: 40px; padding-top: 20px; border-top: 2px dashed rgba(219, 39, 119, 0.3);">
+              <div style="font-size: 4rem; margin: 10px 0; animation: kissPulse 2s ease-in-out infinite;">💋</div>
+              <img src="kiss.jpg" style="width: 100%; max-width: 400px; border-radius: 15px; margin: 10px auto; display: block; animation: fadeIn 1s ease-out; border: 3px solid rgba(219, 39, 119, 0.3); box-shadow: 0 10px 25px rgba(219, 39, 119, 0.2);">
+            </div>
+          </div>
+          
+          <style>
+            @keyframes kissPulse {
+              0% { 
+                transform: scale(1) rotate(0deg);
+                filter: drop-shadow(0 0 10px rgba(219, 39, 119, 0.5));
+              }
+              25% { 
+                transform: scale(1.4) rotate(-10deg);
+                filter: drop-shadow(0 0 20px rgba(219, 39, 119, 0.8));
+              }
+              50% { 
+                transform: scale(1.2) rotate(10deg);
+                filter: drop-shadow(0 0 25px rgba(219, 39, 119, 1));
+              }
+              75% { 
+                transform: scale(1.4) rotate(-5deg);
+                filter: drop-shadow(0 0 20px rgba(219, 39, 119, 0.8));
+              }
+              100% { 
+                transform: scale(1) rotate(0deg);
+                filter: drop-shadow(0 0 10px rgba(219, 39, 119, 0.5));
+              }
+            }
+            
+            @keyframes floatUp {
+              0% {
+                transform: translateY(0) scale(0.8);
+                opacity: 1;
+              }
+              100% {
+                transform: translateY(-100px) scale(1.2);
+                opacity: 0;
+              }
+            }
+            
+            @keyframes fadeIn {
+              from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.9);
+              }
+              to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+              }
+            }
+            
+            .floating-heart {
+              position: absolute;
+              font-size: 1.5rem;
+              animation: floatUp 3s ease-out forwards;
+              pointer-events: none;
+              z-index: 1;
+            }
+          </style>
+          
+          <script>
+            function createFloatingHeart() {
+              const container = document.getElementById('heartsContainer');
+              const heart = document.createElement('div');
+              heart.className = 'floating-heart';
+              heart.innerHTML = '💖';
+              heart.style.left = Math.random() * 80 + 10 + '%';
+              heart.style.color = ['#db2777', '#ec4899', '#f472b6', '#fda4af'][Math.floor(Math.random() * 4)];
+              heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+              heart.style.animationDuration = (Math.random() * 2 + 2) + 's';
+              
+              container.appendChild(heart);
+              
+              setTimeout(() => {
+                if (heart.parentNode) {
+                  heart.parentNode.removeChild(heart);
+                }
+              }, 3000);
+            }
+          <\/script>
+        `,
+      },
+      
+10: {
+  title: "Day 10 – Art Gallery Date",
+  emoji: "🎨",
+  html: `
+    <div style="text-align: center; padding: 20px;" id="day10-container">
+      <div style="font-size: 4rem; margin: 20px 0;">🏛️</div>
+      
+      <h2 style="color: var(--gold); margin-bottom: 25px;">Private Museum Tour</h2>
+      
+      <div style="background: rgba(244, 201, 93, 0.1); padding: 25px; border-radius: 15px; margin: 25px 0; border: 2px solid rgba(244, 201, 93, 0.3);">
+        <p style="margin: 0; font-size: 1.3em; line-height: 1.6;">
+          <strong>10.</strong> I love exploring beautiful things with you
+        </p>
+      </div>
+      
+      <div style="background: rgba(148, 163, 184, 0.1); padding: 20px; border-radius: 12px; margin: 20px 0;">
+        <p style="margin: 0; font-size: 1.1em; line-height: 1.5;">
+          I curated a mini museum just for us. Explore, enjoy and tell me what you like the most =).
+        </p>
+      </div>
+      
+      <!-- Museum Gallery Navigation - Row 1: Paintings -->
+      <div style="display: flex; justify-content: center; gap: 10px; margin: 30px 0; flex-wrap: wrap;">
+        <button onclick="document.querySelectorAll('#day10-container button').forEach(b => {b.style.background=''; b.style.borderColor=''}); this.style.background='#22c55e'; this.style.borderColor='#22c55e'; document.getElementById('artDisplay').innerHTML='<div style=&quot;text-align:center;&quot;><img src=&quot;starry-night.jpg&quot; style=&quot;width:100%;max-width:400px;border-radius:12px;margin-bottom:20px;&quot;><h3 style=&quot;color:var(--gold);margin-bottom:10px;&quot;>The Starry Night</h3><p style=&quot;color:var(--text);margin-bottom:5px;&quot;><strong>Vincent van Gogh (1889) • Post-Impressionism</strong></p><p style=&quot;color:var(--secondary-text);font-size:0.95em;&quot;>Painted from memory during van Gogh\\'s asylum stay. Its swirling sky expresses emotional turmoil and cosmic wonder.</p></div>';" style="padding: 12px 18px; background: rgba(139, 92, 246, 0.2); color: white; border: 2px solid #8b5cf6; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 0.9em;">1. Starry Night</button>
+
+        <button onclick="document.querySelectorAll('#day10-container button').forEach(b => {b.style.background=''; b.style.borderColor=''}); this.style.background='#22c55e'; this.style.borderColor='#22c55e'; document.getElementById('artDisplay').innerHTML='<div style=&quot;text-align:center;&quot;><img src=&quot;mona-lisa.jpg&quot; style=&quot;width:100%;max-width:400px;border-radius:12px;margin-bottom:20px;&quot;><h3 style=&quot;color:var(--gold);margin-bottom:10px;&quot;>Mona Lisa</h3><p style=&quot;color:var(--text);margin-bottom:5px;&quot;><strong>Leonardo da Vinci (1503–1506) • Renaissance</strong></p><p style=&quot;color:var(--secondary-text);font-size:0.95em;&quot;>Features Leonardo\\'s revolutionary sfumato technique. Her enigmatic smile has fascinated viewers for centuries.</p></div>';" style="padding: 12px 18px; background: rgba(59, 130, 246, 0.2); color: white; border: 2px solid #3b82f6; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 0.9em;">2. Mona Lisa</button>
+
+        <button onclick="document.querySelectorAll('#day10-container button').forEach(b => {b.style.background=''; b.style.borderColor=''}); this.style.background='#22c55e'; this.style.borderColor='#22c55e'; document.getElementById('artDisplay').innerHTML='<div style=&quot;text-align:center;&quot;><img src=&quot;the-kiss.jpg&quot; style=&quot;width:100%;max-width:400px;border-radius:12px;margin-bottom:20px;&quot;><h3 style=&quot;color:var(--gold);margin-bottom:10px;&quot;>The Kiss</h3><p style=&quot;color:var(--text);margin-bottom:5px;&quot;><strong>Gustav Klimt (1907–1908) • Art Nouveau</strong></p><p style=&quot;color:var(--secondary-text);font-size:0.95em;&quot;>Klimt\\'s golden period masterpiece depicts divine love. The use of gold leaf creates eternal, sacred romance.</p></div>';" style="padding: 12px 18px; background: rgba(234, 88, 12, 0.2); color: white; border: 2px solid #ea580c; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 0.9em;">3. The Kiss</button>
+
+        <button onclick="document.querySelectorAll('#day10-container button').forEach(b => {b.style.background=''; b.style.borderColor=''}); this.style.background='#22c55e'; this.style.borderColor='#22c55e'; document.getElementById('artDisplay').innerHTML='<div style=&quot;text-align:center;&quot;><img src=&quot;girl-pearl.jpg&quot; style=&quot;width:100%;max-width:400px;border-radius:12px;margin-bottom:20px;&quot;><h3 style=&quot;color:var(--gold);margin-bottom:10px;&quot;>Girl with a Pearl Earring</h3><p style=&quot;color:var(--text);margin-bottom:5px;&quot;><strong>Johannes Vermeer (1665) • Dutch Golden Age</strong></p><p style=&quot;color:var(--secondary-text);font-size:0.95em;&quot;>Often called the &quot;Mona Lisa of the North.&quot; Showcases Vermeer\\'s mastery of light and reflection.</p></div>';" style="padding: 12px 18px; background: rgba(34, 197, 94, 0.2); color: white; border: 2px solid #22c55e; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 0.9em;">4. Girl with Pearl</button>
+      </div>
+
+      <!-- Row 2: Sculptures & Artifacts -->
+      <div style="display: flex; justify-content: center; gap: 10px; margin: 20px 0; flex-wrap: wrap;">
+        <button onclick="document.querySelectorAll('#day10-container button').forEach(b => {b.style.background=''; b.style.borderColor=''}); this.style.background='#22c55e'; this.style.borderColor='#22c55e'; document.getElementById('artDisplay').innerHTML='<div style=&quot;text-align:center;&quot;><img src=&quot;venus-de-milo.jpg&quot; style=&quot;width:100%;max-width:400px;border-radius:12px;margin-bottom:20px;&quot;><h3 style=&quot;color:var(--gold);margin-bottom:10px;&quot;>Venus de Milo</h3><p style=&quot;color:var(--text);margin-bottom:5px;&quot;><strong>Ancient Greece (130–100 BCE) • Marble Sculpture</strong></p><p style=&quot;color:var(--secondary-text);font-size:0.95em;&quot;>Iconic Hellenistic sculpture of Aphrodite. Her missing arms have inspired endless speculation.</p></div>';" style="padding: 12px 18px; background: rgba(168, 85, 247, 0.2); color: white; border: 2px solid #a855f7; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 0.9em;">5. Venus de Milo</button>
+
+        <button onclick="document.querySelectorAll('#day10-container button').forEach(b => {b.style.background=''; b.style.borderColor=''}); this.style.background='#22c55e'; this.style.borderColor='#22c55e'; document.getElementById('artDisplay').innerHTML='<div style=&quot;text-align:center;&quot;><img src=&quot;rosetta-stone.jpg&quot; style=&quot;width:100%;max-width:400px;border-radius:12px;margin-bottom:20px;&quot;><h3 style=&quot;color:var(--gold);margin-bottom:10px;&quot;>Rosetta Stone</h3><p style=&quot;color:var(--text);margin-bottom:5px;&quot;><strong>Ancient Egypt (196 BCE) • Granodiorite Stele</strong></p><p style=&quot;color:var(--secondary-text);font-size:0.95em;&quot;>Key to deciphering Egyptian hieroglyphs. Inscribed in three ancient scripts for comparison.</p></div>';" style="padding: 12px 18px; background: rgba(14, 165, 233, 0.2); color: white; border: 2px solid #0ea5e9; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 0.9em;">6. Rosetta Stone</button>
+
+        <button onclick="document.querySelectorAll('#day10-container button').forEach(b => {b.style.background=''; b.style.borderColor=''}); this.style.background='#22c55e'; this.style.borderColor='#22c55e'; document.getElementById('artDisplay').innerHTML='<div style=&quot;text-align:center;&quot;><img src=&quot;ishtar-gate.jpg&quot; style=&quot;width:100%;max-width:400px;border-radius:12px;margin-bottom:20px;&quot;><h3 style=&quot;color:var(--gold);margin-bottom:10px;&quot;>Ishtar Gate</h3><p style=&quot;color:var(--text);margin-bottom:5px;&quot;><strong>Ancient Babylon (575 BCE) • Glazed Brick Monument</strong></p><p style=&quot;color:var(--secondary-text);font-size:0.95em;&quot;>Babylon\\'s eighth gate dedicated to goddess Ishtar. Features brilliant blue bricks with animal reliefs.</p></div>';" style="padding: 12px 18px; background: rgba(249, 115, 22, 0.2); color: white; border: 2px solid #f97316; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 0.9em;">7. Ishtar Gate</button>
+
+        <button onclick="document.querySelectorAll('#day10-container button').forEach(b => {b.style.background=''; b.style.borderColor=''}); this.style.background='#22c55e'; this.style.borderColor='#22c55e'; document.getElementById('artDisplay').innerHTML='<div style=&quot;text-align:center;&quot;><img src=&quot;terracotta-army.jpg&quot; style=&quot;width:100%;max-width:400px;border-radius:12px;margin-bottom:20px;&quot;><h3 style=&quot;color:var(--gold);margin-bottom:10px;&quot;>Terracotta Army</h3><p style=&quot;color:var(--text);margin-bottom:5px;&quot;><strong>Qin Dynasty (210–209 BCE) • Clay Sculpture Army</strong></p><p style=&quot;color:var(--secondary-text);font-size:0.95em;&quot;>Guards the tomb of China\\'s first emperor. Each of 8,000 soldiers has unique facial features.</p></div>';" style="padding: 12px 18px; background: rgba(16, 185, 129, 0.2); color: white; border: 2px solid #10b981; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 0.9em;">8. Terracotta Army</button>
+      </div>
+
+      <!-- Row 3: More Historical Monuments -->
+      <div style="display: flex; justify-content: center; gap: 10px; margin: 20px 0; flex-wrap: wrap;">
+        <button onclick="document.querySelectorAll('#day10-container button').forEach(b => {b.style.background=''; b.style.borderColor=''}); this.style.background='#22c55e'; this.style.borderColor='#22c55e'; document.getElementById('artDisplay').innerHTML='<div style=&quot;text-align:center;&quot;><img src=&quot;stonehenge.jpg&quot; style=&quot;width:100%;max-width:400px;border-radius:12px;margin-bottom:20px;&quot;><h3 style=&quot;color:var(--gold);margin-bottom:10px;&quot;>Stonehenge</h3><p style=&quot;color:var(--text);margin-bottom:5px;&quot;><strong>Neolithic Period (2500 BCE) • Megalithic Monument</strong></p><p style=&quot;color:var(--secondary-text);font-size:0.95em;&quot;>Prehistoric stone circle in Wiltshire, England. Its exact purpose remains one of history\\'s great mysteries.</p></div>';" style="padding: 12px 18px; background: rgba(99, 102, 241, 0.2); color: white; border: 2px solid #6366f1; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 0.9em;">9. Stonehenge</button>
+
+        <button onclick="document.querySelectorAll('#day10-container button').forEach(b => {b.style.background=''; b.style.borderColor=''}); this.style.background='#22c55e'; this.style.borderColor='#22c55e'; document.getElementById('artDisplay').innerHTML='<div style=&quot;text-align:center;&quot;><img src=&quot;moai-heads.jpg&quot; style=&quot;width:100%;max-width:400px;border-radius:12px;margin-bottom:20px;&quot;><h3 style=&quot;color:var(--gold);margin-bottom:10px;&quot;>Moai Statues</h3><p style=&quot;color:var(--text);margin-bottom:5px;&quot;><strong>Rapa Nui (1250–1500 CE) • Volcanic Stone Sculptures</strong></p><p style=&quot;color:var(--secondary-text);font-size:0.95em;&quot;>Monolithic human figures on Easter Island. They were carved to honor ancestors and chiefs.</p></div>';" style="padding: 12px 18px; background: rgba(139, 92, 246, 0.2); color: white; border: 2px solid #8b5cf6; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 0.9em;">10. Easter Island Heads</button>
+
+        <button onclick="document.querySelectorAll('#day10-container button').forEach(b => {b.style.background=''; b.style.borderColor=''}); this.style.background='#22c55e'; this.style.borderColor='#22c55e'; document.getElementById('artDisplay').innerHTML='<div style=&quot;text-align:center;&quot;><img src=&quot;parthenon.jpg&quot; style=&quot;width:100%;max-width:400px;border-radius:12px;margin-bottom:20px;&quot;><h3 style=&quot;color:var(--gold);margin-bottom:10px;&quot;>The Parthenon</h3><p style=&quot;color:var(--text);margin-bottom:5px;&quot;><strong>Ancient Greece (447–432 BCE) • Doric Temple</strong></p><p style=&quot;color:var(--secondary-text);font-size:0.95em;&quot;>Temple dedicated to Athena on the Athenian Acropolis. Symbol of ancient Greek civilization and democracy.</p></div>';" style="padding: 12px 18px; background: rgba(59, 130, 246, 0.2); color: white; border: 2px solid #3b82f6; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 0.9em;">11. The Parthenon</button>
+
+        <button onclick="document.querySelectorAll('#day10-container button').forEach(b => {b.style.background=''; b.style.borderColor=''}); this.style.background='#22c55e'; this.style.borderColor='#22c55e'; document.getElementById('artDisplay').innerHTML='<div style=&quot;text-align:center;&quot;><img src=&quot;great-sphinx.jpg&quot; style=&quot;width:100%;max-width:400px;border-radius:12px;margin-bottom:20px;&quot;><h3 style=&quot;color:var(--gold);margin-bottom:10px;&quot;>Great Sphinx of Giza</h3><p style=&quot;color:var(--text);margin-bottom:5px;&quot;><strong>Ancient Egypt (2500 BCE) • Limestone Monument</strong></p><p style=&quot;color:var(--secondary-text);font-size:0.95em;&quot;>Largest monolith statue in the world. Guards the Giza plateau with a lion\\'s body and pharaoh\\'s head.</p></div>';" style="padding: 12px 18px; background: rgba(245, 158, 11, 0.2); color: white; border: 2px solid #f59e0b; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 0.9em;">12. Great Sphinx</button>
+      </div>
+      
+      <!-- Art Display Area -->
+      <div id="artDisplay" style="min-height: 400px; background: rgba(30, 41, 59, 0.3); border-radius: 15px; margin: 20px 0; padding: 25px;">
+      </div>
+
+      <div style="margin-top: 30px; padding-top: 20px; border-top: 2px dashed rgba(148, 163, 184, 0.3);">
+      </div>
+    </div>
+  `,
+},
+
+11: {
+  title: "Day 11 – Quiet Place",
+  emoji: "🤫",
+  html: `
+    <div style="text-align: center; padding: 20px;">
+      <div style="font-size: 4rem; margin: 20px 0;">🤫</div>
+      
+      <h2 style="color: var(--gold); margin-bottom: 25px;">Your Quiet Place</h2>
+      
+      <div style="background: rgba(244, 201, 93, 0.1); padding: 25px; border-radius: 15px; margin: 25px 0; border: 2px solid rgba(244, 201, 93, 0.3);">
+        <p style="margin: 0; font-size: 1.3em; line-height: 1.6;">
+          <strong>11.</strong> I love the peace that you bring me
+        </p>
+      </div>
+      
+      <div style="background: rgba(148, 163, 184, 0.1); padding: 20px; border-radius: 12px; margin: 20px 0;">
+        <p style="margin: 0; font-size: 1.1em; line-height: 1.5;">
+          Sometimes we all need a quiet place to just breathe and be. 
+        </p>
+      </div>
+      
+      <a href="https://thequietplaceproject.xyz/thequietplace" target="_blank" 
+         style="display: inline-block; padding: 18px 35px; background: linear-gradient(135deg, #8b5cf6, #6366f1); 
+                color: white; text-decoration: none; border-radius: 50px; margin: 25px 0; font-size: 1.3em; 
+                font-weight: bold; transition: all 0.3s ease; border: 2px solid rgba(139, 92, 246, 0.5);">
+        🤫 ENTER THE QUIET PLACE
+      </a>
+      
+    </div>
+  `,
+},
+
+12: {
+  title: "Day 12 – Memory Jar",
+  emoji: "🫙",
+  html: `
+    <div style="text-align: center; padding: 20px;">
+      <div style="font-size: 4rem; margin: 20px 0;">🫙</div>
+      
+      <h2 style="color: var(--gold); margin-bottom: 25px;">Our Memory Jar</h2>
+      
+      <div style="background: rgba(244, 201, 93, 0.1); padding: 25px; border-radius: 15px; margin: 25px 0; border: 2px solid rgba(244, 201, 93, 0.3);">
+        <p style="margin: 0; font-size: 1.3em; line-height: 1.6;">
+          <strong>12.</strong> I love every memory we've made together
+        </p>
+      </div>
+      
+      <div style="background: rgba(148, 163, 184, 0.1); padding: 20px; border-radius: 12px; margin: 20px 0; max-width: 500px; margin-left: auto; margin-right: auto;">
+        <p style="margin: 0; font-size: 1.1em; line-height: 1.5;">
+          Click the jar to shake it and reveal a random memory from our journey together.
+        </p>
+      </div>
+      
+      <!-- Memory Jar with inline onclick -->
+      <div onclick="
+        // Shake animation
+        this.style.transform = 'scale(0.95)';
+        setTimeout(() => this.style.transform = 'scale(1)', 200);
+        
+        // Get elements
+        const display = document.getElementById('memoryDisplay');
+        const content = document.getElementById('memoryContent');
+        const counter = document.getElementById('shakeCount');
+        
+        // Define memories
+        const memories = [
+          'The first hug in Basel - That moment we finally held each other 🤗',
+          'Reconnecting December 1st, 2024 and talking daily every since 💌',
+          'Your first voice note on Boo - Hearing your voice for the first time 🎵',
+          'Our first kiss at Zürich airport 💋',
+          'When I cook for you 🍳',
+          'Our first shower together... hopefully in a warm place next time :D 🚿',
+          'Our first time sleeping with each other 💝',
+          'Day-long video calls - Talking for hours without noticing time 📞',
+          'Giving you full body massages and the way we connect through them 💆‍♀️',
+          'Your morning voice messages - Waking up to your voice 🌅',
+          'Our journey through Switzerland-Austria-Czechia ✈️',
+          'Our future travel plans all over the world 🗺️',
+          '\\'Exacto, Ginette!\\' 😂',
+          'When we amuse each either with our stupid jokes 😄',
+          'When we watch something together in peace 🍿',
+          'Realizing I want to spend my life with you 💍',
+          'When you brought me the Nancy balls the first time we met 🍫',
+          'Our video calls until late night 🌙',
+          'Overcoming the many challenges to be together 💪',
+          'You falling asleep in my arms 😴',
+          'The way you call me \\'Patricio\\' 🗣️',
+          'The expectation of getting your first good morning message ☀️',
+          'Every time we laugh together =) 🎉'
+        ];
+        
+        // Initialize or get current state from data attributes
+        let availableMemories = this.getAttribute('data-memories') ? JSON.parse(this.getAttribute('data-memories')) : [...memories];
+        let shakeCount = parseInt(this.getAttribute('data-count') || '0');
+        
+        if (availableMemories.length === 0) {
+          // All memories shown
+          content.innerHTML = '&lt;div style=&quot;font-size: 3rem; margin-bottom: 15px;&quot;&gt;🎉&lt;/div&gt;&lt;h3 style=&quot;color:var(--gold);margin-bottom:10px;&quot;&gt;You\\'ve seen all our memories!&lt;/h3&gt;&lt;p style=&quot;color:var(--text);&quot;&gt;But don\\'t worry - we\\'re making new ones every day 💖&lt;/p&gt;&lt;button onclick=&quot;document.getElementById(\\'memoryJar\\').setAttribute(\\'data-memories\\', \\'\\'); document.getElementById(\\'memoryJar\\').setAttribute(\\'data-count\\', \\'0\\'); document.getElementById(\\'shakeCount\\').textContent = \\'0\\'; document.getElementById(\\'memoryDisplay\\').style.display = \\'none\\';&quot; style=&quot;padding:10px 20px;background:rgba(34,197,94,0.2);color:white;border:2px solid #22c55e;border-radius:20px;cursor:pointer;margin-top:15px;font-weight:bold;&quot;&gt;🔄 Shake Again&lt;/button&gt;';
+          display.style.display = 'block';
+          return;
+        }
+        
+        // Pick random memory
+        const randomIndex = Math.floor(Math.random() * availableMemories.length);
+        const memory = availableMemories[randomIndex];
+        availableMemories.splice(randomIndex, 1);
+        
+        // Update count
+        shakeCount++;
+        counter.textContent = shakeCount;
+        
+        // Update jar data attributes
+        this.setAttribute('data-memories', JSON.stringify(availableMemories));
+        this.setAttribute('data-count', shakeCount);
+        
+        // Display memory
+        display.style.display = 'block';
+        content.innerHTML = '&lt;div style=&quot;font-size: 3rem; margin-bottom: 15px;&quot;&gt;' + memory.split(' ').pop() + '&lt;/div&gt;&lt;h3 style=&quot;color:var(--gold);margin-bottom:10px;&quot;&gt;Memory #' + shakeCount + '&lt;/h3&gt;&lt;p style=&quot;color:var(--text);font-size:1.2em;line-height:1.5;margin:0;&quot;&gt;' + memory.substring(0, memory.lastIndexOf(' ')) + '&lt;/p&gt;';
+      " 
+      id="memoryJar" 
+      style="width: 300px; height: 400px; background: linear-gradient(to bottom, #a855f7, #8b5cf6, #7c3aed); border-radius: 100px 100px 150px 150px; margin: 30px auto; position: relative; cursor: pointer; box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3); border: 8px solid #7c3aed; overflow: hidden; transition: transform 0.3s ease;">
+        <!-- Jar lid -->
+        <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); width: 320px; height: 30px; background: linear-gradient(to bottom, #f59e0b, #d97706); border-radius: 50%; z-index: 2; box-shadow: 0 5px 15px rgba(0,0,0,0.2);"></div>
+        
+        <!-- Default jar content -->
+        <div style="position: relative; z-index: 3; padding: 40px 20px; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+          <div style="font-size: 4rem; margin-bottom: 20px;">✨</div>
+          <p style="color: white; font-size: 1.2em; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+            Click to shake the jar...
+          </p>
+        </div>
+      </div>
+      
+      <!-- Memory Display Area -->
+      <div id="memoryDisplay" style="min-height: 150px; background: rgba(30, 41, 59, 0.3); border-radius: 15px; margin: 20px 0; padding: 25px; display: none;">
+        <div id="memoryContent" style="text-align: center;"></div>
+      </div>
+      
+      <!-- Shake Counter -->
+      <div style="margin: 20px 0; padding: 10px; background: rgba(139, 92, 246, 0.1); border-radius: 20px; display: inline-block;">
+        <p style="margin: 0; color: var(--secondary-text); font-size: 0.9em;">
+          Memories revealed: <span id="shakeCount" style="color: var(--gold); font-weight: bold;">0</span>/23
+        </p>
+      </div>
+      
+      <div style="margin-top: 30px; padding-top: 20px; border-top: 2px dashed rgba(148, 163, 184, 0.3);">
+        <p style="color: var(--secondary-text); font-size: 0.9em; margin: 0;">
+          Each click reveals a new memory - some sweet, some funny, all special 💖
+        </p>
+      </div>
+    </div>
+  `,
+},
     };
 
     // --- Build calendar dynamically ---
@@ -1073,4 +1444,5 @@
   </script>
 </body>
 </html>
+
 
