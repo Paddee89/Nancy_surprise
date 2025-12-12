@@ -1295,6 +1295,873 @@
     </div>
   `,
 },
+13: {
+  title: "Day 13 – Christmas Karaoke",
+  emoji: "🎤",
+  html: `
+    <div style="text-align: center; padding: 20px;">
+      <div style="font-size: 4rem; margin: 20px 0;">🎤✨</div>
+      
+      <h2 style="color: var(--gold); margin-bottom: 25px;">Let's Sing Together!</h2>
+      
+      <div style="background: rgba(244, 201, 93, 0.1); padding: 25px; border-radius: 15px; margin: 25px 0; border: 2px solid rgba(244, 201, 93, 0.3);">
+        <p style="margin: 0; font-size: 1.3em; line-height: 1.6;">
+          <strong>13.</strong> I love how passionate you become about learning to sing
+        </p>
+      </div>
+      
+      <div style="background: rgba(59, 130, 246, 0.1); padding: 25px; border-radius: 15px; margin: 25px auto; max-width: 600px;">
+        <h3 style="color: #3b82f6; margin-bottom: 20px;">🎵 Pick a Karaoke Song:</h3>
+        
+        <div style="display: flex; flex-direction: column; gap: 15px; margin: 25px 0;">
+          <a href="https://www.youtube.com/watch?v=0d9CdW2Lr3Y&list=RD0d9CdW2Lr3Y&start_radio=1" target="_blank" 
+             style="display: block; padding: 15px; background: rgba(219, 39, 119, 0.2); border: 2px solid #db2777; border-radius: 12px; color: white; text-decoration: none; font-size: 1.1em;">
+            🎅 <strong>Noche de paz</strong>
+          </a>
+          
+          <a href="https://www.youtube.com/watch?v=Z8-jYQhqK3s&list=RDZ8-jYQhqK3s&start_radio=1" target="_blank" 
+             style="display: block; padding: 15px; background: rgba(234, 88, 12, 0.2); border: 2px solid #ea580c; border-radius: 12px; color: white; text-decoration: none; font-size: 1.1em;">
+            🎤 <strong>Jingle Bells</strong>
+          </a>
+          
+          <a href="https://www.youtube.com/watch?v=QzFDehvDcdU&list=RDQzFDehvDcdU&start_radio=1" target="_blank" 
+             style="display: block; padding: 15px; background: rgba(34, 197, 94, 0.2); border: 2px solid #22c55e; border-radius: 12px; color: white; text-decoration: none; font-size: 1.1em;">
+            🎅 <strong>Santa Tell Me</strong> - Ariana Grande
+          </a>
+        </div>
+        
+        <p style="color: var(--secondary-text); margin-top: 20px; font-size: 0.9em;">
+          Each link opens in a new tab so you can keep this calendar open!
+        </p>
+      </div>
+      
+      <div style="margin-top: 30px; padding: 20px; background: rgba(139, 92, 246, 0.1); border-radius: 12px;">
+        <h3 style="color: #8b5cf6; margin-bottom: 15px;">📝 Karaoke Challenge:</h3>
+        <p style="color: var(--text); margin-bottom: 15px;">
+          Pick one song, sing your heart out, and send me a voice message!
+        </p>
+        <button onclick="
+          const button = this;
+          const msg = document.getElementById('challengeMsg');
+          
+          button.style.transform = 'scale(0.9)';
+          button.innerHTML = '🎤 RECORDING...';
+          button.style.background = 'linear-gradient(135deg, #dc2626, #ef4444)';
+          
+          setTimeout(() => {
+            button.style.transform = 'scale(1.1)';
+            button.innerHTML = '🎤 SENT!';
+            button.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+            msg.style.display = 'block';
+            msg.innerHTML = '&lt;div style=&quot;background:rgba(34,197,94,0.1);padding:15px;border-radius:12px;border:2px solid rgba(34,197,94,0.3);margin-top:15px;&quot;&gt;&lt;p style=&quot;color:#22c55e;font-weight:bold;margin:0;&quot;&gt;🎤 Challenge accepted! I\\'m waiting for your performance! 💖&lt;/p&gt;&lt;/div&gt;';
+            msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }, 800);
+        " style="padding: 12px 25px; background: linear-gradient(135deg, #8b5cf6, #a855f7); color: white; border: none; border-radius: 50px; font-size: 1.1em; cursor: pointer; font-weight: bold;">
+          🎶 I Accept the Challenge!
+        </button>
+        <div id="challengeMsg" style="display: none;"></div>
+      </div>
+    </div>
+  `
+},
+
+14: {
+  title: "Day 14 – 360° Northern Lights",
+  emoji: "🌌",
+  html: `
+    <div style="text-align: center; padding: 20px;">
+      <div style="font-size: 4rem; margin: 20px 0;">🌌✨</div>
+      
+      <h2 style="color: var(--gold); margin-bottom: 25px;">Lets explore a beautiful winter landscape together</h2>
+      
+      <div style="background: rgba(244, 201, 93, 0.1); padding: 25px; border-radius: 15px; margin: 25px 0; border: 2px solid rgba(244, 201, 93, 0.3);">
+        <p style="margin: 0; font-size: 1.3em; line-height: 1.6;">
+          <strong>14.</strong> I love exploring new experiences with you
+        </p>
+      </div>
+      
+      <!-- Direct iframe attempt (may be blocked by AirPano) -->
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; border-radius: 12px; overflow: hidden; margin: 25px 0; border: 2px solid rgba(14, 165, 233, 0.3);">
+        <iframe 
+          src="https://www.airpano.com/360photo/aurora-murmansk/" 
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+          allowfullscreen>
+        </iframe>
+      </div>
+      
+      <p style="color: var(--secondary-text); margin-top: 15px;">
+        Click on the x, go fullscreen, hide the interface in the bottom right and enjoy =) If the 360° viewer doesn't load above, <a href="https://www.airpano.com/360photo/aurora-murmansk/" target="_blank" style="color: #0ea5e9;">click here to open it directly</a>
+      </p>
+    </div>
+  `
+},
+
+15: {
+  title: "Day 15 – Enchanted Snow Globe",
+  emoji: "🌌",
+  html: `
+    <div style="text-align: center; padding: 20px;">
+      <div style="font-size: 4rem; margin: 20px 0;">🌌❄️</div>
+      
+      <h2 style="color: var(--gold); margin-bottom: 25px;">Our Enchanted Winter World</h2>
+      
+      <div style="background: rgba(244, 201, 93, 0.1); padding: 25px; border-radius: 15px; margin: 25px 0; border: 2px solid rgba(244, 201, 93, 0.3);">
+        <p style="margin: 0; font-size: 1.3em; line-height: 1.6;">
+          <strong>15.</strong> I love your happy smile when you are excited
+        </p>
+      </div>
+      
+      <!-- Snow Globe Container -->
+      <div style="background: rgba(14, 165, 233, 0.1); padding: 30px; border-radius: 15px; margin: 25px auto; max-width: 700px;">
+        <h3 style="color: #0ea5e9; margin-bottom: 20px;">✨ Magical Snow Globe ✨</h3>
+        
+        <p style="color: var(--secondary-text); margin-bottom: 25px;">
+          Shake the globe or use the magic buttons below to bring our winter world to life!
+        </p>
+        
+        <!-- The Snow Globe -->
+        <div id="snowGlobe15" style="
+          width: 280px;
+          height: 280px;
+          margin: 0 auto 30px;
+          position: relative;
+          transition: transform 0.3s ease;
+        ">
+          <!-- Glass dome -->
+          <div style="
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(255,255,255,0.3) 70%);
+            border-radius: 50%;
+            box-shadow: 
+              inset 0 0 50px rgba(255,255,255,0.8),
+              inset 0 0 100px rgba(173, 216, 230, 0.4),
+              0 0 30px rgba(14, 165, 233, 0.5);
+            overflow: hidden;
+          ">
+            <!-- Snow at bottom (will grow) -->
+            <div id="snowPile15" style="
+              position: absolute;
+              bottom: 0;
+              width: 100%;
+              height: 25%;
+              background: linear-gradient(to top, #f0f9ff, #e0f2fe);
+              border-radius: 0 0 140px 140px;
+              transition: height 0.5s ease;
+            "></div>
+            
+            <!-- Our animated scene -->
+            <div style="
+              position: absolute;
+              bottom: 25%;
+              left: 50%;
+              transform: translateX(-50%);
+              text-align: center;
+            ">
+              <!-- Christmas tree with twinkling lights -->
+              <div id="christmasTree15" style="
+                position: relative;
+                width: 60px;
+                height: 75px;
+                margin: 0 auto;
+              ">
+                <div style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 18px; height: 15px; background: #92400e; border-radius: 3px;"></div>
+                <div style="position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 30px solid transparent; border-right: 30px solid transparent; border-bottom: 40px solid #16a34a;"></div>
+                <div style="position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 25px solid transparent; border-right: 25px solid transparent; border-bottom: 35px solid #15803d;"></div>
+                <div style="position: absolute; bottom: 65px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 20px solid transparent; border-right: 20px solid transparent; border-bottom: 30px solid #166534;"></div>
+                <div id="treeStar15" style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 10px; height: 10px; background: #fbbf24; border-radius: 50%;"></div>
+                
+                <!-- Twinkling lights -->
+                <div id="light115" style="position: absolute; bottom: 25px; left: 40%; width: 6px; height: 6px; background: #dc2626; border-radius: 50%; opacity: 0.8;"></div>
+                <div id="light215" style="position: absolute; bottom: 45px; left: 60%; width: 6px; height: 6px; background: #3b82f6; border-radius: 50%; opacity: 0.8;"></div>
+                <div id="light315" style="position: absolute; bottom: 65px; left: 35%; width: 6px; height: 6px; background: #f59e0b; border-radius: 50%; opacity: 0.8;"></div>
+              </div>
+              
+              <!-- Animated couple -->
+              <div id="animatedCouple15" style="
+                position: absolute;
+                bottom: -5px;
+                left: -70px;
+                display: flex;
+                align-items: flex-end;
+                gap: 5px;
+                transition: transform 0.5s ease;
+              ">
+                <!-- Person 1 (waving) -->
+                <div>
+                  <div style="width: 12px; height: 12px; background: #3b82f6; border-radius: 50%; margin-bottom: 2px;"></div>
+                  <div style="display: flex; gap: 1px;">
+                    <div id="arm115" style="width: 4px; height: 8px; background: #1e40af; border-radius: 2px; transform-origin: top center;"></div>
+                    <div style="width: 12px; height: 16px; background: #1e40af; border-radius: 3px;"></div>
+                    <div style="width: 4px; height: 8px; background: #1e40af; border-radius: 2px;"></div>
+                  </div>
+                </div>
+                <!-- Person 2 (waving back) -->
+                <div>
+                  <div style="width: 12px; height: 12px; background: #db2777; border-radius: 50%; margin-bottom: 2px;"></div>
+                  <div style="display: flex; gap: 1px;">
+                    <div style="width: 4px; height: 8px; background: #9d174d; border-radius: 2px;"></div>
+                    <div style="width: 12px; height: 16px; background: #9d174d; border-radius: 3px;"></div>
+                    <div id="arm215" style="width: 4px; height: 8px; background: #9d174d; border-radius: 2px; transform-origin: top center;"></div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Beating heart -->
+              <div id="beatingHeart15" style="
+                position: absolute;
+                bottom: 15px;
+                left: 50%;
+                transform: translateX(-50%);
+                color: #dc2626;
+                font-size: 1.5rem;
+                filter: drop-shadow(0 0 3px rgba(220, 38, 38, 0.5));
+                transition: transform 0.3s ease;
+              ">❤️</div>
+            </div>
+            
+            <!-- Special effects container -->
+            <div id="specialEffects15" style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              pointer-events: none;
+              z-index: 20;
+            "></div>
+            
+            <!-- Snowflakes container -->
+            <div id="snowflakesContainer15" style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              pointer-events: none;
+              z-index: 10;
+            "></div>
+          </div>
+          
+          <!-- Base -->
+          <div style="
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 180px;
+            height: 30px;
+            background: linear-gradient(to bottom, #f59e0b, #d97706);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+          "></div>
+        </div>
+        
+        <!-- Basic Control Buttons -->
+        <div style="display: flex; gap: 15px; justify-content: center; margin: 25px 0; flex-wrap: wrap;">
+          <button onclick="
+            // Gentle Shake
+            const globe = document.getElementById('snowGlobe15');
+            const container = document.getElementById('snowflakesContainer15');
+            const counter = document.getElementById('snowCount15');
+            const depthElement = document.getElementById('snowDepth15');
+            const snowPile = document.getElementById('snowPile15');
+            const btn = this;
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = '❄️ SHAKING...';
+            btn.style.background = 'linear-gradient(135deg, #16a34a, #15803d)';
+            
+            // Snow creation function (inline)
+            function createSnowLocal(count) {
+              let currentCount = parseInt(counter.textContent) || 0;
+              let currentDepth = parseInt(depthElement.textContent) || 25;
+              
+              for (let i = 0; i < count; i++) {
+                setTimeout(() => {
+                  const snowflake = document.createElement('div');
+                  snowflake.innerHTML = '❄️';
+                  snowflake.style.position = 'absolute';
+                  snowflake.style.color = 'white';
+                  snowflake.style.fontSize = (Math.random() * 15 + 10) + 'px';
+                  snowflake.style.left = Math.random() * 100 + '%';
+                  snowflake.style.top = Math.random() * 30 + '%';
+                  snowflake.style.opacity = Math.random() * 0.7 + 0.3;
+                  snowflake.style.pointerEvents = 'none';
+                  snowflake.style.zIndex = '10';
+                  snowflake.style.animation = 'float15 ' + (Math.random() * 3 + 2) + 's linear forwards';
+                  
+                  container.appendChild(snowflake);
+                  
+                  // Update counts
+                  currentCount++;
+                  counter.textContent = currentCount;
+                  
+                  // Increase snow depth every 20 snowflakes
+                  if (currentCount % 20 === 0 && currentDepth < 60) {
+                    currentDepth += 2;
+                    snowPile.style.height = currentDepth + '%';
+                    depthElement.textContent = currentDepth + '%';
+                  }
+                  
+                  // Remove after animation
+                  setTimeout(() => {
+                    if (snowflake.parentNode) {
+                      snowflake.parentNode.removeChild(snowflake);
+                    }
+                  }, 5000);
+                }, i * 30);
+              }
+            }
+            
+            // Shake animation
+            globe.style.transform = 'translate(-5px, 5px) rotate(-5deg)';
+            setTimeout(() => {
+              globe.style.transform = 'translate(5px, -5px) rotate(5deg)';
+              createSnowLocal(5);
+            }, 200);
+            setTimeout(() => {
+              globe.style.transform = 'translate(-3px, 3px) rotate(-3deg)';
+              createSnowLocal(5);
+            }, 400);
+            setTimeout(() => {
+              globe.style.transform = 'translate(0, 0) rotate(0deg)';
+              createSnowLocal(5);
+              btn.innerHTML = originalText;
+              btn.style.background = 'rgba(34, 197, 94, 0.2)';
+              
+              // Make heart beat
+              const heart = document.getElementById('beatingHeart15');
+              heart.style.animation = 'heartbeat15 0.5s ease-in-out 3';
+              setTimeout(() => heart.style.animation = '', 1500);
+            }, 600);
+          " style="padding: 12px 20px; background: rgba(34, 197, 94, 0.2); color: white; border: 2px solid #22c55e; border-radius: 20px; cursor: pointer; font-weight: bold;">
+            ❄️ Gentle Shake
+          </button>
+          
+          <button onclick="
+            // Hard Shake
+            const globe = document.getElementById('snowGlobe15');
+            const container = document.getElementById('snowflakesContainer15');
+            const counter = document.getElementById('snowCount15');
+            const depthElement = document.getElementById('snowDepth15');
+            const snowPile = document.getElementById('snowPile15');
+            const btn = this;
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = '🌨️ SHAKING!';
+            btn.style.background = 'linear-gradient(135deg, #ea580c, #c2410c)';
+            
+            // Snow creation function (inline)
+            function createSnowLocal(count) {
+              let currentCount = parseInt(counter.textContent) || 0;
+              let currentDepth = parseInt(depthElement.textContent) || 25;
+              
+              for (let i = 0; i < count; i++) {
+                setTimeout(() => {
+                  const snowflake = document.createElement('div');
+                  snowflake.innerHTML = '❄️';
+                  snowflake.style.position = 'absolute';
+                  snowflake.style.color = 'white';
+                  snowflake.style.fontSize = (Math.random() * 15 + 10) + 'px';
+                  snowflake.style.left = Math.random() * 100 + '%';
+                  snowflake.style.top = Math.random() * 30 + '%';
+                  snowflake.style.opacity = Math.random() * 0.7 + 0.3;
+                  snowflake.style.pointerEvents = 'none';
+                  snowflake.style.zIndex = '10';
+                  snowflake.style.animation = 'float15 ' + (Math.random() * 3 + 2) + 's linear forwards';
+                  
+                  container.appendChild(snowflake);
+                  
+                  // Update counts
+                  currentCount++;
+                  counter.textContent = currentCount;
+                  
+                  // Increase snow depth every 20 snowflakes
+                  if (currentCount % 20 === 0 && currentDepth < 60) {
+                    currentDepth += 2;
+                    snowPile.style.height = currentDepth + '%';
+                    depthElement.textContent = currentDepth + '%';
+                  }
+                  
+                  // Remove after animation
+                  setTimeout(() => {
+                    if (snowflake.parentNode) {
+                      snowflake.parentNode.removeChild(snowflake);
+                    }
+                  }, 5000);
+                }, i * 10);
+              }
+            }
+            
+            // Hard shake animation
+            globe.style.transform = 'translate(-15px, 10px) rotate(-10deg)';
+            createSnowLocal(10);
+            
+            setTimeout(() => {
+              globe.style.transform = 'translate(12px, -8px) rotate(8deg)';
+              createSnowLocal(10);
+            }, 150);
+            
+            setTimeout(() => {
+              globe.style.transform = 'translate(-10px, 12px) rotate(-8deg)';
+              createSnowLocal(10);
+            }, 300);
+            
+            setTimeout(() => {
+              globe.style.transform = 'translate(15px, -10px) rotate(10deg)';
+              createSnowLocal(10);
+            }, 450);
+            
+            setTimeout(() => {
+              globe.style.transform = 'translate(0, 0) rotate(0deg)';
+              createSnowLocal(5);
+              btn.innerHTML = originalText;
+              btn.style.background = 'rgba(245, 158, 11, 0.2)';
+              
+              // Make heart beat
+              const heart = document.getElementById('beatingHeart15');
+              heart.style.animation = 'heartbeat15 0.5s ease-in-out 3';
+              setTimeout(() => heart.style.animation = '', 1500);
+            }, 600);
+          " style="padding: 12px 20px; background: rgba(245, 158, 11, 0.2); color: white; border: 2px solid #f59e0b; border-radius: 20px; cursor: pointer; font-weight: bold;">
+            🌨️ Hard Shake!
+          </button>
+          
+          <button onclick="
+            // Reset All
+            const container = document.getElementById('snowflakesContainer15');
+            const effects = document.getElementById('specialEffects15');
+            const snowPile = document.getElementById('snowPile15');
+            const counter = document.getElementById('snowCount15');
+            const depthElement = document.getElementById('snowDepth15');
+            const magicCounter = document.getElementById('magicCount15');
+            const btn = this;
+            
+            btn.innerHTML = '🔄 RESETTING...';
+            btn.style.background = 'linear-gradient(135deg, #3b82f6, #1d4ed8)';
+            
+            // Clear containers
+            container.innerHTML = '';
+            effects.innerHTML = '';
+            
+            // Reset snow
+            counter.textContent = '0';
+            depthElement.textContent = '25%';
+            snowPile.style.height = '25%';
+            
+            // Reset magic count
+            magicCounter.textContent = '0';
+            
+            // Reset tree position
+            const tree = document.getElementById('christmasTree15');
+            tree.style.bottom = '25%';
+            
+            setTimeout(() => {
+              btn.innerHTML = '🔄 Reset All';
+              btn.style.background = 'rgba(59, 130, 246, 0.2)';
+              
+              // Add a little snow back
+              function addInitialSnow() {
+                for (let i = 0; i < 5; i++) {
+                  setTimeout(() => {
+                    const snowflake = document.createElement('div');
+                    snowflake.innerHTML = '❄️';
+                    snowflake.style.position = 'absolute';
+                    snowflake.style.color = 'white';
+                    snowflake.style.fontSize = (Math.random() * 15 + 10) + 'px';
+                    snowflake.style.left = Math.random() * 100 + '%';
+                    snowflake.style.top = Math.random() * 30 + '%';
+                    snowflake.style.opacity = Math.random() * 0.7 + 0.3;
+                    snowflake.style.pointerEvents = 'none';
+                    snowflake.style.zIndex = '10';
+                    snowflake.style.animation = 'float15 ' + (Math.random() * 3 + 2) + 's linear forwards';
+                    container.appendChild(snowflake);
+                    setTimeout(() => {
+                      if (snowflake.parentNode) snowflake.parentNode.removeChild(snowflake);
+                    }, 5000);
+                  }, i * 100);
+                }
+                counter.textContent = '5';
+              }
+              addInitialSnow();
+            }, 600);
+          " style="padding: 12px 20px; background: rgba(59, 130, 246, 0.2); color: white; border: 2px solid #3b82f6; border-radius: 20px; cursor: pointer; font-weight: bold;">
+            🔄 Reset All
+          </button>
+        </div>
+        
+        <!-- Magic Buttons -->
+        <div style="margin: 30px 0; padding: 20px; background: rgba(139, 92, 246, 0.1); border-radius: 15px;">
+          <h4 style="color: #8b5cf6; margin-bottom: 15px;">✨ Magic Buttons ✨</h4>
+          <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+            <button onclick="
+              // Reindeer
+              const effects = document.getElementById('specialEffects15');
+              const magicCounter = document.getElementById('magicCount15');
+              const btn = this;
+              const originalText = btn.innerHTML;
+              
+              let currentMagic = parseInt(magicCounter.textContent) || 0;
+              currentMagic++;
+              magicCounter.textContent = currentMagic;
+              
+              btn.innerHTML = '🦌 RUNNING...';
+              
+              const reindeer = document.createElement('div');
+              reindeer.innerHTML = '🦌';
+              reindeer.style.position = 'absolute';
+              reindeer.style.top = '50px';
+              reindeer.style.left = '-50px';
+              reindeer.style.fontSize = '2rem';
+              reindeer.style.zIndex = '25';
+              reindeer.style.animation = 'flyAcross15 4s linear forwards';
+              reindeer.style.filter = 'drop-shadow(0 0 5px rgba(249, 115, 22, 0.7))';
+              
+              effects.appendChild(reindeer);
+              
+              setTimeout(() => {
+                if (reindeer.parentNode) reindeer.parentNode.removeChild(reindeer);
+                btn.innerHTML = originalText;
+              }, 4000);
+            " style="padding: 10px 15px; background: rgba(249, 115, 22, 0.2); color: white; border: 2px solid #f97316; border-radius: 15px; cursor: pointer; font-weight: bold; font-size: 0.9em;">
+              🦌 Reindeer
+            </button>
+            
+            <button onclick="
+              // Santa's Sleigh
+              const effects = document.getElementById('specialEffects15');
+              const magicCounter = document.getElementById('magicCount15');
+              const btn = this;
+              const originalText = btn.innerHTML;
+              
+              let currentMagic = parseInt(magicCounter.textContent) || 0;
+              currentMagic++;
+              magicCounter.textContent = currentMagic;
+              
+              btn.innerHTML = '🛷 FLYING...';
+              
+              const sleigh = document.createElement('div');
+              sleigh.innerHTML = '🛷🎅';
+              sleigh.style.position = 'absolute';
+              sleigh.style.top = '30px';
+              sleigh.style.left = '-80px';
+              sleigh.style.fontSize = '2.5rem';
+              sleigh.style.zIndex = '30';
+              sleigh.style.animation = 'flyAcross15 5s linear forwards';
+              sleigh.style.filter = 'drop-shadow(0 0 8px rgba(219, 39, 119, 0.8))';
+              
+              effects.appendChild(sleigh);
+              
+              // Add some trailing snow
+              for (let i = 0; i < 8; i++) {
+                setTimeout(() => {
+                  const trailSnow = document.createElement('div');
+                  trailSnow.innerHTML = '❄️';
+                  trailSnow.style.position = 'absolute';
+                  trailSnow.style.top = '60px';
+                  trailSnow.style.left = (20 + i * 40) + 'px';
+                  trailSnow.style.fontSize = '1rem';
+                  trailSnow.style.opacity = '0.7';
+                  trailSnow.style.zIndex = '20';
+                  trailSnow.style.animation = 'float15 2s linear forwards';
+                  effects.appendChild(trailSnow);
+                  setTimeout(() => {
+                    if (trailSnow.parentNode) trailSnow.parentNode.removeChild(trailSnow);
+                  }, 2000);
+                }, i * 200);
+              }
+              
+              setTimeout(() => {
+                if (sleigh.parentNode) sleigh.parentNode.removeChild(sleigh);
+                btn.innerHTML = originalText;
+              }, 5000);
+            " style="padding: 10px 15px; background: rgba(219, 39, 119, 0.2); color: white; border: 2px solid #db2777; border-radius: 15px; cursor: pointer; font-weight: bold; font-size: 0.9em;">
+              🛷 Santa's Sleigh
+            </button>
+            
+            <button onclick="
+              // Shooting Star
+              const effects = document.getElementById('specialEffects15');
+              const magicCounter = document.getElementById('magicCount15');
+              const btn = this;
+              const originalText = btn.innerHTML;
+              
+              let currentMagic = parseInt(magicCounter.textContent) || 0;
+              currentMagic++;
+              magicCounter.textContent = currentMagic;
+              
+              btn.innerHTML = '🌠 WISHING...';
+              
+              const star = document.createElement('div');
+              star.innerHTML = '🌠';
+              star.style.position = 'absolute';
+              star.style.top = '100px';
+              star.style.left = '-100px';
+              star.style.fontSize = '3rem';
+              star.style.zIndex = '40';
+              star.style.animation = 'starTrail15 3s ease-out forwards';
+              star.style.filter = 'drop-shadow(0 0 15px rgba(168, 85, 247, 1))';
+              
+              effects.appendChild(star);
+              
+              // Add sparkle trail
+              for (let i = 0; i < 6; i++) {
+                setTimeout(() => {
+                  const sparkle = document.createElement('div');
+                  sparkle.innerHTML = '✨';
+                  sparkle.style.position = 'absolute';
+                  sparkle.style.top = (90 + i * 15) + 'px';
+                  sparkle.style.left = (i * 60) + 'px';
+                  sparkle.style.fontSize = '1.2rem';
+                  sparkle.style.opacity = '0.8';
+                  sparkle.style.zIndex = '30';
+                  sparkle.style.animation = 'float15 1.5s linear forwards';
+                  effects.appendChild(sparkle);
+                  setTimeout(() => {
+                    if (sparkle.parentNode) sparkle.parentNode.removeChild(sparkle);
+                  }, 1500);
+                }, i * 100);
+              }
+              
+              // Make a wish appear
+              setTimeout(() => {
+                const wish = document.createElement('div');
+                wish.innerHTML = '💫 Make a wish!';
+                wish.style.position = 'absolute';
+                wish.style.top = '50%';
+                wish.style.left = '50%';
+                wish.style.transform = 'translate(-50%, -50%)';
+                wish.style.color = 'var(--gold)';
+                wish.style.fontWeight = 'bold';
+                wish.style.fontSize = '1.2rem';
+                wish.style.zIndex = '50';
+                wish.style.textShadow = '0 0 10px rgba(244, 201, 93, 0.8)';
+                wish.style.animation = 'float15 2s ease-out forwards';
+                effects.appendChild(wish);
+                setTimeout(() => {
+                  if (wish.parentNode) wish.parentNode.removeChild(wish);
+                }, 2000);
+              }, 1500);
+              
+              setTimeout(() => {
+                if (star.parentNode) star.parentNode.removeChild(star);
+                btn.innerHTML = originalText;
+              }, 3000);
+            " style="padding: 10px 15px; background: rgba(168, 85, 247, 0.2); color: white; border: 2px solid #a855f7; border-radius: 15px; cursor: pointer; font-weight: bold; font-size: 0.9em;">
+              🌠 Shooting Star
+            </button>
+            
+            <button onclick="
+              // Wave Hello
+              const arm1 = document.getElementById('arm115');
+              const arm2 = document.getElementById('arm215');
+              const couple = document.getElementById('animatedCouple15');
+              const magicCounter = document.getElementById('magicCount15');
+              const btn = this;
+              const originalText = btn.innerHTML;
+              
+              let currentMagic = parseInt(magicCounter.textContent) || 0;
+              currentMagic++;
+              magicCounter.textContent = currentMagic;
+              
+              btn.innerHTML = '👋 WAVING...';
+              
+              // Wave animation
+              arm1.style.animation = 'wave15 0.5s ease-in-out 3';
+              arm2.style.animation = 'wave15 0.5s ease-in-out 3';
+              
+              // Make couple bounce
+              couple.style.transform = 'translateY(-5px)';
+              setTimeout(() => couple.style.transform = 'translateY(0)', 300);
+              setTimeout(() => couple.style.transform = 'translateY(-3px)', 600);
+              setTimeout(() => couple.style.transform = 'translateY(0)', 900);
+              
+              setTimeout(() => {
+                arm1.style.animation = '';
+                arm2.style.animation = '';
+                btn.innerHTML = originalText;
+              }, 1500);
+            " style="padding: 10px 15px; background: rgba(14, 165, 233, 0.2); color: white; border: 2px solid #0ea5e9; border-radius: 15px; cursor: pointer; font-weight: bold; font-size: 0.9em;">
+              👋 Wave Hello
+            </button>
+            
+            <button onclick="
+              // Twinkle Lights
+              const lights = ['#light115', '#light215', '#light315', '#treeStar15'];
+              const magicCounter = document.getElementById('magicCount15');
+              const effects = document.getElementById('specialEffects15');
+              const btn = this;
+              const originalText = btn.innerHTML;
+              
+              let currentMagic = parseInt(magicCounter.textContent) || 0;
+              currentMagic++;
+              magicCounter.textContent = currentMagic;
+              
+              btn.innerHTML = '💡 TWINKLING...';
+              
+              // Twinkle each light
+              lights.forEach((lightId, index) => {
+                const light = document.querySelector(lightId);
+                if (light) {
+                  setTimeout(() => {
+                    light.style.animation = 'twinkle15 0.3s ease-in-out 3';
+                    setTimeout(() => light.style.animation = '', 1000);
+                  }, index * 200);
+                }
+              });
+              
+              // Add some extra sparkles
+              for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                  const sparkle = document.createElement('div');
+                  sparkle.innerHTML = '✨';
+                  sparkle.style.position = 'absolute';
+                  sparkle.style.top = Math.random() * 100 + 'px';
+                  sparkle.style.left = Math.random() * 100 + 'px';
+                  sparkle.style.fontSize = (Math.random() * 15 + 10) + 'px';
+                  sparkle.style.opacity = '0.8';
+                  sparkle.style.zIndex = '30';
+                  sparkle.style.animation = 'float15 ' + (Math.random() * 2 + 1) + 's linear forwards';
+                  effects.appendChild(sparkle);
+                  setTimeout(() => {
+                    if (sparkle.parentNode) sparkle.parentNode.removeChild(sparkle);
+                  }, 3000);
+                }, i * 100);
+              }
+              
+              setTimeout(() => {
+                btn.innerHTML = originalText;
+              }, 1000);
+            " style="padding: 10px 15px; background: rgba(244, 201, 93, 0.3); color: white; border: 2px solid var(--gold); border-radius: 15px; cursor: pointer; font-weight: bold; font-size: 0.9em;">
+              💡 Twinkle Lights
+            </button>
+          </div>
+        </div>
+        
+        <!-- Stats -->
+        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px;">
+          <div style="padding: 10px 15px; background: rgba(255,255,255,0.1); border-radius: 15px; min-width: 120px;">
+            <p style="margin: 0; color: var(--secondary-text); font-size: 0.8em;">Snowflakes</p>
+            <p id="snowCount15" style="margin: 0; color: var(--gold); font-size: 1.5em; font-weight: bold;">0</p>
+          </div>
+          
+          <div style="padding: 10px 15px; background: rgba(255,255,255,0.1); border-radius: 15px; min-width: 120px;">
+            <p style="margin: 0; color: var(--secondary-text); font-size: 0.8em;">Snow Depth</p>
+            <p id="snowDepth15" style="margin: 0; color: #0ea5e9; font-size: 1.5em; font-weight: bold;">25%</p>
+          </div>
+          
+          <div style="padding: 10px 15px; background: rgba(255,255,255,0.1); border-radius: 15px; min-width: 120px;">
+            <p style="margin: 0; color: var(--secondary-text); font-size: 0.8em;">Magic Used</p>
+            <p id="magicCount15" style="margin: 0; color: #8b5cf6; font-size: 1.5em; font-weight: bold;">0</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Message -->
+      <div style="margin-top: 30px; padding: 20px; background: rgba(30, 41, 59, 0.3); border-radius: 12px; max-width: 500px; margin-left: auto; margin-right: auto;">
+        <p style="color: var(--text); margin: 0; font-style: italic;">
+          "Every snowflake that falls is a wish I'm making for our future together ❄️💫"
+        </p>
+      </div>
+    </div>
+    
+    <style>
+      @keyframes float15 {
+        0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(280px) rotate(360deg); opacity: 0; }
+      }
+      
+      @keyframes twinkle15 {
+        0%, 100% { opacity: 0.3; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.2); }
+      }
+      
+      @keyframes wave15 {
+        0%, 100% { transform: rotate(0deg); }
+        25% { transform: rotate(-30deg); }
+        75% { transform: rotate(30deg); }
+      }
+      
+      @keyframes heartbeat15 {
+        0%, 100% { transform: translateX(-50%) scale(1); }
+        50% { transform: translateX(-50%) scale(1.2); }
+      }
+      
+      @keyframes flyAcross15 {
+        0% { transform: translateX(-100px) translateY(50px); opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { transform: translateX(400px) translateY(20px); opacity: 0; }
+      }
+      
+      @keyframes starTrail15 {
+        0% { transform: translateX(-100px) translateY(100px) rotate(0deg); opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { transform: translateX(400px) translateY(-50px) rotate(360deg); opacity: 0; }
+      }
+    </style>
+    
+    <script>
+      // Initialize with some snow
+      setTimeout(() => {
+        const container = document.getElementById('snowflakesContainer15');
+        const counter = document.getElementById('snowCount15');
+        
+        if (container && counter) {
+          for (let i = 0; i < 10; i++) {
+            setTimeout(() => {
+              const snowflake = document.createElement('div');
+              snowflake.innerHTML = '❄️';
+              snowflake.style.position = 'absolute';
+              snowflake.style.color = 'white';
+              snowflake.style.fontSize = (Math.random() * 15 + 10) + 'px';
+              snowflake.style.left = Math.random() * 100 + '%';
+              snowflake.style.top = Math.random() * 30 + '%';
+              snowflake.style.opacity = Math.random() * 0.7 + 0.3;
+              snowflake.style.pointerEvents = 'none';
+              snowflake.style.zIndex = '10';
+              snowflake.style.animation = 'float15 ' + (Math.random() * 3 + 2) + 's linear forwards';
+              
+              container.appendChild(snowflake);
+              
+              // Update counter
+              counter.textContent = parseInt(counter.textContent || 0) + 1;
+              
+              // Remove after animation
+              setTimeout(() => {
+                if (snowflake.parentNode) {
+                  snowflake.parentNode.removeChild(snowflake);
+                }
+              }, 5000);
+            }, i * 100);
+          }
+        }
+        
+        // Start heart beating
+        const heart = document.getElementById('beatingHeart15');
+        setInterval(() => {
+          heart.style.animation = 'heartbeat15 1s ease-in-out';
+          setTimeout(() => heart.style.animation = '', 1000);
+        }, 5000);
+        
+        // Make lights twinkle occasionally
+        setInterval(() => {
+          if (Math.random() > 0.7) {
+            const randomLight = ['#light115', '#light215', '#light315'][Math.floor(Math.random() * 3)];
+            const light = document.querySelector(randomLight);
+            if (light) {
+              light.style.animation = 'twinkle15 0.5s ease-in-out';
+              setTimeout(() => light.style.animation = '', 500);
+            }
+          }
+        }, 3000);
+      }, 500);
+    <\/script>
+  `
+},
     };
 
     // --- Build calendar dynamically ---
@@ -1442,6 +2309,7 @@
   </script>
 </body>
 </html>
+
 
 
 
