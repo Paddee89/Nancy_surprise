@@ -2162,6 +2162,1407 @@
     <\/script>
   `
 },
+
+      16: {
+  title: "Day 16 – Who Walked Here?",
+  emoji: "🦊",
+  html: `
+    <div style="text-align: center; padding: 20px;">
+      <div style="font-size: 4rem; margin: 20px 0;">🐾❄️</div>
+
+      <h2 style="color: var(--gold); margin-bottom: 25px;">Snow Track Quiz</h2>
+
+      <div style="background: rgba(244, 201, 93, 0.1); padding: 25px; border-radius: 15px; margin: 25px 0; border: 2px solid rgba(244, 201, 93, 0.3);">
+        <p style="margin: 0; font-size: 1.3em; line-height: 1.6;">
+          <strong>16.</strong> I love how curious and clever you are
+        </p>
+      </div>
+
+      <p style="color: var(--secondary-text); max-width: 520px; margin: 0 auto 20px;">
+        Look closely at these animal tracks in the snow… can you guess who walked here?
+      </p>
+
+      <!-- Animal tracks image for Track 1 -->
+      <img 
+        src="tracks1.jpg" 
+        alt="Animal tracks in the snow" 
+        style="max-width: 100%; width: 420px; border-radius: 14px; margin: 20px 0; box-shadow: 0 10px 25px rgba(15,23,42,0.7); border: 2px solid rgba(148,163,184,0.6);"
+      >
+      <!-- Quiz input for Track 1 -->
+      <div style="margin: 20px auto; max-width: 360px; text-align: left;">
+        <input 
+          id="quiz16Answer1"
+          type="text"
+          placeholder="Who made these tracks?"
+          style="
+            width: 100%;
+            padding: 10px 12px;
+            font-size: 1rem;
+            border-radius: 10px;
+            border: 2px solid rgba(148,163,184,0.7);
+            background: rgba(15,23,42,0.7);
+            color: white;
+            outline: none;
+          "
+          onfocus="this.style.borderColor='#facc15';"
+          onblur="this.style.borderColor='rgba(148,163,184,0.7)';"
+        >
+      </div>
+
+      <!-- Check answer button for Track 1 -->
+      <button
+        onclick="
+          const input = document.getElementById('quiz16Answer1');
+          const feedback = document.getElementById('quiz16Feedback1');
+          const scoreEl = document.getElementById('quiz16Score');
+          const btn = this;
+          const value = input.value.trim().toLowerCase();
+          const correctAnswers = ['fox', 'red fox', 'a fox'];
+
+          if (!value) {
+            feedback.textContent = 'Type your guess first 😊';
+            feedback.style.color = '#facc15';
+            btn.innerHTML = '🧐 Check answer';
+            btn.style.background = 'linear-gradient(135deg, #8b5cf6, #6366f1)';
+            return;
+          }
+
+          if (correctAnswers.includes(value)) {
+            let score = parseInt(scoreEl.dataset.score || '0', 10);
+            score += 1;
+            scoreEl.dataset.score = score;
+            scoreEl.textContent = score;
+
+            feedback.textContent = 'Correct! It\\'s a fox 🦊 +1 point!';
+            feedback.style.color = '#22c55e';
+
+            btn.innerHTML = '✅ Correct!';
+            btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+            input.style.borderColor = '#22c55e';
+            input.style.background = 'rgba(22, 163, 74, 0.12)';
+          } else {
+            feedback.textContent = 'Not quite… try again 🐾';
+            feedback.style.color = '#f97316';
+
+            btn.innerHTML = '🔁 Try again';
+            btn.style.background = 'linear-gradient(135deg, #f97316, #ea580c)';
+            input.style.borderColor = '#f97316';
+            input.style.background = 'rgba(248, 113, 113, 0.05)';
+          }
+        "
+        style="padding: 12px 28px; margin-top: 8px; background: linear-gradient(135deg, #8b5cf6, #6366f1); color: white; border: none; border-radius: 999px; font-size: 1rem; cursor: pointer; font-weight: bold; transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;"
+        onmousedown="this.style.transform='scale(0.95)';"
+        onmouseup="this.style.transform='scale(1)';"
+      >
+        🧐 Check answer
+      </button>
+
+      <!-- Feedback + score -->
+      <div style="margin-top: 16px; min-height: 24px;">
+        <p id="quiz16Feedback1" style="margin: 0; font-size: 0.95rem; color: var(--secondary-text);">
+          You get a point for each correct guess 💫
+        </p>
+      </div>
+
+      <!-- Track 2 -->
+      <img 
+        src="tracks2.jpg" 
+        alt="Animal tracks 2" 
+        style="max-width: 100%; width: 420px; border-radius: 14px; margin: 20px 0; box-shadow: 0 10px 25px rgba(15,23,42,0.7); border: 2px solid rgba(148,163,184,0.6);"
+      >
+      <div style="margin: 20px auto; max-width: 360px; text-align: left;">
+        <input 
+          id="quiz16Answer2"
+          type="text"
+          placeholder="Who made these tracks?"
+          style="
+            width: 100%;
+            padding: 10px 12px;
+            font-size: 1rem;
+            border-radius: 10px;
+            border: 2px solid rgba(148,163,184,0.7);
+            background: rgba(15,23,42,0.7);
+            color: white;
+            outline: none;
+          "
+          onfocus="this.style.borderColor='#facc15';"
+          onblur="this.style.borderColor='rgba(148,163,184,0.7)';"
+        >
+      </div>
+      <button onclick="
+        const input = document.getElementById('quiz16Answer2');
+        const feedback = document.getElementById('quiz16Feedback2');
+        const scoreEl = document.getElementById('quiz16Score');
+        const btn = this;
+        const value = input.value.trim().toLowerCase();
+        const correctAnswers = ['rabbit', 'hare', 'bunny'];
+
+        if (!value) {
+          feedback.textContent = 'Type your guess first 😊';
+          feedback.style.color = '#facc15';
+          btn.innerHTML = '🧐 Check answer';
+          btn.style.background = 'linear-gradient(135deg, #8b5cf6, #6366f1)';
+          return;
+        }
+
+        if (correctAnswers.includes(value)) {
+          let score = parseInt(scoreEl.dataset.score || '0', 10);
+          score += 1;
+          scoreEl.dataset.score = score;
+          scoreEl.textContent = score;
+
+          feedback.textContent = 'Correct! It\\'s a rabbit 🐇 +1 point!';
+          feedback.style.color = '#22c55e';
+
+          btn.innerHTML = '✅ Correct!';
+          btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+          input.style.borderColor = '#22c55e';
+          input.style.background = 'rgba(22, 163, 74, 0.12)';
+        } else {
+          feedback.textContent = 'Not quite… try again 🐾';
+          feedback.style.color = '#f97316';
+
+          btn.innerHTML = '🔁 Try again';
+          btn.style.background = 'linear-gradient(135deg, #f97316, #ea580c)';
+          input.style.borderColor = '#f97316';
+          input.style.background = 'rgba(248, 113, 113, 0.05)';
+        }
+      "
+      style="padding: 12px 28px; margin-top: 8px; background: linear-gradient(135deg, #8b5cf6, #6366f1); color: white; border: none; border-radius: 999px; font-size: 1rem; cursor: pointer; font-weight: bold; transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;">
+        🧐 Check answer
+      </button>
+
+      <!-- Feedback + score -->
+      <div style="margin-top: 16px; min-height: 24px;">
+        <p id="quiz16Feedback2" style="margin: 0; font-size: 0.95rem; color: var(--secondary-text);">
+          You get a point for each correct guess 💫
+        </p>
+      </div>
+
+      <!-- Track 3 -->
+      <img 
+        src="tracks3.jpg" 
+        alt="Animal tracks 3" 
+        style="max-width: 100%; width: 420px; border-radius: 14px; margin: 20px 0; box-shadow: 0 10px 25px rgba(15,23,42,0.7); border: 2px solid rgba(148,163,184,0.6);"
+      >
+      <div style="margin: 20px auto; max-width: 360px; text-align: left;">
+        <input 
+          id="quiz16Answer3"
+          type="text"
+          placeholder="Who made these tracks?"
+          style="
+            width: 100%;
+            padding: 10px 12px;
+            font-size: 1rem;
+            border-radius: 10px;
+            border: 2px solid rgba(148,163,184,0.7);
+            background: rgba(15,23,42,0.7);
+            color: white;
+            outline: none;
+          "
+          onfocus="this.style.borderColor='#facc15';"
+          onblur="this.style.borderColor='rgba(148,163,184,0.7)';"
+        >
+      </div>
+      <button onclick="
+        const input = document.getElementById('quiz16Answer3');
+        const feedback = document.getElementById('quiz16Feedback3');
+        const scoreEl = document.getElementById('quiz16Score');
+        const btn = this;
+        const value = input.value.trim().toLowerCase();
+        const correctAnswers = ['wolf'];
+
+        if (!value) {
+          feedback.textContent = 'Type your guess first 😊';
+          feedback.style.color = '#facc15';
+          btn.innerHTML = '🧐 Check answer';
+          btn.style.background = 'linear-gradient(135deg, #8b5cf6, #6366f1)';
+          return;
+        }
+
+        if (correctAnswers.includes(value)) {
+          let score = parseInt(scoreEl.dataset.score || '0', 10);
+          score += 1;
+          scoreEl.dataset.score = score;
+          scoreEl.textContent = score;
+
+          feedback.textContent = 'Correct! It\\'s a wolf 🐺 +1 point!';
+          feedback.style.color = '#22c55e';
+
+          btn.innerHTML = '✅ Correct!';
+          btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+          input.style.borderColor = '#22c55e';
+          input.style.background = 'rgba(22, 163, 74, 0.12)';
+        } else {
+          feedback.textContent = 'Not quite… try again 🐾';
+          feedback.style.color = '#f97316';
+
+          btn.innerHTML = '🔁 Try again';
+          btn.style.background = 'linear-gradient(135deg, #f97316, #ea580c)';
+          input.style.borderColor = '#f97316';
+          input.style.background = 'rgba(248, 113, 113, 0.05)';
+        }
+      "
+      style="padding: 12px 28px; margin-top: 8px; background: linear-gradient(135deg, #8b5cf6, #6366f1); color: white; border: none; border-radius: 999px; font-size: 1rem; cursor: pointer; font-weight: bold; transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;">
+        🧐 Check answer
+      </button>
+
+      <!-- Feedback + score -->
+      <div style="margin-top: 16px; min-height: 24px;">
+        <p id="quiz16Feedback3" style="margin: 0; font-size: 0.95rem; color: var(--secondary-text);">
+          You get a point for each correct guess 💫
+        </p>
+      </div>
+
+      <!-- Track 4 -->
+      <img 
+        src="tracks4.jpg" 
+        alt="Animal tracks 4" 
+        style="max-width: 100%; width: 420px; border-radius: 14px; margin: 20px 0; box-shadow: 0 10px 25px rgba(15,23,42,0.7); border: 2px solid rgba(148,163,184,0.6);"
+      >
+      <div style="margin: 20px auto; max-width: 360px; text-align: left;">
+        <input 
+          id="quiz16Answer4"
+          type="text"
+          placeholder="Who made these tracks?"
+          style="
+            width: 100%;
+            padding: 10px 12px;
+            font-size: 1rem;
+            border-radius: 10px;
+            border: 2px solid rgba(148,163,184,0.7);
+            background: rgba(15,23,42,0.7);
+            color: white;
+            outline: none;
+          "
+          onfocus="this.style.borderColor='#facc15';"
+          onblur="this.style.borderColor='rgba(148,163,184,0.7)';"
+        >
+      </div>
+      <button onclick="
+        const input = document.getElementById('quiz16Answer4');
+        const feedback = document.getElementById('quiz16Feedback4');
+        const scoreEl = document.getElementById('quiz16Score');
+        const btn = this;
+        const value = input.value.trim().toLowerCase();
+        const correctAnswers = ['squirrel'];
+
+        if (!value) {
+          feedback.textContent = 'Type your guess first 😊';
+          feedback.style.color = '#facc15';
+          btn.innerHTML = '🧐 Check answer';
+          btn.style.background = 'linear-gradient(135deg, #8b5cf6, #6366f1)';
+          return;
+        }
+
+        if (correctAnswers.includes(value)) {
+          let score = parseInt(scoreEl.dataset.score || '0', 10);
+          score += 1;
+          scoreEl.dataset.score = score;
+          scoreEl.textContent = score;
+
+          feedback.textContent = 'Correct! It\\'s a squirrel 🐿️ +1 point!';
+          feedback.style.color = '#22c55e';
+
+          btn.innerHTML = '✅ Correct!';
+          btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+          input.style.borderColor = '#22c55e';
+          input.style.background = 'rgba(22, 163, 74, 0.12)';
+        } else {
+          feedback.textContent = 'Not quite… try again 🐾';
+          feedback.style.color = '#f97316';
+
+          btn.innerHTML = '🔁 Try again';
+          btn.style.background = 'linear-gradient(135deg, #f97316, #ea580c)';
+          input.style.borderColor = '#f97316';
+          input.style.background = 'rgba(248, 113, 113, 0.05)';
+        }
+      "
+      style="padding: 12px 28px; margin-top: 8px; background: linear-gradient(135deg, #8b5cf6, #6366f1); color: white; border: none; border-radius: 999px; font-size: 1rem; cursor: pointer; font-weight: bold; transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;">
+        🧐 Check answer
+      </button>
+
+      <!-- Feedback + score -->
+      <div style="margin-top: 16px; min-height: 24px;">
+        <p id="quiz16Feedback4" style="margin: 0; font-size: 0.95rem; color: var(--secondary-text);">
+          You get a point for each correct guess 💫
+        </p>
+      </div>
+      <!-- Track 5 -->
+      <img 
+        src="tracks5.jpg" 
+        alt="Animal tracks 5" 
+        style="max-width: 100%; width: 420px; border-radius: 14px; margin: 20px 0; box-shadow: 0 10px 25px rgba(15,23,42,0.7); border: 2px solid rgba(148,163,184,0.6);"
+      >
+      <div style="margin: 20px auto; max-width: 360px; text-align: left;">
+        <input 
+          id="quiz16Answer5"
+          type="text"
+          placeholder="Who made these tracks?"
+          style="
+            width: 100%;
+            padding: 10px 12px;
+            font-size: 1rem;
+            border-radius: 10px;
+            border: 2px solid rgba(148,163,184,0.7);
+            background: rgba(15,23,42,0.7);
+            color: white;
+            outline: none;
+          "
+          onfocus="this.style.borderColor='#facc15';"
+          onblur="this.style.borderColor='rgba(148,163,184,0.7)';"
+        >
+      </div>
+      <button onclick="
+        const input = document.getElementById('quiz16Answer5');
+        const feedback = document.getElementById('quiz16Feedback5');
+        const scoreEl = document.getElementById('quiz16Score');
+        const btn = this;
+        const value = input.value.trim().toLowerCase();
+        const correctAnswers = ['deer', 'stag'];
+
+        if (!value) {
+          feedback.textContent = 'Type your guess first 😊';
+          feedback.style.color = '#facc15';
+          btn.innerHTML = '🧐 Check answer';
+          btn.style.background = 'linear-gradient(135deg, #8b5cf6, #6366f1)';
+          return;
+        }
+
+        if (correctAnswers.includes(value)) {
+          let score = parseInt(scoreEl.dataset.score || '0', 10);
+          score += 1;
+          scoreEl.dataset.score = score;
+          scoreEl.textContent = score;
+
+          feedback.textContent = 'Correct! It\\'s a deer 🦌 +1 point!';
+          feedback.style.color = '#22c55e';
+
+          btn.innerHTML = '✅ Correct!';
+          btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+          input.style.borderColor = '#22c55e';
+          input.style.background = 'rgba(22, 163, 74, 0.12)';
+        } else {
+          feedback.textContent = 'Not quite… try again 🐾';
+          feedback.style.color = '#f97316';
+
+          btn.innerHTML = '🔁 Try again';
+          btn.style.background = 'linear-gradient(135deg, #f97316, #ea580c)';
+          input.style.borderColor = '#f97316';
+          input.style.background = 'rgba(248, 113, 113, 0.05)';
+        }
+      "
+      style="padding: 12px 28px; margin-top: 8px; background: linear-gradient(135deg, #8b5cf6, #6366f1); color: white; border: none; border-radius: 999px; font-size: 1rem; cursor: pointer; font-weight: bold; transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;">
+        🧐 Check answer
+      </button>
+
+      <!-- Feedback + score -->
+      <div style="margin-top: 16px; min-height: 24px;">
+        <p id="quiz16Feedback5" style="margin: 0; font-size: 0.95rem; color: var(--secondary-text);">
+          You get a point for each correct guess 💫
+        </p>
+      </div>
+      <!-- Track 6 -->
+      <img 
+        src="tracks6.jpg" 
+        alt="Animal tracks 6" 
+        style="max-width: 100%; width: 420px; border-radius: 14px; margin: 20px 0; box-shadow: 0 10px 25px rgba(15,23,42,0.7); border: 2px solid rgba(148,163,184,0.6);"
+      >
+      <div style="margin: 20px auto; max-width: 360px; text-align: left;">
+        <input 
+          id="quiz16Answer6"
+          type="text"
+          placeholder="Who made these tracks?"
+          style="
+            width: 100%;
+            padding: 10px 12px;
+            font-size: 1rem;
+            border-radius: 10px;
+            border: 2px solid rgba(148,163,184,0.7);
+            background: rgba(15,23,42,0.7);
+            color: white;
+            outline: none;
+          "
+          onfocus="this.style.borderColor='#facc15';"
+          onblur="this.style.borderColor='rgba(148,163,184,0.7)';"
+        >
+      </div>
+      <button onclick="
+        const input = document.getElementById('quiz16Answer6');
+        const feedback = document.getElementById('quiz16Feedback6');
+        const scoreEl = document.getElementById('quiz16Score');
+        const btn = this;
+        const value = input.value.trim().toLowerCase();
+        const correctAnswers = ['bear'];
+
+        if (!value) {
+          feedback.textContent = 'Type your guess first 😊';
+          feedback.style.color = '#facc15';
+          btn.innerHTML = '🧐 Check answer';
+          btn.style.background = 'linear-gradient(135deg, #8b5cf6, #6366f1)';
+          return;
+        }
+
+        if (correctAnswers.includes(value)) {
+          let score = parseInt(scoreEl.dataset.score || '0', 10);
+          score += 1;
+          scoreEl.dataset.score = score;
+          scoreEl.textContent = score;
+
+          feedback.textContent = 'Correct! It\\'s a bear 🐻 +1 point!';
+          feedback.style.color = '#22c55e';
+
+          btn.innerHTML = '✅ Correct!';
+          btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+          input.style.borderColor = '#22c55e';
+          input.style.background = 'rgba(22, 163, 74, 0.12)';
+        } else {
+          feedback.textContent = 'Not quite… try again 🐾';
+          feedback.style.color = '#f97316';
+
+          btn.innerHTML = '🔁 Try again';
+          btn.style.background = 'linear-gradient(135deg, #f97316, #ea580c)';
+          input.style.borderColor = '#f97316';
+          input.style.background = 'rgba(248, 113, 113, 0.05)';
+        }
+      "
+      style="padding: 12px 28px; margin-top: 8px; background: linear-gradient(135deg, #8b5cf6, #6366f1); color: white; border: none; border-radius: 999px; font-size: 1rem; cursor: pointer; font-weight: bold; transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;">
+        🧐 Check answer
+      </button>
+
+      <!-- Feedback + score -->
+      <div style="margin-top: 16px; min-height: 24px;">
+        <p id="quiz16Feedback6" style="margin: 0; font-size: 0.95rem; color: var(--secondary-text);">
+          You get a point for each correct guess 💫
+        </p>
+      </div>
+      <!-- Track 7 -->
+      <img 
+        src="tracks7.jpg" 
+        alt="Animal tracks 7" 
+        style="max-width: 100%; width: 420px; border-radius: 14px; margin: 20px 0; box-shadow: 0 10px 25px rgba(15,23,42,0.7); border: 2px solid rgba(148,163,184,0.6);"
+      >
+      <div style="margin: 20px auto; max-width: 360px; text-align: left;">
+        <input 
+          id="quiz16Answer7"
+          type="text"
+          placeholder="Who made these tracks?"
+          style="
+            width: 100%;
+            padding: 10px 12px;
+            font-size: 1rem;
+            border-radius: 10px;
+            border: 2px solid rgba(148,163,184,0.7);
+            background: rgba(15,23,42,0.7);
+            color: white;
+            outline: none;
+          "
+          onfocus="this.style.borderColor='#facc15';"
+          onblur="this.style.borderColor='rgba(148,163,184,0.7)';"
+        >
+      </div>
+      <button onclick="
+        const input = document.getElementById('quiz16Answer7');
+        const feedback = document.getElementById('quiz16Feedback7');
+        const scoreEl = document.getElementById('quiz16Score');
+        const btn = this;
+        const value = input.value.trim().toLowerCase();
+        const correctAnswers = ['racoon', 'raccoon'];
+
+        if (!value) {
+          feedback.textContent = 'Type your guess first 😊';
+          feedback.style.color = '#facc15';
+          btn.innerHTML = '🧐 Check answer';
+          btn.style.background = 'linear-gradient(135deg, #8b5cf6, #6366f1)';
+          return;
+        }
+
+        if (correctAnswers.includes(value)) {
+          let score = parseInt(scoreEl.dataset.score || '0', 10);
+          score += 1;
+          scoreEl.dataset.score = score;
+          scoreEl.textContent = score;
+
+          feedback.textContent = 'Correct! It\\'s a raccoon 🦝 +1 point!';
+          feedback.style.color = '#22c55e';
+
+          btn.innerHTML = '✅ Correct!';
+          btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+          input.style.borderColor = '#22c55e';
+          input.style.background = 'rgba(22, 163, 74, 0.12)';
+        } else {
+          feedback.textContent = 'Not quite… try again 🐾';
+          feedback.style.color = '#f97316';
+
+          btn.innerHTML = '🔁 Try again';
+          btn.style.background = 'linear-gradient(135deg, #f97316, #ea580c)';
+          input.style.borderColor = '#f97316';
+          input.style.background = 'rgba(248, 113, 113, 0.05)';
+        }
+      "
+      style="padding: 12px 28px; margin-top: 8px; background: linear-gradient(135deg, #8b5cf6, #6366f1); color: white; border: none; border-radius: 999px; font-size: 1rem; cursor: pointer; font-weight: bold; transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;">
+        🧐 Check answer
+      </button>
+
+      <!-- Feedback + score -->
+      <div style="margin-top: 16px; min-height: 24px;">
+        <p id="quiz16Feedback7" style="margin: 0; font-size: 0.95rem; color: var(--secondary-text);">
+          You get a point for each correct guess 💫
+        </p>
+      </div>
+
+      <!-- Track 8 -->
+      <img 
+        src="tracks8.jpg" 
+        alt="Animal tracks 8" 
+        style="max-width: 100%; width: 420px; border-radius: 14px; margin: 20px 0; box-shadow: 0 10px 25px rgba(15,23,42,0.7); border: 2px solid rgba(148,163,184,0.6);"
+      >
+      <div style="margin: 20px auto; max-width: 360px; text-align: left;">
+        <input 
+          id="quiz16Answer8"
+          type="text"
+          placeholder="Who made these tracks?"
+          style="
+            width: 100%;
+            padding: 10px 12px;
+            font-size: 1rem;
+            border-radius: 10px;
+            border: 2px solid rgba(148,163,184,0.7);
+            background: rgba(15,23,42,0.7);
+            color: white;
+            outline: none;
+          "
+          onfocus="this.style.borderColor='#facc15';"
+          onblur="this.style.borderColor='rgba(148,163,184,0.7)';"
+        >
+      </div>
+      <button onclick="
+        const input = document.getElementById('quiz16Answer8');
+        const feedback = document.getElementById('quiz16Feedback8');
+        const scoreEl = document.getElementById('quiz16Score');
+        const btn = this;
+        const value = input.value.trim().toLowerCase();
+        const correctAnswers = ['bird', 'pigeon', 'owl'];
+
+        if (!value) {
+          feedback.textContent = 'Type your guess first 😊';
+          feedback.style.color = '#facc15';
+          btn.innerHTML = '🧐 Check answer';
+          btn.style.background = 'linear-gradient(135deg, #8b5cf6, #6366f1)';
+          return;
+        }
+
+        if (correctAnswers.includes(value)) {
+          let score = parseInt(scoreEl.dataset.score || '0', 10);
+          score += 1;
+          scoreEl.dataset.score = score;
+          scoreEl.textContent = score;
+
+          feedback.textContent = 'Correct! It\\'s a bird 🐦 +1 point!';
+          feedback.style.color = '#22c55e';
+
+          btn.innerHTML = '✅ Correct!';
+          btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+          input.style.borderColor = '#22c55e';
+          input.style.background = 'rgba(22, 163, 74, 0.12)';
+        } else {
+          feedback.textContent = 'Not quite… try again 🐾';
+          feedback.style.color = '#f97316';
+
+          btn.innerHTML = '🔁 Try again';
+          btn.style.background = 'linear-gradient(135deg, #f97316, #ea580c)';
+          input.style.borderColor = '#f97316';
+          input.style.background = 'rgba(248, 113, 113, 0.05)';
+        }
+      "
+      style="padding: 12px 28px; margin-top: 8px; background: linear-gradient(135deg, #8b5cf6, #6366f1); color: white; border: none; border-radius: 999px; font-size: 1rem; cursor: pointer; font-weight: bold; transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;">
+        🧐 Check answer
+      </button>
+
+      <!-- Feedback + score -->
+      <div style="margin-top: 16px; min-height: 24px;">
+        <p id="quiz16Feedback8" style="margin: 0; font-size: 0.95rem; color: var(--secondary-text);">
+          You get a point for each correct guess 💫
+        </p>
+      </div>
+
+
+      <!-- Final Score -->
+      <div style="margin-top: 40px; font-size: 1.2rem; color: var(--gold); font-weight: bold;">
+        <span>Your Final Score: <span id="quiz16Score" data-score="0">0</span> points</span>
+      </div>
+
+      <p style="margin-top: 24px; font-size: 0.9rem; color: var(--secondary-text); max-width: 480px; margin-left: auto; margin-right: auto;">
+        P.S. In my heart you always get full points anyway 💖
+      </p>
+    </div>
+  `,
+},
+
+17: {
+  title: "Day 17 – A Letter From Me to You",
+  emoji: "💌",
+  html: `
+    <div style="text-align: center; padding: 20px;">
+      <div style="font-size: 4rem; margin: 20px 0;">💌✨</div>
+
+      <h2 style="color: var(--gold); margin-bottom: 25px;">A 'Handwritten' Letter</h2>
+
+      <!-- Love reason -->
+      <div style="background: rgba(244, 201, 93, 0.1); padding: 25px; border-radius: 15px; margin: 25px 0; border: 2px solid rgba(244, 201, 93, 0.3);">
+        <p style="margin: 0; font-size: 1.3em;">
+          <strong>17.</strong> I love the way we communicate
+        </p>
+      </div>
+
+      <!-- Closed letter image -->
+      <img
+        id="letter17Cover"
+        src="letter.jpg"
+        alt="Closed letter"
+        style="
+          max-width: 420px;
+          width: 100%;
+          margin: 0 auto 20px;
+          display: block;
+          border-radius: 14px;
+          box-shadow: 0 18px 35px rgba(0,0,0,0.35);
+          border: 2px solid rgba(148,163,184,0.4);
+        "
+      >
+
+      <!-- Letter paper -->
+      <div id="letter17" style="
+        display: none;
+        max-width: 720px;
+        margin: 0 auto;
+        text-align: left;
+        padding: 40px 45px;
+        border-radius: 14px;
+        background-image: url('paper.jpg');
+        background-size: cover;
+        background-position: center;
+        box-shadow: 0 25px 40px rgba(0,0,0,0.25);
+        font-family: 'Segoe Script','Bradley Hand','Comic Sans MS',cursive;
+        color: #2b2b2b;
+        line-height: 1.75;
+      ">
+
+        <p id="l17p1" style="display:none;"><strong>Dear Nancy, my love, Süße, Nancita...</strong></p>
+
+        <p id="l17p2" style="display:none;">
+          I want to take the time on this day of the calendar to write you a letter.
+          It is meant as a gentle reminder of how much you mean to me.
+        </p>
+
+        <p id="l17p3" style="display:none;">
+          When we first met, I would have never expected for things to turn out the way they did.
+          I always felt the connection between us, but never would I have thought that you could
+          turn my life upside down like this.
+        </p>
+
+        <p id="l17p4" style="display:none;">
+          You gave me the courage to make difficult and necessary decisions in my life.
+          And now finally, with you at my side, I can start to be happy.
+        </p>
+
+        <p id="l17p5" style="display:none;">
+          You taught me how to communicate, how to solve arguments, how to work on one another
+          and frankly, you taught me how to love.
+        </p>
+
+        <p id="l17p6" style="display:none;">
+          It is astonishing to see how well we complement each other and how well we fit together.
+          Being able to fulfil the other one’s needs without even trying.
+        </p>
+
+        <p id="l17p7" style="display:none;">
+          I love you so much, and I am so grateful I had the chance to meet you and even more
+          that I now have the chance to love you.
+        </p>
+
+        <p id="l17p8" style="display:none;">
+          I am hoping for many more beautiful years, experiences and memories together with you.
+        </p>
+
+        <p id="l17p9" style="display:none; margin-top: 20px;">
+          With deepest love,<br>
+          <span style="font-size:1.3rem;">your Patricio</span>
+        </p>
+
+        <div id="l17heart" style="display:none; text-align:center; font-size:1.8rem;">❤️</div>
+      </div>
+
+      <!-- Control button -->
+      <button
+        data-step="0"
+        onclick="
+          const step = parseInt(this.dataset.step,10) + 1;
+          this.dataset.step = step;
+
+          if (step === 1) {
+            document.getElementById('letter17Cover').style.display = 'none';
+            document.getElementById('letter17').style.display = 'block';
+            this.innerHTML = '📖 Read next';
+            this.style.background = 'linear-gradient(135deg,#8b5cf6,#6366f1)';
+          }
+
+          const el = document.getElementById('l17p' + step);
+          if (el) el.style.display = 'block';
+
+          if (step === 9) {
+            document.getElementById('l17heart').style.display = 'block';
+            this.innerHTML = '💖';
+            this.disabled = true;
+            this.style.background = 'linear-gradient(135deg,#22c55e,#16a34a)';
+          }
+        "
+        style="
+          margin-top: 25px;
+          padding: 12px 28px;
+          background: linear-gradient(135deg,#db2777,#be185d);
+          color: white;
+          border: none;
+          border-radius: 999px;
+          font-size: 1rem;
+          font-weight: bold;
+          cursor: pointer;
+        "
+      >
+        💌 Open letter
+      </button>
+    </div>
+  `
+},
+
+18: {
+  title: "Day 18 – Pixel Thoughts",
+  emoji: "🌌",
+  html: `
+    <div style="text-align: center; padding: 20px;">
+      <div style="font-size: 4rem; margin: 20px 0;">🌌💭</div>
+
+      <h2 style="color: var(--gold); margin-bottom: 25px;">Pixel Thoughts</h2>
+
+      <!-- Love reason -->
+      <div style="background: rgba(244, 201, 93, 0.1); padding: 25px; border-radius: 15px; margin: 25px 0; border: 2px solid rgba(244, 201, 93, 0.3);">
+        <p style="margin: 0; font-size: 1.3em; line-height: 1.6;">
+          <strong>18.</strong> I love how important self-care is to you
+        </p>
+      </div>
+
+      <p style="color: var(--secondary-text); max-width: 560px; margin: 0 auto 20px;">
+        This is a tiny, beautiful little place to put a worry into space for a minute.
+        Write one thought, breathe… and let it drift away ✨
+      </p>
+
+      <!-- Preview card -->
+      <div style="max-width: 680px; margin: 22px auto; padding: 22px; border-radius: 16px; background: rgba(15,23,42,0.6); border: 1px solid rgba(148,163,184,0.5); box-shadow: 0 20px 35px rgba(0,0,0,0.25); text-align: left;">
+        <div style="display:flex; gap:14px; align-items:flex-start;">
+          <div style="font-size: 1.8rem; line-height: 1;">🪐</div>
+          <div>
+            <div style="font-size: 1.05rem; color: var(--text); font-weight: 700; margin-bottom: 6px;">
+              Pixel Thoughts (60 seconds of calm)
+            </div>
+            <div style="color: var(--secondary-text); font-size: 0.95rem; line-height: 1.5;">
+              Type your worry, watch it float away among the stars, and breathe with it.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action button (same inline button logic style) -->
+      <button onclick="
+        const button = this;
+        const msg = document.getElementById('day18Msg');
+
+        button.style.transform = 'scale(0.92)';
+        button.innerHTML = '🚀 OPENING...';
+        button.style.background = 'linear-gradient(135deg, #0ea5e9, #2563eb)';
+
+        setTimeout(() => {
+          button.style.transform = 'scale(1.05)';
+          button.innerHTML = '🌌 OPENED!';
+          button.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+          if (msg) {
+            msg.style.display = 'block';
+            msg.innerHTML = '&lt;div style=&quot;background:rgba(34,197,94,0.08);padding:14px;border-radius:12px;border:2px solid rgba(34,197,94,0.25);margin-top:16px;&quot;&gt;&lt;p style=&quot;color:#22c55e;font-weight:bold;margin:0;&quot;&gt;Take a deep breath… I’m right here with you 💖&lt;/p&gt;&lt;/div&gt;';
+            msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+          window.open('https://www.pixelthoughts.co/', '_blank');
+        }, 650);
+      " style="
+        padding: 12px 28px;
+        margin-top: 10px;
+        background: linear-gradient(135deg, #8b5cf6, #6366f1);
+        color: white;
+        border: none;
+        border-radius: 999px;
+        font-size: 1rem;
+        cursor: pointer;
+        font-weight: bold;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      "
+      onmousedown="this.style.transform='scale(0.95)';"
+      onmouseup="this.style.transform='scale(1)';"
+      >
+        💭 Go to Pixel Thoughts
+      </button>
+
+      <div id="day18Msg" style="display:none;"></div>
+
+
+    </div>
+  `
+},
+
+19: {
+  title: "Day 19 – Enchanted Love Lantern",
+  emoji: "🏮",
+  html: `
+    <div style="text-align: center; padding: 20px;">
+      <div style="font-size: 4rem; margin: 20px 0;">🏮✨</div>
+
+      <h2 style="color: var(--gold); margin-bottom: 25px;">Our Enchanted Night</h2>
+
+      <div style="background: rgba(244, 201, 93, 0.1); padding: 25px; border-radius: 15px; margin: 25px 0; border: 2px solid rgba(244, 201, 93, 0.3);">
+        <p style="margin: 0; font-size: 1.3em; line-height: 1.6;">
+          <strong>19.</strong> I love how much you light up my life
+        </p>
+      </div>
+
+      <div style="background: rgba(14, 165, 233, 0.1); padding: 30px; border-radius: 15px; margin: 25px auto; max-width: 700px;">
+        <h3 style="color: #0ea5e9; margin-bottom: 20px;">✨ Magical Lantern ✨</h3>
+
+        <p style="color: var(--secondary-text); margin-bottom: 25px;">
+          Light the lantern, release wishes, and sprinkle a little magic into our night.
+        </p>
+
+        <!-- Lantern Container -->
+        <div id="lantern19" style="
+          width: 300px;
+          height: 300px;
+          margin: 0 auto 30px;
+          position: relative;
+          transition: transform 0.3s ease;
+          filter: brightness(0.5);
+        ">
+          <!-- Glow -->
+          <div id="lanternGlow19" style="
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle at 50% 45%, rgba(244,201,93,0.65), rgba(244,201,93,0.12) 55%, rgba(15,23,42,0) 72%);
+            filter: blur(2px);
+            opacity: 0.45;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+          "></div>
+
+          <!-- Body -->
+          <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:170px; height:210px;">
+            <div style="position:absolute; top:0; left:50%; transform:translateX(-50%); width:120px; height:26px; background:linear-gradient(to bottom, rgba(148,163,184,0.9), rgba(71,85,105,0.9)); border-radius:14px;"></div>
+
+            <div style="position:absolute; top:-34px; left:50%; transform:translateX(-50%); width:90px; height:55px; border:4px solid rgba(148,163,184,0.85); border-bottom:none; border-radius:60px 60px 0 0;"></div>
+
+            <div id="lanternPaper19" style="
+              position:absolute;
+              top:18px;
+              left:50%;
+              transform:translateX(-50%);
+              width:150px;
+              height:175px;
+              background:radial-gradient(circle at 50% 35%, rgba(255,255,255,0.95), rgba(255,255,255,0.65));
+              border-radius:24px;
+              box-shadow: inset 0 0 35px rgba(244,201,93,0.55), 0 14px 30px rgba(0,0,0,0.25);
+              border:2px solid rgba(244,201,93,0.35);
+              transition: filter 0.4s ease, transform 0.4s ease;
+            ">
+              <div id="flame19" style="
+                position:absolute;
+                bottom:28px;
+                left:50%;
+                transform:translateX(-50%);
+                width:22px;
+                height:30px;
+                background:radial-gradient(circle at 50% 30%, rgba(255,255,255,0.9), rgba(245,158,11,0.95) 45%, rgba(234,88,12,0.95) 80%);
+                border-radius:50%;
+                filter:drop-shadow(0 0 10px rgba(244,201,93,0.85));
+                opacity:0;
+                transition:opacity 0.35s ease;
+              "></div>
+
+              <div id="lanternHeart19" style="
+                position:absolute;
+                top:62px;
+                left:50%;
+                transform:translateX(-50%);
+                font-size:1.6rem;
+                opacity:0.35;
+                transition:opacity 0.4s ease, transform 0.4s ease;
+              ">❤️</div>
+            </div>
+          </div>
+
+          <div id="effects19" style="position:absolute; inset:0; pointer-events:none;"></div>
+        </div>
+
+        <!-- Buttons -->
+        <div style="display:flex; gap:15px; justify-content:center; flex-wrap:wrap;">
+
+          <!-- Light -->
+          <button onclick="
+            document.getElementById('lantern19').style.filter = 'brightness(1)';
+            document.getElementById('lanternGlow19').style.opacity = '1';
+            document.getElementById('lanternGlow19').style.transform = 'scale(1.18)';
+            document.getElementById('lanternGlow19').style.filter = 'blur(5px)';
+
+            document.getElementById('flame19').style.opacity = '1';
+
+            const paper = document.getElementById('lanternPaper19');
+            paper.style.filter = 'brightness(1.18) saturate(1.25) drop-shadow(0 0 24px rgba(244,201,93,0.95))';
+
+            const heart = document.getElementById('lanternHeart19');
+            heart.style.opacity = '1';
+            heart.style.transform = 'translateX(-50%) scale(1.18)';
+
+            document.getElementById('status19').textContent = 'The lantern is glowing… make a wish ✨';
+            document.getElementById('status19').style.color = '#22c55e';
+          "
+          style="padding:12px 20px; background:rgba(245,158,11,0.2); border:2px solid #f59e0b; border-radius:20px; color:white; font-weight:bold;">
+            🔥 Light Lantern
+          </button>
+
+          <!-- Wish -->
+          <button onclick="
+            const effects = document.getElementById('effects19');
+
+            const allMsgs = [
+  '💫 our next adventure', '🌙 a calm night', '💖 more kisses', '✨ more laughs',
+  '🧸 cozy cuddles', '🌟 your happiness', '🐕 our dogs to be happy and healthy',
+  '🧑‍⚕️ your health', '😟 less stress', '😥 less anxiety', '🕯️soft days and safe love',
+  '🌙 peace when life gets loud', '🌱 growing side by side', '🫶 comfort in every silence',
+  '🏡 love that feels like home', '🌸 endless patience for us', '🔥 warmth even on cold days',
+  '🧭 always finding our way back', '💖 being chosen, every day'
+            ];
+
+            if (!window._wishBag19 || window._wishBag19.length === 0) {
+              window._wishBag19 = allMsgs.slice();
+            }
+
+            const i = Math.floor(Math.random() * window._wishBag19.length);
+            const msg = window._wishBag19.splice(i,1)[0];
+
+            const w = document.createElement('div');
+            w.innerHTML = msg;
+            w.style.position='absolute';
+            w.style.left='50%';
+            w.style.bottom='30px';
+            w.style.transform='translateX(-50%)';
+            w.style.padding='8px 14px';
+            w.style.borderRadius='999px';
+            w.style.background='rgba(15,23,42,0.75)';
+            w.style.border='1px solid rgba(148,163,184,0.6)';
+            w.style.color='white';
+            w.style.animation='wishFloat19 3s ease-out forwards';
+            effects.appendChild(w);
+
+            setTimeout(()=>w.remove(),3000);
+            document.getElementById('status19').textContent='Wish released… 🌟';
+            document.getElementById('status19').style.color='#facc15';
+          "
+          style="padding:12px 20px; background:rgba(139,92,246,0.2); border:2px solid #8b5cf6; border-radius:20px; color:white; font-weight:bold;">
+            💫 Release a Wish
+          </button>
+
+          <!-- Reset -->
+          <button onclick="
+            document.getElementById('lantern19').style.filter='brightness(0.5)';
+            document.getElementById('lanternGlow19').style.opacity='0.45';
+            document.getElementById('lanternGlow19').style.transform='scale(1)';
+            document.getElementById('lanternGlow19').style.filter='blur(2px)';
+            document.getElementById('flame19').style.opacity='0';
+            document.getElementById('lanternPaper19').style.filter='';
+            document.getElementById('lanternHeart19').style.opacity='0.35';
+            document.getElementById('effects19').innerHTML='';
+            window._wishBag19 = null;
+
+            document.getElementById('status19').textContent='Ready for more magic ✨';
+            document.getElementById('status19').style.color='var(--secondary-text)';
+          "
+          style="padding:12px 20px; background:rgba(59,130,246,0.2); border:2px solid #3b82f6; border-radius:20px; color:white; font-weight:bold;">
+            🔄 Reset
+          </button>
+        </div>
+
+        <p id="status19" style="margin-top:18px; font-size:0.95rem; color:var(--secondary-text);">
+          Ready for more magic ✨
+        </p>
+      </div>
+    </div>
+
+    <style>
+      @keyframes wishFloat19 {
+        0% { transform: translate(-50%,0); opacity:1; }
+        100% { transform: translate(-50%,-220px); opacity:0; }
+      }
+    </style>
+  `
+},
+
+20: {
+title: "Day 20 – Zeus’ Adventures",
+emoji: "🐶",
+html: `
+<div style="text-align: center; padding: 20px;">
+<div style="font-size: 4rem; margin: 20px 0;">🐶✨</div>
+
+  <h2 style="color: var(--gold); margin-bottom: 25px;">Zeus’ Little Adventures</h2>
+
+  <!-- Love reason -->
+  <div style="background: rgba(244, 201, 93, 0.1); padding: 25px; border-radius: 15px; margin: 25px 0; border: 2px solid rgba(244, 201, 93, 0.3);">
+    <p style="margin: 0; font-size: 1.3em; line-height: 1.6;">
+      <strong>20.</strong> I love how much you love Zeus
+    </p>
+  </div>
+
+  <p style="color: var(--secondary-text); max-width: 560px; margin: 0 auto 20px;">
+    Choose an adventure button and see what Zeus is up to 🐾
+  </p>
+
+  <!-- Photo card (NO CROPPING) -->
+  <div style="
+    max-width: 720px;
+    margin: 0 auto;
+    background: rgba(30,41,59,0.25);
+    border: 1px solid rgba(148,163,184,0.35);
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: 0 18px 35px rgba(0,0,0,0.25);
+  ">
+    <div style="
+      width: 100%;
+      max-width: 520px;
+      height: 360px;
+      margin: 0 auto;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 2px solid rgba(148,163,184,0.45);
+      background: rgba(15,23,42,0.6);
+    ">
+      <img
+        id="zeusImg20"
+        src="zeus.jpg"
+        alt="Zeus"
+        style="
+          width: 100%;
+          height: 100%;
+          object-fit: contain; /* <-- IMPORTANT: no cropping */
+          background: rgba(15,23,42,0.6);
+          display: block;
+        "
+      >
+    </div>
+
+    <!-- Status / story -->
+    <div style="margin-top: 14px; padding: 14px 16px; border-radius: 14px; background: rgba(15,23,42,0.6); border: 1px solid rgba(148,163,184,0.35);">
+      <p id="zeusMsg20" style="margin: 0; color: white; font-weight: 700; font-size: 1.05rem;">
+        Pick an adventure below… Zeus is ready 🐾
+      </p>
+      <p id="zeusSub20" style="margin: 6px 0 0; color: var(--secondary-text); font-size: 0.92rem;">
+        (Tip: keep clicking different buttons — Zeus has lots to say.)
+      </p>
+    </div>
+
+    <!-- Happiness meter -->
+    <div style="margin-top: 14px; display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+      <div style="padding: 10px 14px; background: rgba(255,255,255,0.08); border-radius: 14px; min-width: 140px;">
+        <div style="color: var(--secondary-text); font-size: 0.8rem;">Adventures</div>
+        <div id="advCount20" style="color: var(--gold); font-size: 1.6rem; font-weight: 900;">0</div>
+      </div>
+
+      <div style="padding: 10px 14px; background: rgba(255,255,255,0.08); border-radius: 14px; min-width: 220px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 6px;">
+          <span style="color: var(--secondary-text); font-size: 0.8rem;">Happiness</span>
+          <span id="happy20" style="color: #22c55e; font-weight: 900;">0%</span>
+        </div>
+        <div style="height: 10px; border-radius: 999px; background: rgba(148,163,184,0.25); overflow:hidden;">
+          <div id="happyBar20" style="height: 100%; width: 0%; background: rgba(34,197,94,0.9); transition: width 0.35s ease;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buttons row -->
+    <div style="margin-top: 18px; display:flex; gap: 10px; justify-content:center; flex-wrap: wrap;">
+      <button onclick="
+        const img = document.getElementById('zeusImg20');
+        const msg = document.getElementById('zeusMsg20');
+        const sub = document.getElementById('zeusSub20');
+        const advEl = document.getElementById('advCount20');
+        const happyEl = document.getElementById('happy20');
+        const bar = document.getElementById('happyBar20');
+        const btn = this;
+
+        if (img) img.src = 'walk.gif';
+
+        let adv = parseInt(advEl.textContent||'0',10) + 1;
+        advEl.textContent = adv;
+
+        // happiness +12 (cap 100)
+        let h = parseInt((happyEl.textContent||'0').replace('%',''),10);
+        h = Math.min(100, h + 12);
+        happyEl.textContent = h + '%';
+        bar.style.width = h + '%';
+
+        btn.innerHTML = '🐾 Walking...';
+        btn.style.background = 'linear-gradient(135deg,#22c55e,#16a34a)';
+
+        const lines = [
+          'Zeus is going for a walk 🐕‍🦺',
+        ];
+        if (msg) msg.textContent = lines[Math.floor(Math.random()*lines.length)];
+        if (sub) sub.textContent = 'Good walk = happy dog 🐾';
+
+        setTimeout(() => {
+          btn.innerHTML = '🐾 Walk';
+          btn.style.background = 'rgba(34,197,94,0.2)';
+        }, 650);
+      "
+      style="padding: 12px 18px; background: rgba(34,197,94,0.2); color: white; border: 2px solid #22c55e; border-radius: 18px; cursor:pointer; font-weight: 900;">
+        🐾 Walk
+      </button>
+
+      <button onclick="
+        const img = document.getElementById('zeusImg20');
+        const msg = document.getElementById('zeusMsg20');
+        const sub = document.getElementById('zeusSub20');
+        const advEl = document.getElementById('advCount20');
+        const happyEl = document.getElementById('happy20');
+        const bar = document.getElementById('happyBar20');
+        const btn = this;
+
+        if (img) img.src = 'fetch.gif';
+
+        let adv = parseInt(advEl.textContent||'0',10) + 1;
+        advEl.textContent = adv;
+
+        // happiness +15 (cap 100)
+        let h = parseInt((happyEl.textContent||'0').replace('%',''),10);
+        h = Math.min(100, h + 15);
+        happyEl.textContent = h + '%';
+        bar.style.width = h + '%';
+
+        btn.innerHTML = '🎾 Fetching!';
+        btn.style.background = 'linear-gradient(135deg,#8b5cf6,#6366f1)';
+
+        const lines = [
+          'Zeus being enthusiastic about playing fetch 🎾',
+        ];
+        if (msg) msg.textContent = lines[Math.floor(Math.random()*lines.length)];
+        if (sub) sub.textContent = 'Fetch mode: activated 🎾';
+
+        setTimeout(() => {
+          btn.innerHTML = '🎾 Fetch';
+          btn.style.background = 'rgba(139,92,246,0.2)';
+        }, 650);
+      "
+      style="padding: 12px 18px; background: rgba(139,92,246,0.2); color: white; border: 2px solid #8b5cf6; border-radius: 18px; cursor:pointer; font-weight: 900;">
+        🎾 Fetch
+      </button>
+
+      <button onclick="
+        const img = document.getElementById('zeusImg20');
+        const msg = document.getElementById('zeusMsg20');
+        const sub = document.getElementById('zeusSub20');
+        const advEl = document.getElementById('advCount20');
+        const happyEl = document.getElementById('happy20');
+        const bar = document.getElementById('happyBar20');
+        const btn = this;
+
+        if (img) img.src = 'treat.gif';
+
+        let adv = parseInt(advEl.textContent||'0',10) + 1;
+        advEl.textContent = adv;
+
+        // happiness +18 (cap 100)
+        let h = parseInt((happyEl.textContent||'0').replace('%',''),10);
+        h = Math.min(100, h + 18);
+        happyEl.textContent = h + '%';
+        bar.style.width = h + '%';
+
+        btn.innerHTML = '🦴 Treat time!';
+        btn.style.background = 'linear-gradient(135deg,#f59e0b,#d97706)';
+
+        const lines = [
+          'Zeus heard the treat bag from across dimensions. 🦴👂',
+        ];
+        if (msg) msg.textContent = lines[Math.floor(Math.random()*lines.length)];
+        if (sub) sub.textContent = 'Treats = pure happiness 🦴';
+
+        setTimeout(() => {
+          btn.innerHTML = '🦴 Treat';
+          btn.style.background = 'rgba(245,158,11,0.2)';
+        }, 650);
+      "
+      style="padding: 12px 18px; background: rgba(245,158,11,0.2); color: white; border: 2px solid #f59e0b; border-radius: 18px; cursor:pointer; font-weight: 900;">
+        🦴 Treat
+      </button>
+
+      <button onclick="
+        const img = document.getElementById('zeusImg20');
+        const msg = document.getElementById('zeusMsg20');
+        const sub = document.getElementById('zeusSub20');
+        const advEl = document.getElementById('advCount20');
+        const happyEl = document.getElementById('happy20');
+        const bar = document.getElementById('happyBar20');
+        const btn = this;
+
+        if (img) img.src = 'cuddle.gif';
+
+        let adv = parseInt(advEl.textContent||'0',10) + 1;
+        advEl.textContent = adv;
+
+        // happiness +20 (cap 100)
+        let h = parseInt((happyEl.textContent||'0').replace('%',''),10);
+        h = Math.min(100, h + 20);
+        happyEl.textContent = h + '%';
+        bar.style.width = h + '%';
+
+        btn.innerHTML = '🤗 Cuddling...';
+        btn.style.background = 'linear-gradient(135deg,#db2777,#be185d)';
+
+        const lines = [
+          'He rested his head on you. That’s the whole universe. 🌙'
+        ];
+        if (msg) msg.textContent = lines[Math.floor(Math.random()*lines.length)];
+        if (sub) sub.textContent = 'Cuddles are his favorite 🤍';
+
+        setTimeout(() => {
+          btn.innerHTML = '🤗 Cuddle time';
+          btn.style.background = 'rgba(219,39,119,0.2)';
+        }, 650);
+      "
+      style="padding: 12px 18px; background: rgba(219,39,119,0.2); color: white; border: 2px solid #db2777; border-radius: 18px; cursor:pointer; font-weight: 900;">
+        🤗 Cuddle time
+      </button>
+
+      <button onclick="
+        const img = document.getElementById('zeusImg20');
+        const msg = document.getElementById('zeusMsg20');
+        const sub = document.getElementById('zeusSub20');
+        const advEl = document.getElementById('advCount20');
+        const happyEl = document.getElementById('happy20');
+        const bar = document.getElementById('happyBar20');
+        const btn = this;
+
+        if (img) img.src = 'nap.gif';
+
+        let adv = parseInt(advEl.textContent||'0',10) + 1;
+        advEl.textContent = adv;
+
+        // happiness +10 (cap 100)
+        let h = parseInt((happyEl.textContent||'0').replace('%',''),10);
+        h = Math.min(100, h + 10);
+        happyEl.textContent = h + '%';
+        bar.style.width = h + '%';
+
+        btn.innerHTML = '😴 Napping...';
+        btn.style.background = 'linear-gradient(135deg,#64748b,#475569)';
+
+        const lines = [
+          'Tiny snores. Big peace. 😴',
+        ];
+        if (msg) msg.textContent = lines[Math.floor(Math.random()*lines.length)];
+        if (sub) sub.textContent = 'Nap = recharge 🔋';
+
+        setTimeout(() => {
+          btn.innerHTML = '😴 Nap';
+          btn.style.background = 'rgba(100,116,139,0.2)';
+        }, 650);
+      "
+      style="padding: 12px 18px; background: rgba(100,116,139,0.2); color: white; border: 2px solid rgba(148,163,184,0.55); border-radius: 18px; cursor:pointer; font-weight: 900;">
+        😴 Nap
+      </button>
+
+      <button onclick="
+        const img = document.getElementById('zeusImg20');
+        const msg = document.getElementById('zeusMsg20');
+        const sub = document.getElementById('zeusSub20');
+        const advEl = document.getElementById('advCount20');
+        const btn = this;
+
+        if (img) img.src = 'photo.gif';
+
+        let adv = parseInt(advEl.textContent||'0',10) + 1;
+        advEl.textContent = adv;
+
+        btn.innerHTML = '📸 Snap!';
+        btn.style.background = 'linear-gradient(135deg,#0ea5e9,#0284c7)';
+
+        if (msg) msg.textContent = 'Say cheese! 📸🐶';
+        if (sub) sub.textContent = 'Moment captured!';
+
+        setTimeout(() => {
+          btn.innerHTML = '📸 Photo';
+          btn.style.background = 'rgba(14,165,233,0.2)';
+        }, 650);
+      "
+      style="padding: 12px 18px; background: rgba(14,165,233,0.2); color: white; border: 2px solid #0ea5e9; border-radius: 18px; cursor:pointer; font-weight: 900;">
+        📸 Photo
+      </button>
+    </div>
+
+    <!-- RESET ROW (always visible) -->
+    <div style="margin-top: 16px; text-align: center;">
+      <button
+        onclick="
+          // clear per-day state if you later add any
+          window.__zeus20 = null;
+
+          const msg = document.getElementById('zeusMsg20');
+          const sub = document.getElementById('zeusSub20');
+          const advEl = document.getElementById('advCount20');
+          const happyEl = document.getElementById('happy20');
+          const bar = document.getElementById('happyBar20');
+          const img = document.getElementById('zeusImg20');
+
+          if (msg) msg.textContent = 'Pick an adventure below… Zeus is ready 🐾';
+          if (sub) sub.textContent = '(Tip: keep clicking different buttons — Zeus has lots to say.)';
+          if (advEl) advEl.textContent = '0';
+          if (happyEl) happyEl.textContent = '0%';
+          if (bar) bar.style.width = '0%';
+          if (img) img.src = 'zeus.jpg';
+
+          this.innerHTML = '🔄 Reset Zeus’ Day';
+          this.style.transform = 'scale(0.97)';
+          setTimeout(() => this.style.transform = 'scale(1)', 120);
+        "
+        style="
+          padding: 12px 22px;
+          background: rgba(59,130,246,0.2);
+          color: white;
+          border: 2px solid rgba(59,130,246,0.75);
+          border-radius: 22px;
+          cursor: pointer;
+          font-weight: 900;
+        "
+      >
+        🔄 Reset Zeus’ Day
+      </button>
+    </div>
+  </div>
+
+  <!-- Sweet footer -->
+  <div style="margin-top: 30px; padding: 20px; background: rgba(30, 41, 59, 0.3); border-radius: 12px; max-width: 540px; margin-left: auto; margin-right: auto;">
+    <p style="color: var(--text); margin: 0; font-style: italic;">
+      "Zeus doesn’t just love you… he chooses you — every single day 🐶💛"
+    </p>
+  </div>
+</div>
+
+
+`
+},
+
     };
 
     // --- Build calendar dynamically ---
@@ -2309,6 +3710,7 @@
   </script>
 </body>
 </html>
+
 
 
 
