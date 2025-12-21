@@ -3904,7 +3904,125 @@ html: `
       </div>
     </div>
   `
-}
+},
+
+24: {
+  title: "Day 24 – Christmas Eve & Forever",
+  emoji: "🎄💖",
+  html: `
+    <div style="text-align: center; padding: 20px;">
+      <div style="font-size: 4rem; margin: 20px 0;">🎄💖</div>
+      
+      <h2 style="color: var(--gold); margin-bottom: 25px;">Christmas Eve & Forever With You</h2>
+      
+      <div style="background: rgba(244, 201, 93, 0.1); padding: 25px; border-radius: 15px; margin: 25px 0; border: 2px solid rgba(244, 201, 93, 0.3);">
+        <p style="margin: 0; font-size: 1.3em; line-height: 1.6;">
+          <strong>24.</strong> Forever begins with you
+        </p>
+      </div>
+      
+      <!-- Special Christmas Message -->
+      <div style="margin: 30px 0; padding: 20px; background: linear-gradient(135deg, rgba(230, 57, 70, 0.1), rgba(244, 201, 93, 0.1)); border-radius: 15px; border: 2px solid rgba(244, 201, 93, 0.3);">
+        <div style="font-size: 3rem; margin-bottom: 15px;">✨</div>
+        <p style="color: var(--gold); font-size: 1.2em; margin: 0; font-weight: bold;">
+          You're not just my love. You're my home. My peace. My forever.
+        </p>
+      </div>
+      
+      <!-- The Forever Button -->
+      <button onclick="
+        const btn = this;
+        btn.innerHTML = '🎬 PLAYING FOREVER...';
+        btn.style.background = 'linear-gradient(135deg, #db2777, #be185d)';
+        
+        // Create fullscreen video container
+        const videoContainer = document.createElement('div');
+        videoContainer.style.position = 'fixed';
+        videoContainer.style.top = '0';
+        videoContainer.style.left = '0';
+        videoContainer.style.width = '100vw';
+        videoContainer.style.height = '100vh';
+        videoContainer.style.background = '#000';
+        videoContainer.style.zIndex = '1000';
+        videoContainer.style.display = 'flex';
+        videoContainer.style.alignItems = 'center';
+        videoContainer.style.justifyContent = 'center';
+        
+        // Create Google Drive embed iframe (better for video playback)
+        const iframe = document.createElement('iframe');
+        iframe.src = 'https://drive.google.com/file/d/1KslmxILUvz6PdxGWCgwtxk_eMSNU4OO9/preview';
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+        iframe.style.border = 'none';
+        iframe.allow = 'autoplay; encrypted-media; fullscreen';
+        iframe.allowFullscreen = true;
+        
+        // Create close button
+        const closeBtn = document.createElement('button');
+        closeBtn.innerHTML = '×';
+        closeBtn.style.position = 'absolute';
+        closeBtn.style.top = '20px';
+        closeBtn.style.right = '20px';
+        closeBtn.style.background = 'rgba(0,0,0,0.5)';
+        closeBtn.style.color = 'white';
+        closeBtn.style.border = 'none';
+        closeBtn.style.borderRadius = '50%';
+        closeBtn.style.width = '50px';
+        closeBtn.style.height = '50px';
+        closeBtn.style.fontSize = '2rem';
+        closeBtn.style.cursor = 'pointer';
+        closeBtn.style.zIndex = '1001';
+        
+        closeBtn.onclick = function() {
+          document.body.removeChild(videoContainer);
+          btn.innerHTML = '🎬 PLAY FOREVER AGAIN';
+          btn.style.background = 'linear-gradient(135deg, #e63946, #db2777)';
+        };
+        
+        // Add elements to container
+        videoContainer.appendChild(iframe);
+        videoContainer.appendChild(closeBtn);
+        
+        // Add to body
+        document.body.appendChild(videoContainer);
+        
+        // Try to make fullscreen
+        setTimeout(() => {
+          if (iframe.requestFullscreen) {
+            iframe.requestFullscreen();
+          } else if (iframe.webkitRequestFullscreen) {
+            iframe.webkitRequestFullscreen();
+          } else if (iframe.mozRequestFullScreen) {
+            iframe.mozRequestFullScreen();
+          }
+        }, 500);
+      " style="padding: 20px 40px; background: linear-gradient(135deg, #e63946, #db2777); color: white; border: none; border-radius: 50px; font-size: 1.3em; cursor: pointer; margin: 25px 0; transition: all 0.3s ease; font-weight: bold; box-shadow: 0 10px 25px rgba(219, 39, 119, 0.3);">
+        🎬 "Merry Christmas my love, I love you more than anything"
+      </button>
+      
+      <!-- Alternative: Direct download button if embed doesn't work -->
+      <div style="margin-top: 20px;">
+        <a href="https://drive.google.com/uc?export=download&id=1KslmxILUvz6PdxGWCgwtxk_eMSNU4OO9" target="_blank" style="color: var(--secondary-text); font-size: 0.9em; text-decoration: none;">
+          If video doesn't play, click here to download it
+        </a>
+      </div>
+      
+      <!-- Final Message -->
+      <div style="margin-top: 40px; padding: 25px; background: rgba(30, 41, 59, 0.3); border-radius: 15px; max-width: 500px; margin-left: auto; margin-right: auto; border: 2px solid rgba(244, 201, 93, 0.2);">
+        <div style="font-size: 2rem; margin-bottom: 15px;">🎁</div>
+        <p style="color: var(--text); margin: 0 0 10px 0; font-style: italic;">
+          "This calendar may end, but my love for you never will."
+        </p>
+        <p style="color: var(--gold); margin: 0; font-weight: bold;">
+          Forever yours,
+        </p>
+        <p style="color: var(--text); margin: 5px 0 0 0;">
+          Your Patricio
+        </p>
+      </div>
+    </div>
+  `
+}     
     
     };
 
@@ -4053,6 +4171,7 @@ html: `
   </script>
 </body>
 </html>
+
 
 
 
