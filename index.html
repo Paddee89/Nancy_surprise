@@ -4041,14 +4041,20 @@ html: `
     const currentDay = today.getDate();
     const currentMonth = today.getMonth() + 1; // 1–12
 
-    // CHANGED: Force current month behavior for testing (remove this line for December)
-    const isAdventMonth = (currentMonth === today.getMonth() + 1);
-
+    // Show today's date normally
     todayText.textContent = `Today: ${today.toLocaleDateString(undefined, {
       day: "numeric",
       month: "short",
       year: "numeric",
     })}`;
+
+    // TESTING MODE - ALL DOORS OPEN
+    // Set to true for testing, false for real deployment
+    const TEST_MODE = true;
+    
+    // For testing: Make all doors available and "past"
+    const isAdventMonth = TEST_MODE ? true : (currentMonth === 12);
+    const testCurrentDay = TEST_MODE ? 24 : currentDay;
 
     const totalDoors = 24;
     const days = Array.from({ length: totalDoors }, (_, i) => i + 1);
@@ -4076,9 +4082,10 @@ html: `
       // background image for the door tile
       door.style.backgroundImage = `url("door-${day}.jpg")`;
 
-      const isPast = isAdventMonth && day < currentDay;
-      const isToday = isAdventMonth && day === currentDay;
-      const available = isAdventMonth && day <= currentDay;
+      // TESTING LOGIC: All doors are available and "past" when TEST_MODE is true
+      const isPast = TEST_MODE ? true : (isAdventMonth && day < testCurrentDay);
+      const isToday = TEST_MODE ? false : (isAdventMonth && day === testCurrentDay);
+      const available = TEST_MODE ? true : (isAdventMonth && day <= testCurrentDay);
 
       door.classList.add(available ? "available" : "locked");
       if (isPast) door.classList.add("past");
@@ -4135,7 +4142,7 @@ html: `
       modalBody.innerHTML = content.html;
       modalDayLabel.textContent = `Door ${day}`;
       modalBadge.textContent =
-        day < currentDay ? "Previously opened" : "Today's door";
+        day < (TEST_MODE ? 24 : currentDay) ? "Previously opened" : "Today's door";
 
       modalBackdrop.classList.add("visible");
 
@@ -4171,6 +4178,7 @@ html: `
   </script>
 </body>
 </html>
+
 
 
 
