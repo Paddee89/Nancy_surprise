@@ -567,6 +567,8 @@
       border: 1px solid rgba(244, 201, 93, 0.3);
     }
   </style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  
 </head>
 <body>
   <div class="calendar-wrapper">
@@ -579,6 +581,7 @@
       <span>Nancy's Advent Calendar</span>
     </div>
 
+    <!-- Full-width, responsive embed (works on mobile) -->
     <div class="calendar-embed">
       <iframe
         src="https://w2.countingdownto.com/6845370"
@@ -598,6 +601,40 @@
     <span id="todayText">Today: —</span>
   </div>
 </header>
+
+<style>
+  /* Layout */
+  .calendar-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:24px;
+  }
+  .calendar-main{
+    flex:1;
+    min-width:0;
+  }
+
+  /* Embed */
+  .calendar-embed{
+    width:100%;
+    margin:16px 0;
+  }
+  .calendar-embed iframe{
+    width:100%;
+    max-width:100%;
+    height:240px; /* make it smaller/larger here */
+    border:0;
+    display:block;
+  }
+
+  /* Mobile: stack the right-side indicator under the main content */
+  @media (max-width:700px){
+    .calendar-header{ flex-direction:column; }
+    .today-indicator{ width:100%; }
+  }
+</style>
+
 
 
     <main class="calendar-grid" id="calendarGrid"></main>
@@ -4190,6 +4227,7 @@ html: `
   </script>
 </body>
 </html>
+
 
 
 
