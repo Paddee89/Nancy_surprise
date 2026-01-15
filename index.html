@@ -575,18 +575,20 @@
     <div class="sparkles" aria-hidden="true"></div>
 
 <header class="calendar-header">
-  <div class="calendar-main">
+  <div>
     <div class="calendar-title">
       <span class="emoji">🎄</span>
       <span>Nancy's Advent Calendar</span>
     </div>
 
-    <div class="calendar-embed">
+    <!-- Original embed, scaled down to 25% -->
+    <div class="embed-25">
       <iframe
-        class="countdown-iframe"
+        width="621"
+        height="320"
         src="https://w2.countingdownto.com/6845370"
-        title="Countdown"
-        loading="lazy"
+        frameborder="0"
+        scrolling="no"
       ></iframe>
     </div>
 
@@ -602,29 +604,22 @@
 </header>
 
 <style>
-  /* Force this embed to a smaller size (overrides other rules) */
-  .calendar-embed {
-    max-width: 700px !important;   /* <-- change this number */
-    margin: 16px auto !important;  /* centers it */
-    width: 100% !important;
+  /* Wrapper becomes the scaled size (prevents cut-off) */
+  .embed-25{
+    width: 155.25px; /* 621 * 0.25 */
+    height: 80px;    /* 320 * 0.25 */
+    overflow: hidden;
+    margin: 16px 0;  /* change to '16px auto' to center */
   }
 
-  .calendar-embed > .countdown-iframe {
-    width: 100% !important;
-    height: 260px !important;      /* <-- change this number */
-    border: 0 !important;
-    display: block !important;
-  }
-
-  @media (max-width: 700px) {
-    .calendar-embed { max-width: 95% !important; }
-    .calendar-embed > .countdown-iframe {
-      height: 220px !important;    /* <-- phone height */
-    }
-    .calendar-header { flex-direction: column; }
-    .today-indicator { width: 100%; }
+  .embed-25 iframe{
+    transform: scale(0.25);
+    transform-origin: top left;
+    border: 0;
+    display: block;
   }
 </style>
+
 
     <main class="calendar-grid" id="calendarGrid"></main>
   </div>
@@ -4216,6 +4211,7 @@ html: `
   </script>
 </body>
 </html>
+
 
 
 
