@@ -581,13 +581,13 @@
       <span>Nancy's Advent Calendar</span>
     </div>
 
+    <!-- Responsive embed: no scrollbars, not cut off on phones -->
     <div class="calendar-embed">
       <iframe
         src="https://w2.countingdownto.com/6845370"
         title="Countdown"
         loading="lazy"
-        allowfullscreen
-        scrolling="no"
+        frameborder="0"
       ></iframe>
     </div>
 
@@ -603,37 +603,41 @@
 </header>
 
 <style>
+  /* Desktop layout */
   .calendar-header{
     display:flex;
     justify-content:space-between;
     align-items:flex-start;
     gap:24px;
   }
-  .calendar-main{ flex:1; min-width:0; }
+  .calendar-main{
+    flex:1;
+    min-width:0;
+  }
 
-  /* Responsive embed: scales instead of clipping */
+  /* Embed sizing */
   .calendar-embed{
     width:100%;
-    max-width: 900px;     /* <-- makes it "scaled down" on desktop too (adjust) */
+    max-width: 900px;   /* "scaled down" on desktop (adjust or remove) */
     margin:16px 0;
   }
   .calendar-embed iframe{
     width:100%;
-    aspect-ratio: 621 / 320; /* same shape as your original */
-    height:auto;
+    max-width:100%;
     border:0;
     display:block;
-    overflow:hidden;
+
+    /* Key: responsive height so it doesn't get cut off on phones */
+    height: clamp(320px, 70vw, 460px);
   }
 
-  /* Mobile: stack the indicator so the iframe isn't squeezed */
+  /* Mobile: stack indicator below so iframe has full width */
   @media (max-width:700px){
     .calendar-header{ flex-direction:column; }
     .today-indicator{ width:100%; }
-    .calendar-embed{ max-width: 100%; }
+    .calendar-embed{ max-width:100%; }
   }
 </style>
-
 
 
 
@@ -4227,6 +4231,7 @@ html: `
   </script>
 </body>
 </html>
+
 
 
 
