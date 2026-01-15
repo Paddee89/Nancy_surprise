@@ -572,24 +572,33 @@
   <div class="calendar-wrapper">
     <div class="sparkles" aria-hidden="true"></div>
 
-    <header class="calendar-header">
-      <div>
-        <div class="calendar-title">
-          <span class="emoji">🎄</span>
-          <span>Nancy's Advent Calendar</span>
-        </div>
-        
-<iframe width="621" height="320" src="https://w2.countingdownto.com/6845370" frameborder="0"></iframe>
-        
-        <div class="calendar-subtitle">
-          Come back each day to open a new door and reveal today's surprise.
-        </div>
-      </div>
-      <div class="today-indicator" id="todayIndicator">
-        <span class="today-dot"></span>
-        <span id="todayText">Today: —</span>
-      </div>
-    </header>
+<header class="calendar-header">
+  <div class="calendar-main">
+    <div class="calendar-title">
+      <span class="emoji">🎄</span>
+      <span>Nancy's Advent Calendar</span>
+    </div>
+
+    <div class="calendar-embed">
+      <iframe
+        src="https://w2.countingdownto.com/6845370"
+        title="Countdown"
+        loading="lazy"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <div class="calendar-subtitle">
+      Come back each day to open a new door and reveal today's surprise.
+    </div>
+  </div>
+
+  <div class="today-indicator" id="todayIndicator">
+    <span class="today-dot"></span>
+    <span id="todayText">Today: —</span>
+  </div>
+</header>
+
 
     <main class="calendar-grid" id="calendarGrid"></main>
   </div>
@@ -4181,6 +4190,7 @@ html: `
   </script>
 </body>
 </html>
+
 
 
 
