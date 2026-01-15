@@ -581,13 +581,12 @@
       <span>Nancy's Advent Calendar</span>
     </div>
 
-    <!-- Responsive embed: no scrollbars, not cut off on phones -->
     <div class="calendar-embed">
       <iframe
+        class="countdown-iframe"
         src="https://w2.countingdownto.com/6845370"
         title="Countdown"
         loading="lazy"
-        frameborder="0"
       ></iframe>
     </div>
 
@@ -603,42 +602,29 @@
 </header>
 
 <style>
-  /* Desktop layout */
-  .calendar-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    gap:24px;
-  }
-  .calendar-main{
-    flex:1;
-    min-width:0;
+  /* Force this embed to a smaller size (overrides other rules) */
+  .calendar-embed {
+    max-width: 700px !important;   /* <-- change this number */
+    margin: 16px auto !important;  /* centers it */
+    width: 100% !important;
   }
 
-  /* Embed sizing */
-  .calendar-embed{
-    width:50%;
-    margin:16px 0;
-  }
-  .calendar-embed iframe{
-    width:50%;
-    max-width:100%;
-    border:0;
-    display:block;
-
-    /* Key: responsive height so it doesn't get cut off on phones */
-    height: clamp(220px, 50vw, 360px);
+  .calendar-embed > .countdown-iframe {
+    width: 100% !important;
+    height: 260px !important;      /* <-- change this number */
+    border: 0 !important;
+    display: block !important;
   }
 
-  /* Mobile: stack indicator below so iframe has full width */
-  @media (max-width:700px){
-    .calendar-header{ flex-direction:column; }
-    .today-indicator{ width:100%; }
-    .calendar-embed{ max-width:100%; }
+  @media (max-width: 700px) {
+    .calendar-embed { max-width: 95% !important; }
+    .calendar-embed > .countdown-iframe {
+      height: 220px !important;    /* <-- phone height */
+    }
+    .calendar-header { flex-direction: column; }
+    .today-indicator { width: 100%; }
   }
 </style>
-
-
 
     <main class="calendar-grid" id="calendarGrid"></main>
   </div>
@@ -4230,6 +4216,7 @@ html: `
   </script>
 </body>
 </html>
+
 
 
 
