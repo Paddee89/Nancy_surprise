@@ -581,44 +581,150 @@
       <span>Nancy's Advent Calendar</span>
     </div>
 
-    <!-- Original embed, but rendered larger internally then scaled to 25% -->
-    <div class="embed-scaled">
-     <iframe src="https://free.timeanddate.com/countdown/ia8zktjn/n318/cf101/cm0/cu4/ct0/cs0/ca0/cr0/ss0/cac000/cpc000/pcd8873c/tcfff/fs100/szw320/szh135/tatNancy%20Patrick%20Time%20/tac000/tptTime%20since%20Event%20started%20in/tpc000/mac000/mpc000/iso2026-03-10T15:00:00" allowtransparency="true" frameborder="0" width="320" height="135"></iframe>
-    </div>
+   <!-- Countdown (no iframe) -->
+<div class="countdown-wrap" aria-label="Nancy Patrick Time countdown">
+  <div class="countdown-title">Nancy Patrick Time</div>
 
-    <div class="calendar-subtitle">
-      Come back each day to open a new door and reveal today's surprise.
+  <div class="countdown-grid" role="timer" aria-live="polite">
+    <div class="cd-unit">
+      <span class="cd-value" id="cdWeeks">—</span>
+      <span class="cd-label">weeks</span>
+    </div>
+    <div class="cd-unit">
+      <span class="cd-value" id="cdDays">—</span>
+      <span class="cd-label">days</span>
+    </div>
+    <div class="cd-unit">
+      <span class="cd-value" id="cdHours">—</span>
+      <span class="cd-label">hours</span>
+    </div>
+    <div class="cd-unit">
+      <span class="cd-value" id="cdMinutes">—</span>
+      <span class="cd-label">minutes</span>
+    </div>
+    <div class="cd-unit">
+      <span class="cd-value" id="cdSeconds">—</span>
+      <span class="cd-label">seconds</span>
     </div>
   </div>
 
-  <div class="today-indicator" id="todayIndicator">
-    <span class="today-dot"></span>
-    <span id="todayText">Today: —</span>
+  <div class="countdown-meta">
+    Time until <strong>March 10, 2026</strong>, <strong>15:00</strong> (Graz, Austria)
   </div>
+</div>
+
+<div class="calendar-subtitle">
+  Come back each day to open a new door and reveal today's surprise.
+</div>
+</div>
+
+<div class="today-indicator" id="todayIndicator">
+  <span class="today-dot"></span>
+  <span id="todayText">Today: —</span>
+</div>
 </header>
 
 <style>
-  .embed-scaled{
-    /* ✅ change these three values */
-    --scale: 1.5;      /* 25% */
-    --w: 750px;        /* internal iframe width */
-    --h: 200px;         /* internal iframe height */
-
-    width: calc(var(--w) * var(--scale));
-    height: calc(var(--h) * var(--scale));
-    overflow: hidden;
-    margin: 16px 0;     /* use 16px auto; to center */
+  /* Countdown styles */
+  .countdown-wrap {
+    margin: 16px 0;
   }
 
-  .embed-scaled iframe{
-    width: var(--w);
-    height: var(--h);
-    border: 0;
+  .countdown-title {
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    margin: 0 0 10px 0;
+  }
+
+  .countdown-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
+    align-items: stretch;
+    margin-bottom: 8px;
+  }
+
+  .cd-unit {
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 12px;
+    padding: 10px 8px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(6px);
+  }
+
+  .cd-value {
     display: block;
-    transform: scale(var(--scale));
-    transform-origin: top left;
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+  }
+
+  .cd-label {
+    display: block;
+    font-size: 0.85rem;
+    opacity: 0.85;
+    margin-top: 2px;
+  }
+
+  .countdown-meta {
+    font-size: 0.95rem;
+    opacity: 0.9;
+  }
+
+  /* Responsive: wrap units on small screens */
+  @media (max-width: 560px) {
+    .countdown-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
   }
 </style>
+
+<script>
+  // Target: March 10, 2026 15:00 in Graz, Austria.
+  // Graz will be on CET (UTC+01:00) on March 10, 2026.
+  const cdTarget = new Date("2026-03-10T15:00:00+01:00");
+
+  const $ = (id) => document.getElementById(id);
+
+  function updateCountdown() {
+    const now = new Date();
+    let diffMs = cdTarget - now;
+
+    if (diffMs <= 0) {
+      $("cdWeeks").textContent = "0";
+      $("cdDays").textContent = "0";
+      $("cdHours").textContent = "00";
+      $("cdMinutes").textContent = "00";
+      $("cdSeconds").textContent = "00";
+      return;
+    }
+
+    let totalSeconds = Math.floor(diffMs / 1000);
+
+    const weeks = Math.floor(totalSeconds / 604800); // 7*24*60*60
+    totalSeconds %= 604800;
+
+    const days = Math.floor(totalSeconds / 86400);
+    totalSeconds %= 86400;
+
+    const hours = Math.floor(totalSeconds / 3600);
+    totalSeconds %= 3600;
+
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+
+    $("cdWeeks").textContent = String(weeks);
+    $("cdDays").textContent = String(days);
+    $("cdHours").textContent = String(hours).padStart(2, "0");
+    $("cdMinutes").textContent = String(minutes).padStart(2, "0");
+    $("cdSeconds").textContent = String(seconds).padStart(2, "0");
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
 
 
     <main class="calendar-grid" id="calendarGrid"></main>
@@ -4211,6 +4317,7 @@ html: `
   </script>
 </body>
 </html>
+
 
 
 
